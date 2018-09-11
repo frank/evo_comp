@@ -48,7 +48,6 @@ public class player24 implements ContestSubmission {
         int evals = 0;
         // init population
         // calculate fitness
-        System.out.println("test");
         Population pop = new Population(rnd_);
         while (evals < evaluations_limit_) {
             Child[] parents = pop.SelectBoltzmanParents(2,evals);
