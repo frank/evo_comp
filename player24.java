@@ -20,15 +20,6 @@ public class player24 implements ContestSubmission {
         rnd_.setSeed(seed);
     }
 
-    public static void main(String[] args) {
-        Population pop = new Population(new Random());
-        Child child = new Child(new Random());
-        System.out.println("SchaffersEvaluation");ConsertTestBox.main(new String[]{"-submission=player24", "-evaluation=SchaffersEvaluation", "-seed=1"});
-        //System.out.println("KatsuuraEvaluation");ConsertTestBox.main(new String[]{"-submission=player24", "-evaluation=KatsuuraEvaluation", "-seed=1"});
-        //System.out.println("BentCigarFunction");ConsertTestBox.main(new String[]{"-submission=player24", "-evaluation=BentCigarFunction", "-seed=1"});
-
-    }
-
     public void setEvaluation(ContestEvaluation evaluation) {
         // Set evaluation problem used in the run
         evaluation_ = evaluation;
