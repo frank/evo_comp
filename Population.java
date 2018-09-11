@@ -33,12 +33,11 @@ public class Population {
             return new Child[]{children.get(0)};
         }
 
-        double T = Math.max(0.5,TIME /(double) eval);
+        double T = Math.max(0.5, TIME / (double) eval);
         double[] probabilities = new double[children.size()];
 
         double denom = 0;
-        for (Child c : children)
-        {
+        for (Child c : children) {
             denom += Math.exp(c.getFitness() / T);
         }
 
@@ -70,15 +69,13 @@ public class Population {
                 }
                 parents[i] = children.get(0);
             }
-
         }
-        if(parents[0]==null || parents[1]==null){
+        if (parents[0] == null || parents[1] == null) {
             System.out.println();
         }
         return parents;
 
     }
-
 
     public Child UniformCrossover(Child[] parents) {
 
@@ -109,7 +106,6 @@ public class Population {
         }
         return new Child(vals, _rnd);
     }
-
 
     public void AddChild(Child child) {
 
