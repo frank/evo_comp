@@ -1,8 +1,6 @@
 import org.vu.contest.ContestSubmission;
 import org.vu.contest.ContestEvaluation;
 
-import javax.swing.plaf.synth.SynthTextAreaUI;
-import java.util.Arrays;
 import java.util.Random;
 import java.util.Properties;
 
@@ -20,14 +18,14 @@ public class player24 implements ContestSubmission {
         rnd_.setSeed(seed);
     }
 
-    public static void main(String[] args) {
-        Population pop = new Population(new Random());
-        Child child = new Child(new Random());
-        System.out.println("SchaffersEvaluation");ConsertTestBox.main(new String[]{"-submission=player24", "-evaluation=SchaffersEvaluation", "-seed=1"});
-        //System.out.println("KatsuuraEvaluation");ConsertTestBox.main(new String[]{"-submission=player24", "-evaluation=KatsuuraEvaluation", "-seed=1"});
-        //System.out.println("BentCigarFunction");ConsertTestBox.main(new String[]{"-submission=player24", "-evaluation=BentCigarFunction", "-seed=1"});
-
-    }
+//    public static void main(String[] args) {
+//        Population pop = new Population(new Random());
+//        Child child = new Child(new Random());
+//        System.out.println("SchaffersEvaluation");ConsertTestBox.main(new String[]{"-submission=player24", "-evaluation=SchaffersEvaluation", "-seed=1"});
+//        //System.out.println("KatsuuraEvaluation");ConsertTestBox.main(new String[]{"-submission=player24", "-evaluation=KatsuuraEvaluation", "-seed=1"});
+//        //System.out.println("BentCigarFunction");ConsertTestBox.main(new String[]{"-submission=player24", "-evaluation=BentCigarFunction", "-seed=1"});
+//
+//    }
 
     public void setEvaluation(ContestEvaluation evaluation) {
         // Set evaluation problem used in the run
@@ -55,15 +53,18 @@ public class player24 implements ContestSubmission {
     public void run() {
         // Run your algorithm here
         int evals = 0;
+        int populationSize = 500;
+        double time = 100;
+        double stDevMultiplier = 1.0;
+        String mutationType = "Gaussian"; // Set to 'Uniform' or 'Gaussian'
+
         // init population
-        // calculate fitness
-        System.out.println("test");
-        Population pop = new Population(rnd_);
+        Population pop = new Population(rnd_, populationSize, time, stDevMultiplier, evaluations_limit_, mutationType);
         while (evals < evaluations_limit_) {
+            pop.SetEvals(evals);
             Child[] parents = pop.SelectBoltzmanParents(2,evals);
             //creating the child
-            Child child = pop.UniformCrossover(parents);
-            child = pop.SimpleRandomAdditionMutation(child);
+            Child child = pop.CreateChild(parents);
 
             //calculating fitness
             Double fitness = (double) evaluation_.evaluate(child.getValues());
