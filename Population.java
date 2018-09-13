@@ -17,15 +17,20 @@ public class Population {
     private double TIME;
     private double stDevMultiplier;
     private String mutationType;
+    private String parentSelectionType;
+    private int numberOfParents;
 
 
-    public Population(Random rnd, int populationSize, double time, double stDevMultiplier, int maxEvals, String mutationType) {
+    public Population(Random rnd, int populationSize, double time, double stDevMultiplier, int maxEvals,
+                      String mutationType, String parentSelectionType, int numberOfParents) {
         _rnd = rnd;
         this.populationSize = populationSize;
         this.maxEvals = maxEvals;
         this.mutationType = mutationType;
         this.TIME = time;
         this.stDevMultiplier = stDevMultiplier;
+        this.parentSelectionType = parentSelectionType;
+        this.numberOfParents = numberOfParents;
         for (int i = 0; i < populationSize; i++) {
             children.add(new Child(_rnd));
         }
@@ -45,22 +50,33 @@ public class Population {
         System.out.println("--------------------------------------------------------\n");
     }
 
-    public Child[] SelectMaxParents(int amount_of_parents) {
+    public Child[] SelectParents() {
+        Child[] parents;
+        switch (parentSelectionType) {
+            case "Max":
+                parents = SelectMaxParents();
+            default:
+                parents = SelectBoltzmannParents();
+        }
+        return parents;
+    }
+
+    public Child[] SelectMaxParents() {
         if (children.size() < 2) {
             return new Child[]{children.get(0)};
         }
-        Child[] maxparents = new Child[amount_of_parents];
-        for (int i = 0; i < amount_of_parents; i++) maxparents[i] = children.get(i);
+        Child[] maxparents = new Child[numberOfParents];
+        for (int i = 0; i < numberOfParents; i++) maxparents[i] = children.get(i);
         return maxparents;
     }
 
-    public Child[] SelectBoltzmanParents(int amount_of_parents, int eval) {
+    public Child[] SelectBoltzmannParents() {
         //https://www.rug.nl/research/portal/files/61756372/ICAART_2018_27.pdf
         if (children.size() < 2) {
             return new Child[]{children.get(0)};
         }
 
-        double T = Math.max(0.5, TIME / (double) eval);
+        double T = Math.max(0.5, TIME / (double) evals);
         double[] probabilities = new double[children.size()];
 
         double denom = 0;
@@ -82,9 +98,9 @@ public class Population {
             cumsumprobability[idx] = cumsum;
         }
 
-        Child[] parents = new Child[amount_of_parents];
+        Child[] parents = new Child[numberOfParents];
 
-        for (int i = 0; i < amount_of_parents; i++) {
+        for (int i = 0; i < numberOfParents; i++) {
             double randomValue = _rnd.nextDouble() * 100;
             get_child:
             {

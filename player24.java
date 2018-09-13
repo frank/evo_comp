@@ -56,13 +56,16 @@ public class player24 implements ContestSubmission {
         int populationSize = 500;
         double time = 100;
         double stDevMultiplier = 1.0;
+        int numberOfParents = 2;
         String mutationType = "Gaussian"; // Set to 'Uniform' or 'Gaussian'
+        String parentSelectionType = "Boltzmann"; // Boltzmann, Max
 
         // init population
-        Population pop = new Population(rnd_, populationSize, time, stDevMultiplier, evaluations_limit_, mutationType);
+        Population pop = new Population(rnd_, populationSize, time, stDevMultiplier, evaluations_limit_,
+                                        mutationType, parentSelectionType, numberOfParents);
         while (evals < evaluations_limit_) {
             pop.SetEvals(evals);
-            Child[] parents = pop.SelectBoltzmanParents(2,evals);
+            Child[] parents = pop.SelectParents();
             //creating the child
             Child child = pop.CreateChild(parents);
 
