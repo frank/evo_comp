@@ -18,6 +18,15 @@ public class player24 implements ContestSubmission {
         rnd_.setSeed(seed);
     }
 
+//    public static void main(String[] args) {
+//        Population pop = new Population(new Random());
+//        Child child = new Child(new Random());
+//        System.out.println("SchaffersEvaluation");ConsertTestBox.main(new String[]{"-submission=player24", "-evaluation=SchaffersEvaluation", "-seed=1"});
+//        //System.out.println("KatsuuraEvaluation");ConsertTestBox.main(new String[]{"-submission=player24", "-evaluation=KatsuuraEvaluation", "-seed=1"});
+//        //System.out.println("BentCigarFunction");ConsertTestBox.main(new String[]{"-submission=player24", "-evaluation=BentCigarFunction", "-seed=1"});
+//
+//    }
+
     public void setEvaluation(ContestEvaluation evaluation) {
         // Set evaluation problem used in the run
         evaluation_ = evaluation;
@@ -47,13 +56,16 @@ public class player24 implements ContestSubmission {
         int populationSize = 500;
         double time = 100;
         double stDevMultiplier = 1.0;
+        int numberOfParents = 2;
         String mutationType = "Gaussian"; // Set to 'Uniform' or 'Gaussian'
+        String parentSelectionType = "Boltzmann"; // Boltzmann, Max
 
         // init population
-        Population pop = new Population(rnd_, populationSize, time, stDevMultiplier, evaluations_limit_, mutationType);
+        Population pop = new Population(rnd_, populationSize, time, stDevMultiplier, evaluations_limit_,
+                                        mutationType, parentSelectionType, numberOfParents);
         while (evals < evaluations_limit_) {
             pop.SetEvals(evals);
-            Child[] parents = pop.SelectBoltzmanParents(2,evals);
+            Child[] parents = pop.SelectParents();
             //creating the child
             Child child = pop.CreateChild(parents);
 
