@@ -11,11 +11,38 @@ import java.util.Random;
 public class Population {
     private Random _rnd;
     private ArrayList<Child> children = new ArrayList<>();
-    int TIME = 100;
+    private int populationSize;
+    private int evals;
+    private int maxEvals;
+    private double TIME;
+    private double stDevMultiplier;
+    private String mutationType;
 
-    public Population(Random rnd) {
+
+    public Population(Random rnd, int populationSize, double time, double stDevMultiplier, int maxEvals, String mutationType) {
         _rnd = rnd;
-        children.add(new Child(_rnd));
+        this.populationSize = populationSize;
+        this.maxEvals = maxEvals;
+        this.mutationType = mutationType;
+        this.TIME = time;
+        this.stDevMultiplier = stDevMultiplier;
+        for (int i = 0; i < populationSize; i++) {
+            children.add(new Child(_rnd));
+        }
+        PrintProperties();
+    }
+
+    private void PrintProperties() {
+        System.out.println("\nSimulation properties:");
+        System.out.println("--------------------------------------------------------");
+        System.out.println("Population size: " + populationSize);
+        System.out.println("Maximum evaluations: " + maxEvals);
+        System.out.println("Boltzman TIME variable: " + TIME);
+        System.out.println("Mutation type: " + mutationType);
+        if (mutationType.equals("Gaussian")) {
+            System.out.println("Gaussian Standard Deviation: " + stDevMultiplier);
+        }
+        System.out.println("--------------------------------------------------------\n");
     }
 
     public Child[] SelectMaxParents(int amount_of_parents) {
@@ -77,6 +104,23 @@ public class Population {
 
     }
 
+<<<<<<< HEAD
+=======
+    public Child CreateChild(Child[] parents) {
+        // CrossOver
+        Child child = UniformCrossover(parents);
+        //Mutation
+        switch (mutationType) {
+            case "Uniform":
+                child = SimpleRandomAdditionMutation(child);
+            case "Gaussian":
+                NormalDistMutation(child);
+        }
+        return child;
+    }
+
+
+>>>>>>> 32336083b4189c0cabc402296face4318db7d53c
     public Child UniformCrossover(Child[] parents) {
 
         //select random crossover points from all parents
@@ -87,12 +131,10 @@ public class Population {
             vals[i] = parents[_rnd.nextInt(parentsize)].getValues(i);
         }
         return new Child(vals, _rnd);
-
     }
 
     public Child SimpleRandomAdditionMutation(Child child) {
         //adds random mutation values at random locations
-
         _rnd.nextDouble();
         double[] vals = new double[Child.VALUES_SIZE];
         for (int i = 0; i < Child.VALUES_SIZE; i++) {
@@ -107,6 +149,21 @@ public class Population {
         return new Child(vals, _rnd);
     }
 
+<<<<<<< HEAD
+=======
+    public void NormalDistMutation(Child child) {
+        Random rand = new Random();
+        double evalPercentRemaining = ((double) evals - maxEvals) / maxEvals;
+        double stDev = evalPercentRemaining * stDevMultiplier;
+        for (int i = 1; i < child.getValuesSize(); i++) {
+            double mutation = rand.nextGaussian() * stDev;
+            double newValue = child.getValues(i) + mutation;
+            newValue = child.rebound(newValue);
+            child.setValues(i, newValue);
+        }
+    }
+
+>>>>>>> 32336083b4189c0cabc402296face4318db7d53c
     public void AddChild(Child child) {
 
         int left, right, mid;
@@ -123,8 +180,13 @@ public class Population {
                 left = mid + 1;
             }
         }
-        if (children.size() < 100) children.add(left, child);
-        else if (left < 100) children.set(left, child);//Drop everything after 1k
+        if (children.size() < populationSize) children.add(left, child);
+        else if (left < populationSize) children.set(left, child);//Drop everything after 1k
     }
+
+    public void SetEvals(int evals) {
+        this.evals = evals;
+    }
+
 }
 

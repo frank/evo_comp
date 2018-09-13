@@ -42,6 +42,8 @@ public class Child {
         return _values[index];
     }
 
+    public int getValuesSize() {return VALUES_SIZE;}
+
     public void setValues(int index, double value) {
         _values[index] = value;
     }
@@ -56,5 +58,13 @@ public class Child {
 
     public void setFitness(double fitness) {
         this.fitness = fitness;
+    }
+
+    public double getMin() {
+        return MIN;
+    }
+
+    public double getMax() {
+        return MAX;
     }
 }
