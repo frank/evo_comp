@@ -37,7 +37,6 @@ def run_cmd(cmd_ext):
     cmd = cmd_ext.split()
     result = subprocess.run(cmd, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
     catch_error(cmd_ext, result.stderr.decode('utf-8'))
-
     return result.stdout.decode('utf-8')
 
 
@@ -49,7 +48,7 @@ if __name__ == '__main__':
 
     # ADD NEW CLASSES TO THE TWO FOLLOWING LINES
     _ = run_cmd('javac -cp contest.jar player24.java Population.java Child.java')
-    _ = run_cmd('jar cmf MainClass.txt submission.jar player24.class Population.class Child.class')
+    _ = run_cmd('jar cmf MainClass.txt submission.jar player24.class Population.class Population$1.class Child.class')
 
     os.putenv("LD_LIBRARY_PATH", os.getcwd())
     output = run_cmd('java -jar testrun.jar -submission=player24 -evaluation=' + function_name + ' -seed=1')
@@ -58,26 +57,22 @@ if __name__ == '__main__':
     runtime = []
 
     if len(sys.argv) < 3:
-        n_tests = 100
+        print(run_cmd('java -jar testrun.jar -submission=player24 -evaluation=' + function_name + ' -seed=1'))
     else:
         try:
             n_tests = int(sys.argv[2])
         except ValueError:
             argument_error()
-
-    for i in range(n_tests):
-        print(i + 1, "/", n_tests, end='\r')
-        output = run_cmd('java -jar testrun.jar -submission=player24 -evaluation=' + function_name + ' -seed=1')
-        if "-verbose" in sys.argv:
-            print(output)
-        output = output.split('\n')
-        for line in output:
-            if "Score" in line:
-                current_score = float(re.findall(r'[-+]?\d*\.\d+|\d+', line)[0])
-                score.append(current_score)
-            elif "Runtime" in line:
-                current_runtime = int(re.findall(r'\d+', line)[0])
-                runtime.append(current_runtime)
-
-    print("Average score:", sum(score) / len(score))
-    print("Average runtime:", str(sum(runtime) / float(len(runtime))) + "ms")
+        for i in range(n_tests):
+            print(i + 1, "/", n_tests, end='\r')
+            output = run_cmd('java -jar testrun.jar -submission=player24 -evaluation=' + function_name + ' -seed=1')
+            output = output.split('\n')
+            for line in output:
+                if "Score" in line:
+                    current_score = float(re.findall(r'[-+]?\d*\.\d+|\d+', line)[0])
+                    score.append(current_score)
+                elif "Runtime" in line:
+                    current_runtime = int(re.findall(r'\d+', line)[0])
+                    runtime.append(current_runtime)
+        print("Average score:", sum(score) / len(score))
+        print("Average runtime:", str(sum(runtime) / float(len(runtime))) + "ms")

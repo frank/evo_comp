@@ -51,8 +51,6 @@ public class player24 implements ContestSubmission {
         }
     }
 
-
-
     public void run() {
         // Run your algorithm here
         int evals = 0;
@@ -61,7 +59,7 @@ public class player24 implements ContestSubmission {
         double stDevMultiplier = 1.0;
         int numberOfParents = 2;
         String mutationType = Population.GAUSSIAN; // Set to 'UNIFORM', 'GAUSSIAN', or 'GENE_GAUSSIAN'
-        String parentSelectionType = Population.MAX; // Boltzmann, Max
+        String parentSelectionType = Population.BOLTZMANN; // Boltzmann, Max
 
         // init population
         Population pop = new Population(rnd_, populationSize, time, stDevMultiplier, evaluations_limit_,
@@ -70,6 +68,8 @@ public class player24 implements ContestSubmission {
         pop.initPop();
         //Evaluate and set fitness for all children 
         pop.evalPopulation(evaluation_);
+        //This function sorts all children based on fitness
+//        pop.sortOnFitness();
 
         while (Population.evals < evaluations_limit_) {
             Child[] parents = pop.SelectParents();
@@ -82,7 +82,7 @@ public class player24 implements ContestSubmission {
             //System.out.println(Arrays.toString(child.getValues()));
 
             pop.AddChild(child);
-            if (Population.evals == populationSize+ 5){
+            if (Population.evals == populationSize+ 1000){
                 System.exit(1);
 
             }
