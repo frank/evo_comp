@@ -51,6 +51,8 @@ public class player24 implements ContestSubmission {
         }
     }
 
+
+
     public void run() {
         // Run your algorithm here
         int evals = 0;
@@ -58,18 +60,19 @@ public class player24 implements ContestSubmission {
         double time = 100;
         double stDevMultiplier = 1.0;
         int numberOfParents = 2;
-        String mutationType = "Gaussian"; // Set to 'Uniform' or 'Gaussian'
+        String mutationType = Population.GAUSSIAN; // Set to 'Uniform' or 'Gaussian'
         String parentSelectionType = "Boltzmann"; // Boltzmann, Max
 
         // init population
         Population pop = new Population(rnd_, populationSize, time, stDevMultiplier, evaluations_limit_,
                                         mutationType, parentSelectionType, numberOfParents);
-        while (evals < evaluations_limit_) {
-            pop.SetEvals(evals);
+        pop.initPop();
+        pop.evalPopulation(evaluation_);
+
+        while (Population.evals < evaluations_limit_) {
             Child[] parents = pop.SelectParents();
             //creating the child
             Child child = pop.CreateChild(parents);
-
             //calculating fitness
             Double fitness = (double) evaluation_.evaluate(child.getValues());
             child.setFitness(fitness);
@@ -78,7 +81,7 @@ public class player24 implements ContestSubmission {
 
             pop.AddChild(child);
 
-            evals++;
+            Population.evals++;
             // Select survivors
         }
     }
