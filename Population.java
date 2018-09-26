@@ -1,5 +1,3 @@
-
-
 import java.util.ArrayList;
 import java.util.Random;
 import java.util.Collections;
@@ -214,6 +212,7 @@ public class Population {
                 vals[i] = child.getValues(i);
             }
         }
+        child.setValues(vals);
     }
 
     // Mutates based on a Gaussian distribution where std.dev. is based on how many evals are remaining.
@@ -228,6 +227,7 @@ public class Population {
             newValue = child.rebound(newValue);
             vals[i]= newValue;
         }
+        child.setValues(vals);
     }
 
     // Mutates gene's mutation rate and the mutates gene based on the gene's mutation rate
@@ -262,24 +262,16 @@ public class Population {
             }
         }
 
-        for (Child a: children){
-            System.out.print(a.getFitness() + " ,");
-
-        }
-        System.out.println("\n" + child.getFitness() + "\n");
         if (children.size() < populationSize) children.add(left, child);
         else if (left < populationSize) children.set(left, child);//Drop everything after 1k
     }
 
-
-
-    public ArrayList<Child> getChildren()
-    {
+    public ArrayList<Child> getChildren() {
         return this.children;
     }
 
     public void evalPopulation(ContestEvaluation evaluation_)
-    {   
+    {
         //Remember to increment evals!
 
         //1. For each child in population
@@ -290,7 +282,7 @@ public class Population {
     }
 
     public void printPopulation()
-    {   
+    {
         // NumberFormat formatter = new DecimalFormat("#0.00");
         for(int i = 0; i < populationSize; i++){
             double[] values = children.get(i).getValues();
@@ -302,7 +294,23 @@ public class Population {
             }
             System.out.print("] has fitness: " + (int)(fitness * 1000)/1000.0 + "\n");
         }
+        System.out.println("-----------------------------------------------------------");
+    }
+
+    public void printChildren(Child[] c)
+    {
+        // NumberFormat formatter = new DecimalFormat("#0.00");
+        for(int i = 0; i < c.length; i++){
+            double[] values = c[i].getValues();
+            double fitness = c[i].getFitness();
+            System.out.print("Child [");
+            for (int j = 0; j < 10; j++){
+                // System.out.printf(formatter.format(values[j]));
+                System.out.print(((int)(values[j] * 1000)/1000.0) + ", ");
+            }
+            System.out.print("] has fitness: " + (int)(fitness * 1000)/1000.0 + "\n");
+        }
+        System.out.println("-----------------------------------------------------------");
     }
 
 }
-
