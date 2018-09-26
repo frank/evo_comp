@@ -1,5 +1,3 @@
-
-
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Random;
@@ -144,7 +142,6 @@ public class Population {
         return child;
     }
 
-
     public Child UniformCrossover(Child[] parents) {
 
         //select random crossover points from all parents
@@ -207,10 +204,7 @@ public class Population {
         else if (left < populationSize) children.set(left, child);//Drop everything after 1k
     }
 
-
-
-    public ArrayList<Child> getChildren()
-    {
+    public ArrayList<Child> getChildren() {
         return this.children;
     }
 
@@ -220,9 +214,11 @@ public class Population {
 
         //1. For each child in population
         for(int i = 0; i < populationSize; i++){
-            children.get(i).setFitness((double) evaluation_.evaluate(children.get(i).getValues()));
-            System.out.println(children.get(i).getFitness());
-            evals++;
+            if (children.get(i).getFitness() == null) {
+                children.get(i).setFitness((double) evaluation_.evaluate(children.get(i).getValues()));
+                System.out.println(children.get(i).getFitness());
+                evals++;
+            }
         }
     }
 

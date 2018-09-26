@@ -5,7 +5,7 @@ import subprocess
 
 def argument_error():
     print("Illegal argument")
-    print("Usage: python3 run.py b/k/s [n_tests]")
+    print("Usage: python3 run.py b/k/s [n_tests] [seed] ")
     sys.exit()
     return
 
@@ -51,21 +51,22 @@ if __name__ == '__main__':
     _ = run_cmd('jar cmf MainClass.txt submission.jar player24.class Population.class Child.class')
 
     os.putenv("LD_LIBRARY_PATH", os.getcwd())
-    output = run_cmd('java -jar testrun.jar -submission=player24 -evaluation=' + function_name + ' -seed=1')
+    output = run_cmd('java -jar testrun.jar -submission=player24 -evaluation=' + function_name + ' -seed=12345')
 
     score = []
     runtime = []
 
     if len(sys.argv) < 3:
-        print(run_cmd('java -jar testrun.jar -submission=player24 -evaluation=' + function_name + ' -seed=1'))
+        print(output)
     else:
         try:
             n_tests = int(sys.argv[2])
         except ValueError:
             argument_error()
         for i in range(n_tests):
+            seed = 12345 + i
             print(i + 1, "/", n_tests, end='\r')
-            output = run_cmd('java -jar testrun.jar -submission=player24 -evaluation=' + function_name + ' -seed=1')
+            output = run_cmd('java -jar testrun.jar -submission=player24 -evaluation=' + function_name + ' -seed=' + str(seed))
             output = output.split('\n')
             for line in output:
                 if "Score" in line:

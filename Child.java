@@ -11,7 +11,7 @@ public class Child {
     final static double MAX = 5.0;
     final static int VALUES_SIZE = 10;
     private Random _rnd;
-    private double fitness = 0;
+    private double fitness;
 
     public double random_bounded_value() {
         return MIN + (MAX - MIN) * _rnd.nextDouble();
