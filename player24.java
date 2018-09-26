@@ -60,7 +60,7 @@ public class player24 implements ContestSubmission {
         double time = 100;
         double stDevMultiplier = 1.0;
         int numberOfParents = 2;
-        String mutationType = Population.GAUSSIAN; // Set to 'Uniform' or 'Gaussian'
+        String mutationType = Population.GENE_GAUSSIAN; // Set to 'UNIFORM', 'GAUSSIAN', or 'GENE_GAUSSIAN'
         String parentSelectionType = "Max"; // Boltzmann, Max
 
         // init population

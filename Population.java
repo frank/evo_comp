@@ -1,7 +1,6 @@
 
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Random;
 
 import org.vu.contest.ContestEvaluation;
@@ -23,6 +22,7 @@ public class Population {
     private int numberOfParents;
 
     public static final String GAUSSIAN = "gaussian";
+    public static final String GENE_GAUSSIAN = "gene_gaussian";
     public static final String UNIFORM  = "uniform";
 
     public Population(Random rnd, int populationSize, double time, double stDevMultiplier, int maxEvals,
@@ -40,9 +40,12 @@ public class Population {
     }
 
     public void initPop(){
-
         for (int i = 0; i < populationSize; i++) {
-            children.add(new Child(_rnd));
+            Child child = new Child(_rnd);
+            if (mutationType.equals(GENE_GAUSSIAN)){
+                child.InitializeSigmas();
+            }
+            children.add(child);
         }
 
     }
@@ -137,27 +140,46 @@ public class Population {
         //Mutation
         switch (mutationType) {
             case UNIFORM:
-                child = SimpleRandomAdditionMutation(child);
+                SimpleRandomAdditionMutation(child);
+                break;
             case GAUSSIAN:
-                child = NormalDistMutation(child);
+                GaussianMutation(child);
+                break;
+            case GENE_GAUSSIAN:
+                GeneticGaussianMutation(child);
+                break;
         }
         return child;
     }
 
-
+    // Select random crossover points from all parents
     public Child UniformCrossover(Child[] parents) {
 
         //select random crossover points from all parents
         int parentsize = parents.length;
         //we apply random crossover now
         double[] vals = new double[Child.VALUES_SIZE];
-        for (int i = 0; i < Child.VALUES_SIZE; i++) {
-            vals[i] = parents[_rnd.nextInt(parentsize)].getValues(i);
+        // If there are mutation rate genes that need to be brought over to the child, do this
+        if (mutationType.equals(GENE_GAUSSIAN)){
+            double[] sigmaVals = new double[Child.VALUES_SIZE];
+
+            for (int i = 0; i < Child.VALUES_SIZE; i++) {
+                int parentIdx = _rnd.nextInt(parentsize);
+                vals[i] = parents[parentIdx].getValues(i);
+                sigmaVals[i] = parents[parentIdx].getMutationValues(i);
+            }
+            return new Child(vals, sigmaVals, _rnd);
+        // In the case there are no mutation rate genes
+        }else {
+            for (int i = 0; i < Child.VALUES_SIZE; i++) {
+                int parentIdx = _rnd.nextInt(parentsize);
+                vals[i] = parents[parentIdx].getValues(i);
+            }
+            return new Child(vals, _rnd);
         }
-        return new Child(vals, _rnd);
     }
 
-    public Child SimpleRandomAdditionMutation(Child child) {
+    public void SimpleRandomAdditionMutation(Child child) {
         //adds random mutation values at random locations
         _rnd.nextDouble();
         double[] vals = new double[Child.VALUES_SIZE];
@@ -170,21 +192,35 @@ public class Population {
                 vals[i] = child.getValues(i);
             }
         }
-        return new Child(vals, _rnd);
     }
 
-    public Child NormalDistMutation(Child child) {
+    // Mutates based on a Gaussian distribution where std.dev. is based on how many evals are remaining.
+    public void GaussianMutation(Child child) {
         Random rand = new Random();
         double evalPercentRemaining = ((double) evals - maxEvals) / maxEvals;
         double[] vals = new double[10];
         double stDev = evalPercentRemaining * stDevMultiplier;
-        for (int i = 1; i < child.getValuesSize(); i++) {
+        for (int i = 0; i < child.getValuesSize(); i++) {
             double mutation = rand.nextGaussian() * stDev;
             double newValue = child.getValues(i) + mutation;
             newValue = child.rebound(newValue);
             vals[i]= newValue;
         }
-        return new Child(vals,_rnd);
+    }
+
+    // Mutates gene's mutation rate and the mutates gene based on the gene's mutation rate
+    private void GeneticGaussianMutation(Child child) {
+        Random rand = new Random();
+        // TODO: Make a proper tau
+        double tau = ((double) evals - maxEvals) / maxEvals;
+        for (int i = 0; i < child.getValuesSize(); i++) {
+            double sigmaPrime = child.getMutationValues(i)*Math.exp(tau*rand.nextGaussian());
+            child.setMutationValues(i, sigmaPrime);
+            double mutation = sigmaPrime * rand.nextGaussian();
+            double newValue = child.getValues(i) + mutation;
+            newValue = child.rebound(newValue);
+            child.setValues(i, newValue);
+        }
     }
 
     public void AddChild(Child child) {
@@ -221,7 +257,6 @@ public class Population {
         //1. For each child in population
         for(int i = 0; i < populationSize; i++){
             children.get(i).setFitness((double) evaluation_.evaluate(children.get(i).getValues()));
-            System.out.println(children.get(i).getFitness());
             evals++;
         }
     }
