@@ -6,6 +6,9 @@ import java.util.Properties;
 
 public class player24 implements ContestSubmission {
     Random rnd_;
+    boolean _isMultimodal;
+    boolean _isRegular;
+    boolean _isSeparable;
     ContestEvaluation evaluation_;
     private int evaluations_limit_;
 
@@ -44,9 +47,7 @@ public class player24 implements ContestSubmission {
 
         // Do sth with property values, e.g. specify relevant settings of your algorithm
         if (isMultimodal) {
-            // Do sth
-        } else {
-            // Do sth else
+            // do smth
         }
     }
 
@@ -80,6 +81,5 @@ public class player24 implements ContestSubmission {
             evals++;
             // Select survivors
         }
-
     }
 }

@@ -27,7 +27,7 @@ def get_function_name(arg):
     elif arg == 'k':
         return 'KatsuuraEvaluation'
     elif arg == 's':
-        return 'SchaffersEvalution'
+        return 'SchaffersEvaluation'
     else:
         argument_error()
     return None
