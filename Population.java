@@ -52,7 +52,7 @@ public class Population {
         System.out.println("\nSimulation properties:");
         System.out.println("--------------------------------------------------------");
         System.out.println("Population size: " + populationSize);
-        System.out.println("	Maximum evaluations: " + maxEvals);
+        System.out.println("Maximum evaluations: " + maxEvals);
         System.out.println("Boltzman TIME variable: " + TIME);
         System.out.println("Mutation type: " + mutationType);
         if (mutationType.equals("Gaussian")) {

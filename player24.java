@@ -55,10 +55,10 @@ public class player24 implements ContestSubmission {
 
     public void run() {
         // Run your algorithm here
-        int populationSize = 500;
+        int populationSize = 100;
         double time = 100;
         double stDevMultiplier = 1.0;
-        int numberOfParents = 3;
+        int numberOfParents = 4;
         String mutationType = Population.GAUSSIAN; // Set to 'Uniform' or 'Gaussian'
         String parentSelectionType = Population.RANDOM; // Boltzmann, Max
 
@@ -83,12 +83,19 @@ public class player24 implements ContestSubmission {
                 Child[] parents = old_pop.SelectParents();
                 Child child = pop.CreateDifferentialChild(parents);
                 Double fitness = (double) evaluation_.evaluate(child.getValues());
+                child.setFitness(fitness);
                 Population.evals++;
+//
+                System.out.println("papa:"+parents[0].getFitness());
+                System.out.println("child:"+fitness);
+
                 if(fitness>parents[0].getFitness()){mutantpopulation.AddChild(child);}
                 else{mutantpopulation.AddChild(parents[0]);papa++;}
             }
             generations.add(mutantpopulation);
+            System.out.println("papa added "+papa);
+            papa=0;
         }
-        System.out.print("papa"+papa);
+
     }
 }
