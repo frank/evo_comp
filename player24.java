@@ -3,6 +3,7 @@ import org.vu.contest.ContestEvaluation;
 
 import java.util.Random;
 import java.util.Properties;
+import java.util.ArrayList;
 
 public class player24 implements ContestSubmission {
     Random rnd_;
@@ -18,14 +19,14 @@ public class player24 implements ContestSubmission {
         rnd_.setSeed(seed);
     }
 
-//    public static void main(String[] args) {
-//        Population pop = new Population(new Random());
-//        Child child = new Child(new Random());
-//        System.out.println("SchaffersEvaluation");ConsertTestBox.main(new String[]{"-submission=player24", "-evaluation=SchaffersEvaluation", "-seed=1"});
-//        //System.out.println("KatsuuraEvaluation");ConsertTestBox.main(new String[]{"-submission=player24", "-evaluation=KatsuuraEvaluation", "-seed=1"});
-//        //System.out.println("BentCigarFunction");ConsertTestBox.main(new String[]{"-submission=player24", "-evaluation=BentCigarFunction", "-seed=1"});
-//
-//    }
+    //    public static void main(String[] args) {
+    //        Population pop = new Population(new Random());
+    //        Child child = new Child(new Random());
+    //        System.out.println("SchaffersEvaluation");ConsertTestBox.main(new String[]{"-submission=player24", "-evaluation=SchaffersEvaluation", "-seed=1"});
+    //        //System.out.println("KatsuuraEvaluation");ConsertTestBox.main(new String[]{"-submission=player24", "-evaluation=KatsuuraEvaluation", "-seed=1"});
+    //        //System.out.println("BentCigarFunction");ConsertTestBox.main(new String[]{"-submission=player24", "-evaluation=BentCigarFunction", "-seed=1"});
+    //
+    //    }
 
     public void setEvaluation(ContestEvaluation evaluation) {
         // Set evaluation problem used in the run
@@ -50,38 +51,44 @@ public class player24 implements ContestSubmission {
         }
     }
 
+
+
     public void run() {
         // Run your algorithm here
-        int evals = 0;
         int populationSize = 500;
         double time = 100;
         double stDevMultiplier = 1.0;
         int numberOfParents = 3;
-        String mutationType = "Gaussian"; // Set to 'Uniform' or 'Gaussian'
+        String mutationType = Population.GAUSSIAN; // Set to 'Uniform' or 'Gaussian'
         String parentSelectionType = Population.RANDOM; // Boltzmann, Max
 
+
         // init population
+        ArrayList<Population> generations = new ArrayList<Population>();
         Population pop = new Population(rnd_, populationSize, time, stDevMultiplier, evaluations_limit_,
-                                        mutationType, parentSelectionType, numberOfParents);
+                mutationType, parentSelectionType, numberOfParents);
+        pop.initPop();
+        pop.evalPopulation(evaluation_);
+        pop.PrintProperties();
+        generations.add(pop);
 
-       
-        while (evals < evaluations_limit_) {
-            pop.SetEvals(evals);
-            Child[] parents = pop.SelectParents();
-            //creating the child
-            Child child = pop.CreateChild(parents);
+        int papa=0;
+        // the actual code
+        while (Population.evals < evaluations_limit_) {
+            Population mutantpopulation = new Population(rnd_, populationSize, time, stDevMultiplier, evaluations_limit_,
+                    mutationType, parentSelectionType, numberOfParents);
+            Population old_pop = generations.get(generations.size() - 1);
 
-            //calculating fitness
-            Double fitness = (double) evaluation_.evaluate(child.getValues());
-            child.setFitness(fitness);
-            //System.out.println(child.getFitness());
-            //System.out.println(Arrays.toString(child.getValues()));
-
-            pop.AddChild(child);
-
-            evals++;
-            // Select survivors
+            for (int idx = 0; (idx < populationSize) && Population.evals<evaluations_limit_; idx++) {
+                Child[] parents = old_pop.SelectParents();
+                Child child = pop.CreateDifferentialChild(parents);
+                Double fitness = (double) evaluation_.evaluate(child.getValues());
+                Population.evals++;
+                if(fitness>parents[0].getFitness()){mutantpopulation.AddChild(child);}
+                else{mutantpopulation.AddChild(parents[0]);papa++;}
+            }
+            generations.add(mutantpopulation);
         }
-
+        System.out.print("papa"+papa);
     }
 }

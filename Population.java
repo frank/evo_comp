@@ -5,6 +5,8 @@ import java.util.Arrays;
 import java.util.Random;
 import java.util.stream.IntStream;
 
+import org.vu.contest.ContestEvaluation;
+
 /**
  * Created by Joseph on 9/8/2018.
  */
@@ -13,7 +15,7 @@ public class Population {
     private Random _rnd;
     private ArrayList<Child> children = new ArrayList<>();
     private int populationSize;
-    private int evals;
+    static int evals=0;
     private int maxEvals;
     private double TIME;
     private double stDevMultiplier;
@@ -24,6 +26,8 @@ public class Population {
    	static final String MAX = "max";
    	static final String BOLTZMAN = "boltzman";
    	static final String RANDOM ="random";
+    public static final String GAUSSIAN = "gaussian";
+    public static final String UNIFORM  = "uniform";
 
     public Population(Random rnd, int populationSize, double time, double stDevMultiplier, int maxEvals,
                       String mutationType, String parentSelectionType, int numberOfParents) {
@@ -35,20 +39,20 @@ public class Population {
         this.stDevMultiplier = stDevMultiplier;
         this.parentSelectionType = parentSelectionType;
         this.numberOfParents = numberOfParents;
+    }
+
+    public void initPop(){
+
         for (int i = 0; i < populationSize; i++) {
             children.add(new Child(_rnd));
         }
-        PrintProperties();
     }
 
-
-
-
-    private void PrintProperties() {
+    public void PrintProperties() {
         System.out.println("\nSimulation properties:");
         System.out.println("--------------------------------------------------------");
         System.out.println("Population size: " + populationSize);
-        System.out.println("Maximum evaluations: " + maxEvals);
+        System.out.println("	Maximum evaluations: " + maxEvals);
         System.out.println("Boltzman TIME variable: " + TIME);
         System.out.println("Mutation type: " + mutationType);
         if (mutationType.equals("Gaussian")) {
@@ -62,10 +66,12 @@ public class Population {
         switch (parentSelectionType) {
             case MAX:
                 parents = SelectMaxParents();
+                break;
             case BOLTZMAN:
                 parents = SelectBoltzmannParents();
+                break;
             default:
-            parents = selectRandomParents();
+            	parents = selectRandomParents();
         }
         return parents;
     }
@@ -141,9 +147,11 @@ public class Population {
     				break;
     			}
     		}
+
     	}
+//        System.out.println(Arrays.toString(parents_int));
     	for(int i=0;i<numberOfParents;i++){
-    		parents[i] = children.get(i);
+    		parents[i] = children.get(parents_int[i]);
     	}
     	return parents;
     }
@@ -156,14 +164,47 @@ public class Population {
         Child child = UniformCrossover(parents);
         //Mutation
         switch (mutationType) {
-            case "Uniform":
+            case UNIFORM:
                 child = SimpleRandomAdditionMutation(child);
-            case "Gaussian":
-                NormalDistMutation(child);
+                break;
+            case GAUSSIAN:
+                child = NormalDistMutation(child);
+                break;
         }
         return child;
     }
 
+    public Child CreateDifferentialChild(Child[] parents){
+        int const_idx = _rnd.nextInt(10);
+        double RecombinationRate = 0.3;
+        Child parent = parents[0];
+        Child x=parents[1];
+        Child y=parents[2];
+        Child z=parents[3];
+    	double F=1;
+    	double peturbation_v;
+    	double[] mutant_v = new double[10];
+
+    	//mutation
+    	for(int idx=0;idx<10;idx++){
+    		peturbation_v = F*(y.getValues(idx)-z.getValues(idx));
+    		//System.out.println("peturbation " + peturbation_v);
+    		mutant_v[idx] = Math.min(Child.MAX,Math.max(Child.MIN,   x.getValues(idx) + peturbation_v));
+    	}
+        //System.out.println(Arrays.toString(mutant_v));
+    	//System.out.print("\n");
+        //crossover
+        double[] vals = new double[10];
+        for(int idx=0;idx<10;idx++) {
+            if (idx == const_idx || _rnd.nextDouble() < RecombinationRate) {
+                vals[idx] = mutant_v[idx];
+            }else{
+                vals[idx] = parent.getValues(idx);
+            }
+        }
+
+    	return new Child(vals,_rnd);
+    }
 
     public Child UniformCrossover(Child[] parents) {
 
@@ -192,16 +233,18 @@ public class Population {
         return new Child(vals, _rnd);
     }
 
-    public void NormalDistMutation(Child child) {
-        Random rand = new Random();
+    public Child NormalDistMutation(Child child) {
+        Random rand =_rnd;
         double evalPercentRemaining = ((double) evals - maxEvals) / maxEvals;
+        double[] vals = new double[10];
         double stDev = evalPercentRemaining * stDevMultiplier;
         for (int i = 1; i < child.getValuesSize(); i++) {
             double mutation = rand.nextGaussian() * stDev;
             double newValue = child.getValues(i) + mutation;
             newValue = child.rebound(newValue);
-            child.setValues(i, newValue);
+            vals[i]= newValue;
         }
+        return new Child(vals,_rnd);
     }
 
     public void AddChild(Child child) {
@@ -224,9 +267,24 @@ public class Population {
         else if (left < populationSize) children.set(left, child);//Drop everything after 1k
     }
 
-    public void SetEvals(int evals) {
-        this.evals = evals;
+
+
+    public ArrayList<Child> getChildren()
+    {
+        return this.children;
+    }
+
+    public void evalPopulation(ContestEvaluation evaluation_)
+    {   
+        //Remember to increment evals!
+
+        //1. For each child in population
+        for(int i = 0; i < populationSize; i++){
+            children.get(i).setFitness((double) evaluation_.evaluate(children.get(i).getValues()));
+            evals++;
+        }
     }
 
 }
+
 
