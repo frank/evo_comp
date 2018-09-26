@@ -1,6 +1,9 @@
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Random;
+import java.util.Collections;
+import java.util.Comparator;
+import java.text.NumberFormat;
 
 import org.vu.contest.ContestEvaluation;
 
@@ -63,12 +66,27 @@ public class Population {
         switch (parentSelectionType) {
             case "Max":
                 parents = SelectMaxParents();
+                break;
             default:
                 parents = SelectBoltzmannParents();
+                break;
         }
         return parents;
     }
 
+    public void sortOnFitness(){
+
+        Collections.sort(children, new Comparator<Child>(){
+
+            @Override
+            public int compare(Child child1, Child child2){
+                return child2.getFitness().compareTo(child1.getFitness());
+            }
+
+        });
+    }
+
+    //NOTE: This only works if 'children' has been sorted based on fitness
     public Child[] SelectMaxParents() {
         if (children.size() < 2) {
             return new Child[]{children.get(0)};
@@ -209,18 +227,29 @@ public class Population {
     }
 
     public void evalPopulation(ContestEvaluation evaluation_)
-    {   
+    {
         //Remember to increment evals!
 
         //1. For each child in population
         for(int i = 0; i < populationSize; i++){
-            if (children.get(i).getFitness() == null) {
-                children.get(i).setFitness((double) evaluation_.evaluate(children.get(i).getValues()));
-                System.out.println(children.get(i).getFitness());
-                evals++;
+            children.get(i).setFitness((double) evaluation_.evaluate(children.get(i).getValues()));
+            evals++;
+        }
+    }
+
+    public void printPopulation()
+    {
+        // NumberFormat formatter = new DecimalFormat("#0.00");
+        for(int i = 0; i < populationSize; i++){
+            double[] values = children.get(i).getValues();
+            double fitness = children.get(i).getFitness();
+            System.out.print("Child [");
+            for (int j = 0; j < 10; j++){
+                // System.out.printf(formatter.format(values[j]));
+                System.out.print(((int)(values[j] * 1000)/1000.0) + ", ");
             }
+            System.out.print("] has fitness: " + (int)(fitness * 1000)/1000.0 + "\n");
         }
     }
 
 }
-
