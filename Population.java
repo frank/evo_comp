@@ -25,6 +25,10 @@ public class Population {
     public static final String GENE_GAUSSIAN = "gene_gaussian";
     public static final String UNIFORM  = "uniform";
 
+    public static final String BOLTZMANN = "Boltzmann";
+    public static final String MAX = "Max";
+
+
     public Population(Random rnd, int populationSize, double time, double stDevMultiplier, int maxEvals,
                       String mutationType, String parentSelectionType, int numberOfParents) {
         _rnd = rnd;
@@ -57,6 +61,7 @@ public class Population {
         System.out.println("Maximum evaluations: " + maxEvals);
         System.out.println("Boltzman TIME variable: " + TIME);
         System.out.println("Mutation type: " + mutationType);
+        System.out.println("Parent Selection type: " + parentSelectionType);
         if (mutationType.equals("Gaussian")) {
             System.out.println("Gaussian Standard Deviation: " + stDevMultiplier);
         }
@@ -66,10 +71,12 @@ public class Population {
     public Child[] SelectParents() {
         Child[] parents;
         switch (parentSelectionType) {
-            case "Max":
+            case MAX:
                 parents = SelectMaxParents();
+                break;
             default:
                 parents = SelectBoltzmannParents();
+                break;
         }
         return parents;
     }
@@ -131,7 +138,6 @@ public class Population {
             System.out.println();
         }
         return parents;
-
     }
 
     public Child CreateChild(Child[] parents) {
@@ -239,6 +245,12 @@ public class Population {
                 left = mid + 1;
             }
         }
+
+        for (Child a: children){
+            System.out.print(a.getFitness() + " ,");
+
+        }
+        System.out.println("\n" + child.getFitness() + "\n");
         if (children.size() < populationSize) children.add(left, child);
         else if (left < populationSize) children.set(left, child);//Drop everything after 1k
     }

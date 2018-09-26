@@ -56,12 +56,12 @@ public class player24 implements ContestSubmission {
     public void run() {
         // Run your algorithm here
         int evals = 0;
-        int populationSize = 500;
-        double time = 100;
+        int populationSize = 10;
+        double time = 1000;
         double stDevMultiplier = 1.0;
         int numberOfParents = 2;
-        String mutationType = Population.GENE_GAUSSIAN; // Set to 'UNIFORM', 'GAUSSIAN', or 'GENE_GAUSSIAN'
-        String parentSelectionType = "Max"; // Boltzmann, Max
+        String mutationType = Population.GAUSSIAN; // Set to 'UNIFORM', 'GAUSSIAN', or 'GENE_GAUSSIAN'
+        String parentSelectionType = Population.MAX; // Boltzmann, Max
 
         // init population
         Population pop = new Population(rnd_, populationSize, time, stDevMultiplier, evaluations_limit_,
@@ -82,6 +82,10 @@ public class player24 implements ContestSubmission {
             //System.out.println(Arrays.toString(child.getValues()));
 
             pop.AddChild(child);
+            if (Population.evals == populationSize+ 5){
+                System.exit(1);
+
+            }
 
             Population.evals++;
             // Select survivors
