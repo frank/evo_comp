@@ -61,12 +61,14 @@ public class player24 implements ContestSubmission {
         double stDevMultiplier = 1.0;
         int numberOfParents = 2;
         String mutationType = Population.GAUSSIAN; // Set to 'Uniform' or 'Gaussian'
-        String parentSelectionType = "Boltzmann"; // Boltzmann, Max
+        String parentSelectionType = "Max"; // Boltzmann, Max
 
         // init population
         Population pop = new Population(rnd_, populationSize, time, stDevMultiplier, evaluations_limit_,
                                         mutationType, parentSelectionType, numberOfParents);
+        //Create new random children
         pop.initPop();
+        //Evaluate and set fitness for all children 
         pop.evalPopulation(evaluation_);
 
         while (Population.evals < evaluations_limit_) {
