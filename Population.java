@@ -3,6 +3,7 @@
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Random;
+import java.util.stream.IntStream;
 
 /**
  * Created by Joseph on 9/8/2018.
@@ -20,6 +21,9 @@ public class Population {
     private String parentSelectionType;
     private int numberOfParents;
 
+   	static final String MAX = "max";
+   	static final String BOLTZMAN = "boltzman";
+   	static final String RANDOM ="random";
 
     public Population(Random rnd, int populationSize, double time, double stDevMultiplier, int maxEvals,
                       String mutationType, String parentSelectionType, int numberOfParents) {
@@ -37,6 +41,9 @@ public class Population {
         PrintProperties();
     }
 
+
+
+
     private void PrintProperties() {
         System.out.println("\nSimulation properties:");
         System.out.println("--------------------------------------------------------");
@@ -50,13 +57,15 @@ public class Population {
         System.out.println("--------------------------------------------------------\n");
     }
 
-    public Child[] SelectParents() {
+    public Child[] SelectParents(){
         Child[] parents;
         switch (parentSelectionType) {
-            case "Max":
+            case MAX:
                 parents = SelectMaxParents();
-            default:
+            case BOLTZMAN:
                 parents = SelectBoltzmannParents();
+            default:
+            parents = selectRandomParents();
         }
         return parents;
     }
@@ -118,8 +127,29 @@ public class Population {
             System.out.println();
         }
         return parents;
-
     }
+
+    public Child[] selectRandomParents(){
+    	int[] parents_int = new int[numberOfParents];
+    	Child[] parents = new Child[numberOfParents];
+
+    	for(int i=0;i<numberOfParents;i++){
+    		while(true){
+    			int idx = _rnd.nextInt(children.size());
+    			if(IntStream.of(parents_int).anyMatch(x -> x == idx));
+    			else{parents_int[i]=idx;
+    				break;
+    			}
+    		}
+    	}
+    	for(int i=0;i<numberOfParents;i++){
+    		parents[i] = children.get(i);
+    	}
+    	return parents;
+    }
+
+
+
 
     public Child CreateChild(Child[] parents) {
         // CrossOver
@@ -138,11 +168,10 @@ public class Population {
     public Child UniformCrossover(Child[] parents) {
 
         //select random crossover points from all parents
-        int parentsize = parents.length;
         //we apply random crossover now
         double[] vals = new double[Child.VALUES_SIZE];
         for (int i = 0; i < Child.VALUES_SIZE; i++) {
-            vals[i] = parents[_rnd.nextInt(parentsize)].getValues(i);
+            vals[i] = parents[_rnd.nextInt(parents.length)].getValues(i);
         }
         return new Child(vals, _rnd);
     }

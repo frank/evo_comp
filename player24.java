@@ -6,9 +6,6 @@ import java.util.Properties;
 
 public class player24 implements ContestSubmission {
     Random rnd_;
-    boolean _isMultimodal;
-    boolean _isRegular;
-    boolean _isSeparable;
     ContestEvaluation evaluation_;
     private int evaluations_limit_;
 
@@ -47,7 +44,9 @@ public class player24 implements ContestSubmission {
 
         // Do sth with property values, e.g. specify relevant settings of your algorithm
         if (isMultimodal) {
-            // do smth
+            // Do sth
+        } else {
+            // Do sth else
         }
     }
 
@@ -57,13 +56,15 @@ public class player24 implements ContestSubmission {
         int populationSize = 500;
         double time = 100;
         double stDevMultiplier = 1.0;
-        int numberOfParents = 2;
+        int numberOfParents = 3;
         String mutationType = "Gaussian"; // Set to 'Uniform' or 'Gaussian'
-        String parentSelectionType = "Boltzmann"; // Boltzmann, Max
+        String parentSelectionType = Population.RANDOM; // Boltzmann, Max
 
         // init population
         Population pop = new Population(rnd_, populationSize, time, stDevMultiplier, evaluations_limit_,
                                         mutationType, parentSelectionType, numberOfParents);
+
+       
         while (evals < evaluations_limit_) {
             pop.SetEvals(evals);
             Child[] parents = pop.SelectParents();
@@ -81,5 +82,6 @@ public class player24 implements ContestSubmission {
             evals++;
             // Select survivors
         }
+
     }
 }
