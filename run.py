@@ -3,6 +3,7 @@ import re
 import sys
 import subprocess
 
+
 def argument_error():
     print("Illegal argument")
     print("Usage: python3 run.py b/k/s [n_tests] [seed] ")
@@ -35,7 +36,8 @@ def get_function_name(arg):
 
 def run_cmd(cmd_ext):
     cmd = cmd_ext.split()
-    result = subprocess.run(cmd, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+    result = subprocess.run(cmd, stdout=subprocess.PIPE,
+                            stderr=subprocess.PIPE)
     catch_error(cmd_ext, result.stderr.decode('utf-8'))
     return result.stdout.decode('utf-8')
 
