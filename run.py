@@ -50,7 +50,7 @@ if __name__ == '__main__':
 
     # ADD NEW CLASSES TO THE TWO FOLLOWING LINES
     _ = run_cmd('javac -cp contest.jar player24.java Population.java Child.java')
-    _ = run_cmd('jar cmf MainClass.txt submission.jar player24.class Population.class Child.class')
+    _ = run_cmd('jar cmf MainClass.txt submission.jar player24.class Population.class Population$1.class Child.class')
 
     os.putenv("LD_LIBRARY_PATH", os.getcwd())
     output = run_cmd('java -jar testrun.jar -submission=player24 -evaluation=' + function_name + ' -seed=12345')
