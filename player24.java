@@ -71,6 +71,9 @@ public class player24 implements ContestSubmission {
         //This function sorts all children based on fitness
         pop.sortOnFitness();
 
+        //Crowding
+        Crowding crowding = new Crowding(pop, evaluation_, rnd_);
+
         while (Population.evals < evaluations_limit_) {
             Child[] parents = pop.SelectParents();
             //creating the child
