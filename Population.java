@@ -71,7 +71,7 @@ public class Population {
                 parents = SelectBoltzmannParents();
                 break;
             default:
-            	parents = selectRandomParents();
+            	parents = selectRandomParents(0);
         }
         return parents;
     }
@@ -135,15 +135,16 @@ public class Population {
         return parents;
     }
 
-    public Child[] selectRandomParents(){
+    public Child[] selectRandomParents(int not_idx){
     	int[] parents_int = new int[numberOfParents];
     	Child[] parents = new Child[numberOfParents];
 
     	for(int i=0;i<numberOfParents;i++){
     		while(true){
     			int idx = _rnd.nextInt(children.size());
-    			if(IntStream.of(parents_int).anyMatch(x -> x == idx));
-    			else{parents_int[i]=idx;
+    			if(idx==not_idx || IntStream.of(parents_int).anyMatch(x -> x == idx));
+    			else{
+    				parents_int[i]=idx;
     				break;
     			}
     		}
@@ -174,14 +175,12 @@ public class Population {
         return child;
     }
 
-    public Child CreateDifferentialChild(Child[] parents){
+    public Child CreateDifferentialChild(Child[] donor, Child parent,double F){
         int const_idx = _rnd.nextInt(10);
-        double RecombinationRate = 0.3;
-        Child parent = parents[0];
-        Child x=parents[1];
-        Child y=parents[2];
-        Child z=parents[3];
-    	double F=1;
+        double RecombinationRate = _rnd.nextDouble();
+        Child x=donor[0];
+        Child y=donor[1];
+        Child z=donor[2];
     	double peturbation_v;
     	double[] mutant_v = new double[10];
 
@@ -189,7 +188,7 @@ public class Population {
     	for(int idx=0;idx<10;idx++){
     		peturbation_v = F*(y.getValues(idx)-z.getValues(idx));
     		//System.out.println("peturbation " + peturbation_v);
-    		mutant_v[idx] = Math.min(Child.MAX,Math.max(Child.MIN,   x.getValues(idx) + peturbation_v));
+    		mutant_v[idx] = Math.min(Child.MAX,Math.max(Child.MIN,   x.getValues(idx) - peturbation_v));
     	}
         //System.out.println(Arrays.toString(mutant_v));
     	//System.out.print("\n");
@@ -272,6 +271,10 @@ public class Population {
     public ArrayList<Child> getChildren()
     {
         return this.children;
+    }
+
+    public Child getChild(int idx){
+        return children.get(idx);
     }
 
     public void evalPopulation(ContestEvaluation evaluation_)

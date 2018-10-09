@@ -56,12 +56,12 @@ public class player24 implements ContestSubmission {
     public void run() {
         // Run your algorithm here
         int populationSize = 100;
-        double time = 100;
+        double time = 1000;
         double stDevMultiplier = 1.0;
         int numberOfParents = 4;
         String mutationType = Population.GAUSSIAN; // Set to 'Uniform' or 'Gaussian'
         String parentSelectionType = Population.RANDOM; // Boltzmann, Max
-
+        double F = 0;
 
         // init population
         ArrayList<Population> generations = new ArrayList<Population>();
@@ -78,22 +78,31 @@ public class player24 implements ContestSubmission {
             Population mutantpopulation = new Population(rnd_, populationSize, time, stDevMultiplier, evaluations_limit_,
                     mutationType, parentSelectionType, numberOfParents);
             Population old_pop = generations.get(generations.size() - 1);
-
+            F = rnd_.nextDouble();
             for (int idx = 0; (idx < populationSize) && Population.evals<evaluations_limit_; idx++) {
-                Child[] parents = old_pop.SelectParents();
-                Child child = pop.CreateDifferentialChild(parents);
+                Child[] donor= old_pop.selectRandomParents(idx);
+                Child parent = old_pop.getChild(idx);
+
+                Child child = pop.CreateDifferentialChild(donor,parent,F);
                 Double fitness = (double) evaluation_.evaluate(child.getValues());
                 child.setFitness(fitness);
                 Population.evals++;
 //
-                System.out.println("papa:"+parents[0].getFitness());
-                System.out.println("child:"+fitness);
+//                System.out.println("papa:"+parent.getFitness());
+//                System.out.println("child:"+fitness);
 
-                if(fitness>parents[0].getFitness()){mutantpopulation.AddChild(child);}
-                else{mutantpopulation.AddChild(parents[0]);papa++;}
+                if(fitness>parent.getFitness()){mutantpopulation.AddChild(child);}
+                else{mutantpopulation.AddChild(parent);papa++;}
             }
             generations.add(mutantpopulation);
-            System.out.println("papa added "+papa);
+            //F = -F-((papa-populationSize/2)/(double) populationSize);
+            //System.out.println("papa added "+papa);
+            //System.out.println("F: "+F);
+//            if(papa==populationSize){
+//                System.out.println("evals"+Population.evals);
+//                System.out.println("quitting");
+//                return;
+//            }
             papa=0;
         }
 
