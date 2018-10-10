@@ -175,9 +175,10 @@ public class Population {
         return child;
     }
 
-    public Child CreateDifferentialChild(Child[] donor, Child parent,double F){
+    public Child CreateDifferentialChild(Child[] donor, Child parent, double F, double CR){
         int const_idx = _rnd.nextInt(10);
-        double RecombinationRate = _rnd.nextDouble();
+        // double RecombinationRate = _rnd.nextDouble(); //This now depends on the seed from terminal!
+        double RecombinationRate = CR;
         Child x=donor[0];
         Child y=donor[1];
         Child z=donor[2];
@@ -195,7 +196,7 @@ public class Population {
         //crossover
         double[] vals = new double[10];
         for(int idx=0;idx<10;idx++) {
-            if (idx == const_idx || _rnd.nextDouble() < RecombinationRate) {
+            if (idx == const_idx || _rnd.nextDouble() <= RecombinationRate) {
                 vals[idx] = mutant_v[idx];
             }else{
                 vals[idx] = parent.getValues(idx);

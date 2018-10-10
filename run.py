@@ -67,7 +67,7 @@ if __name__ == '__main__':
 
     for i in range(n_tests):
         print(i + 1, "/", n_tests, end='\r')
-        output = run_cmd('java -jar testrun.jar -submission=player24 -evaluation=' + function_name + ' -seed=1')
+        output = run_cmd('java -jar testrun.jar -submission=player24 -evaluation=' + function_name + ' -seed=' + str(i))
         if "-verbose" in sys.argv:
             print(output) 
         output = output.split('\n')
