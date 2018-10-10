@@ -6,6 +6,7 @@ import numpy
 import matplotlib.pyplot as plt
 import time
 import shutil
+from mpl_toolkits.mplot3d import Axes3D
 
 def argument_error():
     print("Illegal argument")
@@ -71,13 +72,15 @@ def run_cmd(cmd_ext):
     return result.stdout.decode('utf-8')
 
 
-def replaceValue(chars, fileName, n, value, varName):
+def replaceValue(fileName, n, value, varName):
+    with open(fileName, "r") as f:
+        chars = f.read()
     found = False
     for idx in range(n, len(chars) - n):
         string = ""
         phrase = "".join([string + str(chars[c]) for c in range(idx, idx + n)])
         if varName + " = " == phrase:
-            print("Found: ", varName)
+            print("Changing " + varName + "...")
             found = True
             decimal = False
             hashlist = list(chars)
@@ -134,8 +137,10 @@ def run_java(argv):
                     current_runtime = int(re.findall(r'\d+', line)[0])
                     runtime.append(current_runtime)
 
-        print("Average score:", sum(score) / len(score))
+        print("Average score:", numpy.mean(score))
+        print("St Dev score:", numpy.std(score))
         print("Average runtime:", str(sum(runtime) / float(len(runtime))) + "ms")
+    return numpy.mean(score), numpy.std(score)
 
 if __name__ == '__main__':
     if len(sys.argv) < 2:
@@ -152,43 +157,70 @@ if __name__ == '__main__':
         parameters, fileName = getTuningParams()
         with open(fileName, "r") as f:
             og_text = f.read()
-        scores = []
+        scores2d = []
+        std2d = []
+        performed = 0
+        startTime = time.time()
         print("%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%")
         for value2 in parameters[1][1]:
+            scores1d = []
+            std1d = []
+            n2 = len(parameters[1][0] + " = ")
+            replaceValue(fileName, n2, value2, parameters[1][0])
             for value1 in parameters[0][1]:
-                with open(fileName, "r") as f:
-                    chars = f.read()
-                    n1 = len(parameters[0][0] + " = ")
-                    # Find value1
-                    replaceValue(chars, fileName, n1, value1, parameters[0][0])
-                    n2 = len(parameters[1][0] + " = ")
-                    replaceValue(chars, fileName, n2, value2, parameters[1][0])
-
-                with open(fileName, "w") as f:
-                    f.write(chars)
+                n1 = len(parameters[0][0] + " = ")
+                # Find value1
+                replaceValue(fileName, n1, value1, parameters[0][0])
                 print("\n" + str(parameters[0][0]) + " value: " + str(value1))
                 print(str(parameters[1][0]) + " value: " + str(value2))
                 print("------------")
-                startTime = time.time()
-                scores.append([run_java(sys.argv)])
-                print("Predicted total duration: ",
-                      str((time.time() - startTime) * len(parameters[0][1])*len(parameters[1][1])) + "s",
-                      "(" + str((time.time() - startTime) * len(parameters[0][1]*len(parameters[1][1])) // 60) + "min)")
+                mean, std = run_java(sys.argv)
+                scores1d.append(mean)
+                std1d.append(std)
+                performed+=1
+                percentPerformed = (performed) / (len(parameters[0][1])*len(parameters[1][1]))
+                print("Predicted remaining time: ",
+                      str(int((time.time() - startTime) / percentPerformed - (time.time() - startTime))) + "s",
+                      "(" + str.format('{0:.1f}', ((time.time() - startTime) / percentPerformed - (time.time() - startTime)) / 60) +
+                      "min)  /  (" + str.format('{0:.1f}', (time.time() - startTime) / percentPerformed / 60) + "min)")
                 print("------------")
+
+
+            maxIdx = numpy.argmax(scores1d)
+            print("Max score (" + str(scores1d[maxIdx]) + ") in paramerter " + parameters[0][0] + " achieved by value: " + str(parameters[0][1][maxIdx]))
+            scores2d.append(numpy.array(scores1d))
+            std2d.append(numpy.array(std1d))
+
             print("%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%")
 
         with open(fileName, "w") as f:
             f.write(og_text)
-        maxIdx = numpy.argmax(scores)
-        print(scores)
-        print(maxIdx)
-        print("Max score (" + str(scores[maxIdx]) + ") in paramerter " + parameters[0][0] + " achieved by value: " + str(parameters[0][1][maxIdx]))
-        funcName = function_name = get_function_name(sys.argv[1].lower())
-        fig, ax = plt.gcf(), plt.gca()
-        plt.plot(parameters[0][1], scores)
-        plt.title(parameters[0][0] + " on " + funcName + "\n(Repeated " + str(sys.argv[2]) + "times. Range: " + str(parameters[0][1][0]) + " - " + str(parameters[0][1][-1]) + ")")
-        fig.savefig(parameters[0][0] +"_" + funcName + ".pdf")
-        plt.close()
+        funcName = get_function_name(sys.argv[1].lower())
+        x, y = numpy.meshgrid(parameters[0][1], parameters[1][1])
+        z = numpy.array(scores2d)
+        std_z = numpy.array(std2d)
+        print(x)
+        print(y)
+        print(z)
+        print(std_z)
+        with open(str(parameters[0][0]) + "_&_" + str(parameters[1][0]) + "_" + funcName +".txt", "w") as f:
+            f.write(str(x))
+            f.write(str(y))
+            f.write(str(z))
+            f.write(str(std_z))
+
+        fig = plt.figure()
+        # fig, ax = plt.gcf(), plt.gca()
+        ax = fig.add_subplot(1,1,1, projection='3d')
+
+        ax.plot_surface(x, y, z, cmap=plt.cm.coolwarm)
+        title = str(parameters[0][0]) + " and " + str(parameters[1][0]) + " on " + funcName + \
+                "\n(Repeated " + str(sys.argv[2]) + " times. Range: " + str(parameters[0][1][0]) + " - " + str(parameters[0][1][-1]) + ")"
+        ax.set_title(title)
+        ax.set_xlabel(parameters[0][0])
+        ax.set_ylabel(parameters[1][0])
+        fig.savefig(str(parameters[0][0]) +"_" + funcName + ".pdf")
+        # ax.close()
 
     else:
         run_java(sys.argv)

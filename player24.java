@@ -55,15 +55,15 @@ public class player24 implements ContestSubmission {
 
     public void run() {
         // Run your algorithm here
-        int populationSize = 100;
-        double time = 1000;
+        int populationSize = 92;
+        double time = 0;
         double stDevMultiplier = 1.0;
         int numberOfParents = 3;
 
         String mutationType = Population.GAUSSIAN; // Set to 'Uniform' or 'Gaussian'
         String parentSelectionType = Population.RANDOM; // Boltzmann, Max
-        double F = 0.0005;
-        double CR = 0.005;
+        double F = 0.4;
+        double CR = 0.7;
 
         // init population
         ArrayList<Population> generations = new ArrayList<Population>();
@@ -97,7 +97,7 @@ public class player24 implements ContestSubmission {
 
                 //Tuning
                 // CR = rnd_.nextDouble(); //<--- COMMENT FOR CONST CR!
-            	CR = (double)Population.evals / (double)evaluations_limit_;
+//            	CR = (double)Population.evals / (double)evaluations_limit_;
 	            // System.out.println("CR = " + CR);
 
 
