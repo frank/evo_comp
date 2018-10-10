@@ -15,6 +15,7 @@ public class Child {
     final static int VALUES_SIZE = 10;
     private Random _rnd;
     private double fitness = 0;
+    private boolean isEvaluated = false;
 
     public double random_bounded_value() {
         return MIN + (MAX - MIN) * _rnd.nextDouble();
@@ -90,11 +91,24 @@ public class Child {
     }
 
     public Double getFitness() {
-        return fitness;
+    	if(isEvaluated){
+	        return fitness;
+    	}else{
+    		System.out.println("Returning 0 value from Child.fitness! - unevaluated");
+    		return fitness;
+    	}
+    }
+
+    public boolean isEvaluated(){
+    	if(isEvaluated){
+    		return true;
+    	}
+    	return false;
     }
 
     public void setFitness(double fitness) {
         this.fitness = fitness;
+        isEvaluated = true;
     }
 
     public double getMin() {

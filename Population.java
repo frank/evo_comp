@@ -44,6 +44,77 @@ public class Population {
         PrintProperties();
     }
 
+    //Arvid: 09/10/2018 ~ Crowding
+    //This function is called in the run() of player24.java until we 
+    //run out of evaluations. It implements the crowding algorithm from the book
+    //at page 93-94. 
+    public void crowding(ContestEvaluation evaluation_){
+
+    	//1. Create a set of random pairs of the population 
+    	//	where (par1[i], par2[i]) is an example of a pair
+    	ArrayList<Child> par1 = new ArrayList<>();
+    	ArrayList<Child> par2 = new ArrayList<>();
+    	pairRandomParents(par1, par2);
+
+    	//	1.2 Newpop <-- empty array
+    	ArrayList<Child> newPopulation = new ArrayList<>();
+
+    	//2. For each pair:
+    	Child[] parentPair;
+    	for(int i = 0; i < par1.size(); i++){
+
+	    	//	2.1 Create two children
+	    	parentPair = new Child[] {par1.get(i), par2.get(i)}; //..required since CreateChild
+    		Child child1 = CreateChild(parentPair);				//	takes an array as argument
+    		Child child2 = CreateChild(parentPair);
+
+	    	//	2.2 Mutate children
+    		GaussianMutation(child1);
+    		GaussianMutation(child2);
+
+	    	//	2.3 Evaluate children (increment Population.evals !)
+            child1.setFitness((double) evaluation_.evaluate(child1.getValues()));
+            child2.setFitness((double) evaluation_.evaluate(child2.getValues()));
+            evals += 2;    		
+
+	    	//	2.4 perform distance based tournament
+	    	// Child[] winners = crowdTournament(par1.get(i), par2.get(i), child1, child2);
+
+	    	//	2.5 Insert winners into Newpop 
+
+
+    	}
+
+    	//3. population <- Newpop
+    }
+
+    // private Child[] crowdTournament(Child p1, Child p2, Child c1, Child c2){
+
+
+    // }
+
+    private fdist(Child parent, Child child){
+    	return Math.pow(parent.getFitness() - child.getFitness(), 2);
+    }
+
+
+	private void pairRandomParents(ArrayList<Child> par1, ArrayList<Child> par2){
+
+		for(int i = 0; i < (populationSize / 2.0); i++){
+
+			//Pick a random parent (individual)
+			int choice = (int)(Math.random() * children.size());
+			Child parent = children.get(choice);
+			children.remove(choice);
+			par1.add(parent); //<-- add parent to list1
+
+			choice = (int)(Math.random() * children.size());
+			parent = children.get(choice);
+			children.remove(choice);
+			par2.add(parent); //<-- add parent to list2
+		}
+	}
+
     public void initPop(){
         for (int i = 0; i < populationSize; i++) {
             Child child = new Child(_rnd);
@@ -154,6 +225,8 @@ public class Population {
         return parents;
     }
 
+    //NOTE: (Arvid!) This function always (!!!) performs 
+    //uniform crossover since its our only recombination function
     public Child CreateChild(Child[] parents) {
         // CrossOver
         Child child = UniformCrossover(parents);
@@ -299,18 +372,27 @@ public class Population {
 
     public void printChildren(Child[] c)
     {
-        // NumberFormat formatter = new DecimalFormat("#0.00");
         for(int i = 0; i < c.length; i++){
             double[] values = c[i].getValues();
             double fitness = c[i].getFitness();
             System.out.print("Child [");
             for (int j = 0; j < 10; j++){
-                // System.out.printf(formatter.format(values[j]));
                 System.out.print(((int)(values[j] * 1000)/1000.0) + ", ");
             }
             System.out.print("] has fitness: " + (int)(fitness * 1000)/1000.0 + "\n");
         }
         System.out.println("-----------------------------------------------------------");
+    }
+
+    public void printChild(Child c)
+    {
+        double[] values = c.getValues();
+        double fitness = c.getFitness();
+        System.out.print("Child [");
+        for (int j = 0; j < 10; j++){
+            System.out.print(((int)(values[j] * 1000)/1000.0) + ", ");
+        }
+        System.out.print("] has fitness: " + (int)(fitness * 1000)/1000.0 + "\n");
     }
 
 }

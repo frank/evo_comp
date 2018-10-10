@@ -21,19 +21,9 @@ public class player24 implements ContestSubmission {
         rnd_.setSeed(seed);
     }
 
-//    public static void main(String[] args) {
-//        Population pop = new Population(new Random());
-//        Child child = new Child(new Random());
-//        System.out.println("SchaffersEvaluation");ConsertTestBox.main(new String[]{"-submission=player24", "-evaluation=SchaffersEvaluation", "-seed=1"});
-//        //System.out.println("KatsuuraEvaluation");ConsertTestBox.main(new String[]{"-submission=player24", "-evaluation=KatsuuraEvaluation", "-seed=1"});
-//        //System.out.println("BentCigarFunction");ConsertTestBox.main(new String[]{"-submission=player24", "-evaluation=BentCigarFunction", "-seed=1"});
-//
-//    }
-
     public void setEvaluation(ContestEvaluation evaluation) {
         // Set evaluation problem used in the run
         evaluation_ = evaluation;
-
 
         // Get evaluation properties
         Properties props = evaluation.getProperties();
@@ -53,13 +43,12 @@ public class player24 implements ContestSubmission {
 
     public void run() {
         // Run your algorithm here
-        int evals = 0;
-        int populationSize = 50;
+        int populationSize = 10;
         double time = 100;
         double stDevMultiplier = 3.0;
         int numberOfParents = 2;
         String mutationType = Population.GENE_GAUSSIAN; // Set to 'UNIFORM', 'GAUSSIAN', or 'GENE_GAUSSIAN'
-        String parentSelectionType = Population.BOLTZMANN; // Boltzmann, Max
+        String parentSelectionType = Population.BOLTZMANN; // Boltzmann, Max, Crowding
 
         // init population
         Population pop = new Population(rnd_, populationSize, time, stDevMultiplier, evaluations_limit_,
@@ -70,34 +59,19 @@ public class player24 implements ContestSubmission {
         pop.evalPopulation(evaluation_);
         //This function sorts all children based on fitness
         pop.sortOnFitness();
-
-        //Crowding
-        Crowding crowding = new Crowding(pop, evaluation_, rnd_);
+        // pop.printPopulation();
 
         while (Population.evals < evaluations_limit_) {
-            Child[] parents = pop.SelectParents();
-//            pop.printChildren(parents);
 
-            //creating the child
-            Child child = pop.CreateChild(parents);
-            //calculating fitness
-            Double fitness = (double) evaluation_.evaluate(child.getValues());
-            child.setFitness(fitness);
-//            Child[] c = new Child[1];
-//            c[0] = child;
-//            pop.printChildren(c);
+        	pop.crowding(evaluation_);
 
-            //System.out.println(child.getFitness());
-            //System.out.println(Arrays.toString(child.getValues()));
 
-            pop.AddChild(child);
-//            pop.printPopulation();
-//            if (Population.evals == populationSize+ 200){
-//                System.exit(0);
-//            }
-
-            Population.evals++;
-            // Select survivors
+            // Child[] parents = pop.SelectParents(); //Depends on parentSelectionType
+            // Child child = pop.CreateChild(parents);
+            // Double fitness = (double) evaluation_.evaluate(child.getValues());
+            // child.setFitness(fitness);
+            // pop.AddChild(child);
+            // Population.evals++;
         }
     }
 }
