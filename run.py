@@ -77,6 +77,7 @@ def replaceValue(chars, fileName, n, value, varName):
         string = ""
         phrase = "".join([string + str(chars[c]) for c in range(idx, idx + n)])
         if varName + " = " == phrase:
+            print("Found: ", varName)
             found = True
             decimal = False
             hashlist = list(chars)
@@ -118,11 +119,12 @@ def run_java(argv):
             n_tests = int(argv[2])
         except ValueError:
             argument_error()
+
         for i in range(n_tests):
-            seed = 12345 + i
             print(i + 1, "/", n_tests, end='\r')
-            output = run_cmd(
-                'java -jar testrun.jar -submission=player24 -evaluation=' + function_name + ' -seed=' + str(seed))
+            output = run_cmd('java -jar testrun.jar -submission=player24 -evaluation=' + function_name + ' -seed=' + str(i))
+            if "-verbose" in sys.argv:
+                print(output)
             output = output.split('\n')
             for line in output:
                 if "Score" in line:
@@ -131,28 +133,9 @@ def run_java(argv):
                 elif "Runtime" in line:
                     current_runtime = int(re.findall(r'\d+', line)[0])
                     runtime.append(current_runtime)
+
         print("Average score:", sum(score) / len(score))
         print("Average runtime:", str(sum(runtime) / float(len(runtime))) + "ms")
-    return sum(score) / len(score)
-
-<<<<<<< HEAD
-    for i in range(n_tests):
-        print(i + 1, "/", n_tests, end='\r')
-        output = run_cmd('java -jar testrun.jar -submission=player24 -evaluation=' + function_name + ' -seed=' + str(i))
-        if "-verbose" in sys.argv:
-            print(output) 
-        output = output.split('\n')
-        for line in output:
-            if "Score" in line:
-                current_score = float(re.findall(r'[-+]?\d*\.\d+|\d+', line)[0])
-                score.append(current_score)
-            elif "Runtime" in line:
-                current_runtime = int(re.findall(r'\d+', line)[0])
-                runtime.append(current_runtime)
-
-    print("Average score:", sum(score) / len(score))
-    print("Average runtime:", str(sum(runtime) / float(len(runtime))) + "ms")
-=======
 
 if __name__ == '__main__':
     if len(sys.argv) < 2:
@@ -209,4 +192,3 @@ if __name__ == '__main__':
 
     else:
         run_java(sys.argv)
->>>>>>> 950e27b208e9d4b1e987e49d6d4d5ee9a4f45e11

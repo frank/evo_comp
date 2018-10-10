@@ -55,15 +55,11 @@ public class player24 implements ContestSubmission {
 
     public void run() {
         // Run your algorithm here
-        int populationSize = 60;
+        int populationSize = 100;
         double time = 1000;
-<<<<<<< HEAD
         double stDevMultiplier = 1.0;
         int numberOfParents = 3;
-=======
-        double stDevMultiplier = 0.401;
-        int numberOfParents = 4;
->>>>>>> 950e27b208e9d4b1e987e49d6d4d5ee9a4f45e11
+
         String mutationType = Population.GAUSSIAN; // Set to 'Uniform' or 'Gaussian'
         String parentSelectionType = Population.RANDOM; // Boltzmann, Max
         double F = 0.0005;
