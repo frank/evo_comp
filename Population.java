@@ -218,7 +218,7 @@ public class Population {
     // Mutates based on a Gaussian distribution where std.dev. is based on how many evals are remaining.
     public void GaussianMutation(Child child) {
         Random rand = new Random();
-        double evalPercentRemaining =  (double)(maxEvals - evals) / maxEvals;
+        double evalPercentRemaining =  (double)(maxEvals - evals) / Math.sqrt(maxEvals);
         double[] vals = new double[10];
         double stDev = evalPercentRemaining * stDevMultiplier;
         for (int i = 0; i < child.getValuesSize(); i++) {

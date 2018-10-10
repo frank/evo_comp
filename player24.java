@@ -1,8 +1,11 @@
 import org.vu.contest.ContestSubmission;
 import org.vu.contest.ContestEvaluation;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
 import java.util.Properties;
+import java.io.*;
 
 public class player24 implements ContestSubmission {
     Random rnd_;
@@ -51,16 +54,17 @@ public class player24 implements ContestSubmission {
         }
     }
 
+
     public void run() {
         // Run your algorithm here
         int evals = 0;
-        int populationSize = 50;
+        int populationSize = 10;
         double time = 100;
-        double stDevMultiplier = 3.0;
+        double stDevMultiplier = 5.0;
         int numberOfParents = 2;
-        String mutationType = Population.GENE_GAUSSIAN; // Set to 'UNIFORM', 'GAUSSIAN', or 'GENE_GAUSSIAN'
+        String mutationType = Population.GAUSSIAN; // Set to 'UNIFORM', 'GAUSSIAN', or 'GENE_GAUSSIAN'
         String parentSelectionType = Population.BOLTZMANN; // Boltzmann, Max
-
+        
         // init population
         Population pop = new Population(rnd_, populationSize, time, stDevMultiplier, evaluations_limit_,
                                         mutationType, parentSelectionType, numberOfParents);
