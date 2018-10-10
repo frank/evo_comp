@@ -177,7 +177,7 @@ public class Population {
 
     public Child CreateDifferentialChild(Child[] donor, Child parent,double F){
         int const_idx = _rnd.nextInt(10);
-        double RecombinationRate = 0.7;
+        double RecombinationRate = 0.42500000000000004;
         Child x=donor[0];
         Child y=donor[1];
         Child z=donor[2];
