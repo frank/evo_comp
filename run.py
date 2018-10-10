@@ -10,8 +10,9 @@ def argument_error():
     return
 
 
-def catch_error(cmd, error_msg):
+def catch_error(cmd, error_msg,output):
     if len(error_msg) > 2:
+        print(output)
         print("Issued command:")
         print(cmd)
         print()
@@ -36,8 +37,7 @@ def get_function_name(arg):
 def run_cmd(cmd_ext):
     cmd = cmd_ext.split()
     result = subprocess.run(cmd, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
-    catch_error(cmd_ext, result.stderr.decode('utf-8'))
-
+    catch_error(cmd_ext, result.stderr.decode('utf-8'),result.stdout.decode('utf-8'))
     return result.stdout.decode('utf-8')
 
 
@@ -67,7 +67,7 @@ if __name__ == '__main__':
 
     for i in range(n_tests):
         print(i + 1, "/", n_tests, end='\r')
-        output = run_cmd('java -jar testrun.jar -submission=player24 -evaluation=' + function_name + ' -seed=1')
+        output = run_cmd('java -jar testrun.jar -submission=player24 -evaluation=' + function_name + ' -seed='+str(i))
         if "-verbose" in sys.argv:
             print(output) 
         output = output.split('\n')

@@ -55,7 +55,8 @@ public class player24 implements ContestSubmission {
 
     public void run() {
         // Run your algorithm here
-        int populationSize = 100;
+        Population.populationSize = 100;
+        int sameplesize=2;
         double time = 1000;
         double stDevMultiplier = 1.0;
         int numberOfParents = 4;
@@ -65,9 +66,9 @@ public class player24 implements ContestSubmission {
 
         // init population
         ArrayList<Population> generations = new ArrayList<Population>();
-        Population pop = new Population(rnd_, populationSize, time, stDevMultiplier, evaluations_limit_,
+        Population pop = new Population(rnd_,stDevMultiplier, evaluations_limit_,
                 mutationType, parentSelectionType, numberOfParents);
-        pop.initPop();
+        pop.initPop(sameplesize);
         pop.evalPopulation(evaluation_);
         pop.PrintProperties();
         generations.add(pop);
@@ -75,28 +76,29 @@ public class player24 implements ContestSubmission {
         int papa=0;
         // the actual code
         while (Population.evals < evaluations_limit_) {
-            Population mutantpopulation = new Population(rnd_, populationSize, time, stDevMultiplier, evaluations_limit_,
+            Population mutantpopulation = new Population(rnd_, stDevMultiplier, evaluations_limit_,
                     mutationType, parentSelectionType, numberOfParents);
             Population old_pop = generations.get(generations.size() - 1);
             F = rnd_.nextDouble();
-            for (int idx = 0; (idx < populationSize) && Population.evals<evaluations_limit_; idx++) {
+            double CR = (double)Population.evals/(double)evaluations_limit_; 
+            for (int idx = 0; (idx < old_pop.children.size() ) && Population.evals<evaluations_limit_; idx++) {
                 Child[] donor= old_pop.selectRandomParents(idx);
                 Child parent = old_pop.getChild(idx);
 
-                Child child = pop.CreateDifferentialChild(donor,parent,F);
+                Child child = pop.CreateDifferentialChild(donor,parent,F,CR);
                 Double fitness = (double) evaluation_.evaluate(child.getValues());
                 child.setFitness(fitness);
                 Population.evals++;
-//
-//                System.out.println("papa:"+parent.getFitness());
-//                System.out.println("child:"+fitness);
+
+//              System.out.println("papa:"+parent.getFitness());
+//              System.out.println("child:"+fitness);
 
                 if(fitness>parent.getFitness()){mutantpopulation.AddChild(child);}
                 else{mutantpopulation.AddChild(parent);papa++;}
             }
             generations.add(mutantpopulation);
-            //F = -F-((papa-populationSize/2)/(double) populationSize);
-            //System.out.println("papa added "+papa);
+			//F = -F-((papa-populationSize/2)/(double) populationSize);
+            //System.out.println("papa added " + papa);
             //System.out.println("F: "+F);
 //            if(papa==populationSize){
 //                System.out.println("evals"+Population.evals);

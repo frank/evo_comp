@@ -13,11 +13,10 @@ import org.vu.contest.ContestEvaluation;
 
 public class Population {
     private Random _rnd;
-    private ArrayList<Child> children = new ArrayList<>();
-    private int populationSize;
+    ArrayList<Child> children = new ArrayList<>();
     static int evals=0;
     private int maxEvals;
-    private double TIME;
+    static double TIME;
     private double stDevMultiplier;
     private String mutationType;
     private String parentSelectionType;
@@ -28,24 +27,41 @@ public class Population {
    	static final String RANDOM ="random";
     public static final String GAUSSIAN = "gaussian";
     public static final String UNIFORM  = "uniform";
+    public static int populationSize;
 
-    public Population(Random rnd, int populationSize, double time, double stDevMultiplier, int maxEvals,
+    public Population(Random rnd, double stDevMultiplier, int maxEvals,
                       String mutationType, String parentSelectionType, int numberOfParents) {
-        _rnd = rnd;
-        this.populationSize = populationSize;
+        _rnd = rnd; 
         this.maxEvals = maxEvals;
         this.mutationType = mutationType;
-        this.TIME = time;
         this.stDevMultiplier = stDevMultiplier;
         this.parentSelectionType = parentSelectionType;
         this.numberOfParents = numberOfParents;
     }
 
-    public void initPop(){
+    public void initPop(int samplesize){
+    		double increment=10/(double)(samplesize+1);
+        	double[] vals = new double[10];
+        	for(int idx=0;idx<10;idx++){
+        		vals[idx]=-5;            	
+        	}
+        	generate_kid(0,samplesize,increment,vals);
 
-        for (int i = 0; i < populationSize; i++) {
-            children.add(new Child(_rnd));
-        }
+   		}
+
+
+    public void generate_kid(int arr_idx,int max_increment,double increment,double[] vals){
+    	if(arr_idx==10){
+    		children.add(new Child(vals,_rnd));
+    		return;
+    	}
+
+
+    	for(int i=0;i<max_increment;i++){
+    		vals[arr_idx]+=increment;
+    		generate_kid(arr_idx+1,max_increment,increment,Arrays.copyOf(vals, vals.length));
+    	}
+
     }
 
     public void PrintProperties() {
@@ -175,12 +191,12 @@ public class Population {
         return child;
     }
 
-    public Child CreateDifferentialChild(Child[] donor, Child parent,double F){
+    public Child CreateDifferentialChild(Child[] donor, Child parent,double F,double RecombinationRate){
         int const_idx = _rnd.nextInt(10);
-        double RecombinationRate = _rnd.nextDouble();
         Child x=donor[0];
         Child y=donor[1];
         Child z=donor[2];
+
     	double peturbation_v;
     	double[] mutant_v = new double[10];
 
@@ -195,7 +211,7 @@ public class Population {
         //crossover
         double[] vals = new double[10];
         for(int idx=0;idx<10;idx++) {
-            if (idx == const_idx || _rnd.nextDouble() < RecombinationRate) {
+            if (idx == const_idx || _rnd.nextDouble() <= RecombinationRate) {
                 vals[idx] = mutant_v[idx];
             }else{
                 vals[idx] = parent.getValues(idx);
@@ -276,6 +292,19 @@ public class Population {
     public Child getChild(int idx){
         return children.get(idx);
     }
+
+
+    public void Reinitialize(ContestEvaluation evaluation_,int amount,int limit){
+
+
+    	 for(int i = populationSize-amount; i < populationSize && evals<limit;i++ ){
+            children.set(i,new Child(_rnd));
+            children.get(i).setFitness((double) evaluation_.evaluate(children.get(i).getValues()));
+            evals++;
+        }
+
+    }
+
 
     public void evalPopulation(ContestEvaluation evaluation_)
     {   
