@@ -15,8 +15,9 @@ def argument_error():
     return
 
 
-def catch_error(cmd, error_msg):
+def catch_error(cmd, error_msg,output):
     if len(error_msg) > 2:
+        print(output)
         print("Issued command:")
         print(cmd)
         print()
@@ -68,7 +69,7 @@ def getTuningParams():
 def run_cmd(cmd_ext):
     cmd = cmd_ext.split()
     result = subprocess.run(cmd, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
-    catch_error(cmd_ext, result.stderr.decode('utf-8'))
+    catch_error(cmd_ext, result.stderr.decode('utf-8'),result.stdout.decode('utf-8'))
     return result.stdout.decode('utf-8')
 
 
