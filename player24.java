@@ -55,7 +55,7 @@ public class player24 implements ContestSubmission {
 
     public void run() {
         // Run your algorithm here
-        int populationSize = 92;
+        int populationSize = 125;
         double time = 0;
         double stDevMultiplier = 1.0;
         int numberOfParents = 3;
@@ -63,7 +63,7 @@ public class player24 implements ContestSubmission {
         String mutationType = Population.GAUSSIAN; // Set to 'Uniform' or 'Gaussian'
         String parentSelectionType = Population.RANDOM; // Boltzmann, Max
         double F = 0.4;
-        double CR = 0.7;
+        double CR = 0.76;
 
         // init population
         ArrayList<Population> generations = new ArrayList<Population>();
