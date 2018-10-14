@@ -51,6 +51,48 @@ public class player24 implements ContestSubmission {
         }
     }
 
+    public Child selectCandidateForEval(ArrayList<Child> history, Population pop, double F, double CR, Child[] donor, Child parent){
+        double historyRadius = 1.0;
+        double rolloutNumber = 10;
+        Population rolloutPop = new Population(rnd_, 0, evaluations_limit_,
+                null, null, 0);
+        boolean noHistory = false;
+        for (int i = 0; i < rolloutNumber; i++){
+
+            Child candidate = pop.CreateDifferentialChild(donor,parent,F,CR);
+            double averageRadiusFitness = 0.0;
+            double foundNum = 0;
+            for (Child c : history){
+                if (candidate.getPythagoreanDistance(c.getValues()) < historyRadius){
+                    averageRadiusFitness += c.getFitness();
+                    foundNum += 1.0;
+                }
+                if (foundNum == 0){
+                    noHistory = true;
+                    break;
+                }else{
+                    candidate.setFitness(averageRadiusFitness / foundNum);
+                }
+            }
+            rolloutPop.AddChild(candidate);
+            if (noHistory){
+                break;
+            }
+        }
+        Child highest;
+        if (noHistory) {
+            highest = rolloutPop.getChild(rolloutPop.getChildren().size()-1);
+        }else{
+            highest = rolloutPop.getChild(0);
+            for (int i = 1; i < rolloutNumber; i++){
+                if (highest.getFitness() <= rolloutPop.getChild(1).getFitness()){
+                    highest = rolloutPop.getChild(1);
+                }
+            }
+        }
+        return highest;
+    }
+
 
 
     public void run() {
@@ -60,6 +102,8 @@ public class player24 implements ContestSubmission {
         double time = 1000;
         double stDevMultiplier = 1.0;
         int numberOfParents = 3;
+
+        ArrayList<Child> history = new ArrayList<>();
 
         String mutationType = Population.GAUSSIAN; // Set to 'Uniform' or 'Gaussian'
         String parentSelectionType = Population.RANDOM; // Boltzmann, Max
@@ -75,6 +119,8 @@ public class player24 implements ContestSubmission {
         // pop.PrintProperties();
         generations.add(pop);
 
+        history.addAll(pop.getChildren());
+
         int papa=0;
         // the actual code
         while (Population.evals < evaluations_limit_) {
@@ -88,9 +134,10 @@ public class player24 implements ContestSubmission {
                 Child[] donor= old_pop.selectRandomParents(idx);
                 Child parent = old_pop.getChild(idx);
 
-                Child child = pop.CreateDifferentialChild(donor,parent,F,CR);
+                Child child = selectCandidateForEval(history, pop, F, CR, donor, parent);
                 Double fitness = (double) evaluation_.evaluate(child.getValues());
                 child.setFitness(fitness);
+                history.add(child);
                 Population.evals++;
 
 //              System.out.println("papa:"+parent.getFitness());
