@@ -315,4 +315,7 @@ public class Population {
         }
     }
 
+    public int getMaxEvals(){return maxEvals;}
+
+    public int getEvals(){return evals;}
 }

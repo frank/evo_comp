@@ -52,8 +52,11 @@ public class player24 implements ContestSubmission {
     }
 
     public Child selectCandidateForEval(ArrayList<Child> history, Population pop, double F, double CR, Child[] donor, Child parent){
-        double historyRadius = 1.0;
-        double rolloutNumber = 10;
+        double radiusEnd = 5.0;
+        double radiusStart = 1.0;
+        double radiusGradient = radiusStart-radiusEnd;
+        double historyRadius =radiusGradient*pop.getEvals()/pop.getMaxEvals() + radiusEnd;
+        int rolloutNumber = 10;
         Population rolloutPop = new Population(rnd_, 0, evaluations_limit_,
                 null, null, 0);
         boolean noHistory = false;
@@ -97,7 +100,7 @@ public class player24 implements ContestSubmission {
 
     public void run() {
         // Run your algorithm here
-        Population.populationSize = 89;
+        Population.populationSize = 120;
         int sameplesize=2;
         double time = 1000;
         double stDevMultiplier = 1.0;
@@ -133,6 +136,7 @@ public class player24 implements ContestSubmission {
             for (int idx = 0; (idx < old_pop.children.size() ) && Population.evals<evaluations_limit_; idx++) {
                 Child[] donor= old_pop.selectRandomParents(idx);
                 Child parent = old_pop.getChild(idx);
+//                Child child = pop.CreateDifferentialChild(donor,parent,F,CR);
 
                 Child child = selectCandidateForEval(history, pop, F, CR, donor, parent);
                 Double fitness = (double) evaluation_.evaluate(child.getValues());
