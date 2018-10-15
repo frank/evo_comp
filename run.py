@@ -122,19 +122,13 @@ def run_java(argv):
             n_tests = int(argv[2])
         except ValueError:
             argument_error()
-<<<<<<< HEAD
-        for i in range(n_tests):
-            seed = 12345 + i
-            print(i + 1, "/", n_tests, end='\r')
-            output = run_cmd('java -jar testrun.jar -submission=player24 -evaluation=' + function_name + ' -seed=' + str(seed))
-=======
 
         for i in range(n_tests):
             print(i + 1, "/", n_tests, end='\r')
             output = run_cmd('java -jar testrun.jar -submission=player24 -evaluation=' + function_name + ' -seed=' + str(i))
             if "-verbose" in sys.argv:
                 print(output)
->>>>>>> 1d84d3aefe70703dbf6c8f199a8e71130c19b5d8
+
             output = output.split('\n')
             for line in output:
                 if "Score" in line:
@@ -143,10 +137,6 @@ def run_java(argv):
                 elif "Runtime" in line:
                     current_runtime = int(re.findall(r'\d+', line)[0])
                     runtime.append(current_runtime)
-<<<<<<< HEAD
-        print("Average score:", sum(score) / len(score))
-        print("Average runtime:", str(sum(runtime) / float(len(runtime))) + "ms")
-=======
 
         print("Average score:", numpy.mean(score))
         print("St Dev score:", numpy.std(score))
@@ -235,4 +225,4 @@ if __name__ == '__main__':
 
     else:
         run_java(sys.argv)
->>>>>>> 1d84d3aefe70703dbf6c8f199a8e71130c19b5d8
+
