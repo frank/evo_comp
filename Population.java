@@ -281,7 +281,6 @@ public class Population {
         }
     }
 
-<<<<<<< HEAD
     public void printPopulation()
     {
         // NumberFormat formatter = new DecimalFormat("#0.00");
@@ -315,6 +314,5 @@ public class Population {
     }
 
 }
-=======
-}
->>>>>>> 1d84d3aefe70703dbf6c8f199a8e71130c19b5d8
+
+

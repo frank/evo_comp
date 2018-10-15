@@ -53,7 +53,7 @@ public class player24 implements ContestSubmission {
 
     public void run() {
         // Run your algorithm here
-<<<<<<< HEAD
+
         int evals = 0;
         int populationSize = 50;
         double time = 100;
@@ -61,7 +61,7 @@ public class player24 implements ContestSubmission {
         int numberOfParents = 2;
         String mutationType = Population.GENE_GAUSSIAN; // Set to 'UNIFORM', 'GAUSSIAN', or 'GENE_GAUSSIAN'
         String parentSelectionType = Population.BOLTZMANN; // Boltzmann, Max
-=======
+
         Population.populationSize = 89;
         int sameplesize=2;
         double time = 1000;
@@ -72,7 +72,7 @@ public class player24 implements ContestSubmission {
         String parentSelectionType = Population.RANDOM; // Boltzmann, Max
         double F = 0.4;
 //        double CR = 0.7;
->>>>>>> 1d84d3aefe70703dbf6c8f199a8e71130c19b5d8
+
 
         // init population
         Population pop = new Population(rnd_, populationSize, time, stDevMultiplier, evaluations_limit_,
@@ -81,36 +81,16 @@ public class player24 implements ContestSubmission {
         pop.initPop();
         //Evaluate and set fitness for all children 
         pop.evalPopulation(evaluation_);
-<<<<<<< HEAD
+
         //This function sorts all children based on fitness
         pop.sortOnFitness();
-=======
+
         // pop.PrintProperties();
         generations.add(pop);
->>>>>>> 1d84d3aefe70703dbf6c8f199a8e71130c19b5d8
+
 
         while (Population.evals < evaluations_limit_) {
-<<<<<<< HEAD
-            Child[] parents = pop.SelectParents();
-//            pop.printChildren(parents);
 
-            //creating the child
-            Child child = pop.CreateChild(parents);
-            //calculating fitness
-            Double fitness = (double) evaluation_.evaluate(child.getValues());
-            child.setFitness(fitness);
-//            Child[] c = new Child[1];
-//            c[0] = child;
-//            pop.printChildren(c);
-
-            //System.out.println(child.getFitness());
-            //System.out.println(Arrays.toString(child.getValues()));
-
-            pop.AddChild(child);
-//            pop.printPopulation();
-//            if (Population.evals == populationSize+ 200){
-//                System.exit(0);
-=======
             Population mutantpopulation = new Population(rnd_, stDevMultiplier, evaluations_limit_,
                     mutationType, parentSelectionType, numberOfParents);
             Population old_pop = generations.get(generations.size() - 1);
@@ -141,11 +121,7 @@ public class player24 implements ContestSubmission {
 //                System.out.println("evals"+Population.evals);
 //                System.out.println("quitting");
 //                return;
->>>>>>> 1d84d3aefe70703dbf6c8f199a8e71130c19b5d8
-//            }
 
-            Population.evals++;
-            // Select survivors
         }
     }
 }
