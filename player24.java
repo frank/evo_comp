@@ -106,45 +106,32 @@ public class player24 implements ContestSubmission {
 
     public void run() {
         // Run your algorithm here
-        Population.populationSize = 120;
-        int sameplesize=2;
-        double time = 1000;
-        double stDevMultiplier = 1.0;
-        int numberOfParents = 3;
-
-        ArrayList<Child> history = new ArrayList<>();
-
-        String mutationType = Population.GAUSSIAN; // Set to 'Uniform' or 'Gaussian'
-        String parentSelectionType = Population.RANDOM; // Boltzmann, Max
         double Fstd = 0.8;
         double CRstd = 0.1;
 
         // init population
+        Population.populationSize = 90;
+        Population.maxEvals=evaluations_limit_;
+        int sameplesize=2; // determines the amount of parents when useing uniform initialization
+
         ArrayList<Population> generations = new ArrayList<Population>();
-        Population pop = new Population(rnd_,stDevMultiplier, evaluations_limit_,
-                mutationType, parentSelectionType, numberOfParents);
+        Population pop = new Population(rnd_);
         pop.initPop(sameplesize);
         pop.evalPopulation(evaluation_);
-        // pop.PrintProperties();
         generations.add(pop);
-
-        history.addAll(pop.getChildren());
-
-        int papa=0;
-        // the actual code
         while (Population.evals < evaluations_limit_) {
-            Population mutantpopulation = new Population(rnd_, stDevMultiplier, evaluations_limit_,
-                    mutationType, parentSelectionType, numberOfParents);
+            Population mutantpopulation = new Population(rnd_);
             Population old_pop = generations.get(generations.size() - 1);
 
             double F = rnd_.nextGaussian()*Fstd + (double)Population.evals/(double)evaluations_limit_;
             while (F < 0.0 || F > 1.0){
                 F = rnd_.nextGaussian()*Fstd + (double)Population.evals/(double)evaluations_limit_;
             }
-            double CR = rnd_.nextGaussian()*CRstd + (double)Population.evals/(double)evaluations_limit_;
+            double CR = 0.72;
             while (CR < 0.0 || CR > 1.0){
                 CR = rnd_.nextGaussian()*CRstd + (double)Population.evals/(double)evaluations_limit_;
-            }            for (int idx = 0; (idx < old_pop.children.size() ) && Population.evals<evaluations_limit_; idx++) {
+            }
+            for (int idx = 0; (idx < old_pop.children.size() ) && Population.evals<evaluations_limit_; idx++) {
                 Child[] donor= old_pop.selectRandomParents(idx);
                 Child parent = old_pop.getChild(idx);
 //                Child child = pop.CreateDifferentialChild(donor,parent,F,CR);

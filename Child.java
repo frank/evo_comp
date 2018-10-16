@@ -34,14 +34,6 @@ public class Child {
         _values = values;
     }
 
-    public double getPythagoreanDistance(double[] f) {
-        double d = 0;
-        for (int i = 0; i<_values.length; i++){
-            d += Math.pow(_values[i] - f[i], 2);
-        }
-        return Math.sqrt(d);
-    }
-
     public double[] getValues() {
         return _values;
     }
