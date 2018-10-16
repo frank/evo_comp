@@ -9,7 +9,7 @@ public class player24 implements ContestSubmission {
     Random rnd_;
     ContestEvaluation evaluation_;
     private int evaluations_limit_;
-    private ArrayList<Integer> foundNeighbor;
+    private ArrayList<ArrayList<Child>> poop = new ArrayList<ArrayList<Child>>();
 
     public player24() {
         rnd_ = new Random();
@@ -45,8 +45,8 @@ public class player24 implements ContestSubmission {
 
 
     public Child selectCandidateForEval(ArrayList<Child> history, Population pop, double F, double CR, Child[] donor, Child parent){
-        double radiusEnd = 1.0;
-        double radiusStart = 5.0;
+        double radiusEnd = 2.0;
+        double radiusStart = 2.0;
         double radiusGradient = radiusStart-radiusEnd;
         double historyRadius =radiusGradient*pop.getEvals()/pop.getMaxEvals() + radiusEnd;
 
@@ -56,6 +56,17 @@ public class player24 implements ContestSubmission {
         for (int i = 0; i < rolloutNumber; i++){
 
             Child candidate = pop.CreateDifferentialChild(donor,parent,F,CR);
+            ArrayList<ArrayList<Integer>> ayy = new ArrayList<ArrayList<Integer>>();
+            for (int a = 0; a< candidate.getValues().length; a++){
+                ArrayList<Integer> dimArray = new ArrayList<Integer>();
+                if ( candidate.getValues(a)- historyRadius < 5.0){
+                    dimArray.add(0);
+                }
+                if ( candidate.getValues(a)- historyRadius >= 5.0){
+                    dimArray.add(1);
+                }
+                ayy.add(dimArray);
+            }
             double averageRadiusFitness = 0.0;
             double foundNum = 0;
             for (Child c : history) {
@@ -74,18 +85,13 @@ public class player24 implements ContestSubmission {
                 break;
             }
         }
-        if (noHistory){
-            foundNeighbor.add(0);
-        }else{
-            foundNeighbor.add(1);
-        }
+
         Child highest;
         if (noHistory) {
             highest = rolloutPop.getChild(rolloutPop.getChildren().size()-1);
         }else{
             highest = rolloutPop.getChild(0);
             for (int i = 1; i < rolloutNumber; i++){
-                System.out.println(rolloutPop.getChildren().size());
                 if (highest.getFitness() <= rolloutPop.getChild(i).getFitness()){
                     highest = rolloutPop.getChild(i);
                 }
@@ -100,6 +106,7 @@ public class player24 implements ContestSubmission {
         // Run your algorithm here
         double Fstd = 0.8;
         double CRstd = 0.1;
+        double chance = 0.001;
         ArrayList<Child> history = new ArrayList<Child>();
 
         // init population
@@ -127,9 +134,14 @@ public class player24 implements ContestSubmission {
             for (int idx = 0; (idx < old_pop.children.size() ) && Population.evals<evaluations_limit_; idx++) {
                 Child[] donor= old_pop.selectRandomParents(idx);
                 Child parent = old_pop.getChild(idx);
-//                Child child = pop.CreateDifferentialChild(donor,parent,F,CR);
+                Child child;
+                if (rnd_.nextDouble()<chance){
+                    child = selectCandidateForEval(history, pop, F, CR, donor, parent);
 
-                Child child = selectCandidateForEval(history, pop, F, CR, donor, parent);
+                }else{
+                    child = pop.CreateDifferentialChild(donor,parent,F,CR);
+                }
+
                 Double fitness = (double) evaluation_.evaluate(child.getValues());
                 child.setFitness(fitness);
                 history.add(child);

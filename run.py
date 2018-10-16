@@ -111,12 +111,12 @@ def run_java(argv):
     _ = run_cmd('jar cmf MainClass.txt submission.jar player24.class Population.class Child.class')
 
     os.putenv("LD_LIBRARY_PATH", os.getcwd())
-    output = run_cmd('java -jar testrun.jar -submission=player24 -evaluation=' + function_name + ' -seed=12345')
 
     score = []
     runtime = []
 
     if len(sys.argv) < 3:
+        output = run_cmd('java -jar testrun.jar -submission=player24 -evaluation=' + function_name + ' -seed=12345')
         print(output)
     else:
         try:
@@ -148,7 +148,7 @@ if __name__ == '__main__':
         argument_error()
 
     if len(sys.argv) == 5:
-        # To activate parameter tuning, add 1 more variable to run.py call (can be anything) eg. "python3 run.py k 5 0 a"
+        # To activate parameter tunning, add 1 more variable to run.py call (can be anything) eg. "python3 run.py k 5 0 a"
         # parameterTuning.txt file structure -> line1: Name of file (including .java)
         #                                       line2: Name of Parameter as written in the .java file (case sensitive),
         #                                              lower bound, upper bound, interval (value type is determined by value type in .java file)
