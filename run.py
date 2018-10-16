@@ -111,12 +111,12 @@ def run_java(argv):
     _ = run_cmd('jar cmf MainClass.txt submission.jar player24.class Population.class Child.class')
 
     os.putenv("LD_LIBRARY_PATH", os.getcwd())
-    output = run_cmd('java -jar testrun.jar -submission=player24 -evaluation=' + function_name + ' -seed=12345')
 
     score = []
     runtime = []
 
     if len(sys.argv) < 3:
+        output = run_cmd('java -jar testrun.jar -submission=player24 -evaluation=' + function_name + ' -seed=12345')
         print(output)
     else:
         try:

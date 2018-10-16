@@ -45,10 +45,10 @@ public class player24 implements ContestSubmission {
     public void run() {
         // Run your algorithm here
         double Fstd = 0.8;
-        double CRstd = 0.1;
+        double CRstd = 0.0;
 
         // init population
-        Population.populationSize = 90;
+        Population.populationSize = 140;
         Population.maxEvals=evaluations_limit_;
         int sameplesize=2; // determines the amount of parents when useing uniform initialization
 
@@ -65,7 +65,7 @@ public class player24 implements ContestSubmission {
             while (F < 0.0 || F > 1.0){
                 F = rnd_.nextGaussian()*Fstd + (double)Population.evals/(double)evaluations_limit_;
             }
-            double CR = 0.72;
+            double CR = rnd_.nextGaussian()*CRstd + (double)Population.evals/(double)evaluations_limit_;
             while (CR < 0.0 || CR > 1.0){
                 CR = rnd_.nextGaussian()*CRstd + (double)Population.evals/(double)evaluations_limit_;
             }
