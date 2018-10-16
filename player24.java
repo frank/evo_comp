@@ -9,6 +9,7 @@ public class player24 implements ContestSubmission {
     Random rnd_;
     ContestEvaluation evaluation_;
     private int evaluations_limit_;
+    private ArrayList<Integer> foundNeighbor;
 
     public player24() {
         rnd_ = new Random();
@@ -52,8 +53,8 @@ public class player24 implements ContestSubmission {
     }
 
     public Child selectCandidateForEval(ArrayList<Child> history, Population pop, double F, double CR, Child[] donor, Child parent){
-        double radiusEnd = 5.0;
-        double radiusStart = 1.0;
+        double radiusEnd = 1.0;
+        double radiusStart = 5.0;
         double radiusGradient = radiusStart-radiusEnd;
         double historyRadius =radiusGradient*pop.getEvals()/pop.getMaxEvals() + radiusEnd;
         int rolloutNumber = 10;
@@ -81,6 +82,11 @@ public class player24 implements ContestSubmission {
             if (noHistory){
                 break;
             }
+        }
+        if (noHistory){
+            foundNeighbor.add(0);
+        }else{
+            foundNeighbor.add(1);
         }
         Child highest;
         if (noHistory) {
@@ -110,8 +116,8 @@ public class player24 implements ContestSubmission {
 
         String mutationType = Population.GAUSSIAN; // Set to 'Uniform' or 'Gaussian'
         String parentSelectionType = Population.RANDOM; // Boltzmann, Max
-        double F = 0.4;
-//        double CR = 0.7;
+        double Fstd = 0.8;
+        double CRstd = 0.1;
 
         // init population
         ArrayList<Population> generations = new ArrayList<Population>();
@@ -131,9 +137,14 @@ public class player24 implements ContestSubmission {
                     mutationType, parentSelectionType, numberOfParents);
             Population old_pop = generations.get(generations.size() - 1);
 
-            F = rnd_.nextDouble();
-            double CR = (double)Population.evals/(double)evaluations_limit_; 
-            for (int idx = 0; (idx < old_pop.children.size() ) && Population.evals<evaluations_limit_; idx++) {
+            double F = rnd_.nextGaussian()*Fstd + (double)Population.evals/(double)evaluations_limit_;
+            while (F < 0.0 || F > 1.0){
+                F = rnd_.nextGaussian()*Fstd + (double)Population.evals/(double)evaluations_limit_;
+            }
+            double CR = rnd_.nextGaussian()*CRstd + (double)Population.evals/(double)evaluations_limit_;
+            while (CR < 0.0 || CR > 1.0){
+                CR = rnd_.nextGaussian()*CRstd + (double)Population.evals/(double)evaluations_limit_;
+            }            for (int idx = 0; (idx < old_pop.children.size() ) && Population.evals<evaluations_limit_; idx++) {
                 Child[] donor= old_pop.selectRandomParents(idx);
                 Child parent = old_pop.getChild(idx);
 //                Child child = pop.CreateDifferentialChild(donor,parent,F,CR);
@@ -162,6 +173,9 @@ public class player24 implements ContestSubmission {
 //            }
             papa=0;
         }
+        ArrayList<Integer> aa = new ArrayList<Integer>();
+        
+
 
     }
 }
