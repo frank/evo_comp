@@ -55,7 +55,7 @@ public class player24 implements ContestSubmission {
 
     public void run() {
         // Run your algorithm here
-        Population.populationSize = 89;
+        Population.populationSize = 90;
         int sameplesize=2;
         double time = 1000;
         double stDevMultiplier = 1.0;
@@ -63,8 +63,8 @@ public class player24 implements ContestSubmission {
 
         String mutationType = Population.GAUSSIAN; // Set to 'Uniform' or 'Gaussian'
         String parentSelectionType = Population.RANDOM; // Boltzmann, Max
-        double F = 0.4;
-//        double CR = 0.7;
+        double Fstd = 0.8;
+        double CRstd = 0.1;
 
         // init population
         ArrayList<Population> generations = new ArrayList<Population>();
@@ -82,8 +82,14 @@ public class player24 implements ContestSubmission {
                     mutationType, parentSelectionType, numberOfParents);
             Population old_pop = generations.get(generations.size() - 1);
 
-            F = rnd_.nextDouble();
-            double CR = (double)Population.evals/(double)evaluations_limit_; 
+            double F = rnd_.nextGaussian()*Fstd + (double)Population.evals/(double)evaluations_limit_;
+            while (F < 0.0 || F > 1.0){
+                F = rnd_.nextGaussian()*Fstd + (double)Population.evals/(double)evaluations_limit_;
+            }
+            double CR = 0.76;
+            while (CR < 0.0 || CR > 1.0){
+                CR = rnd_.nextGaussian()*CRstd + (double)Population.evals/(double)evaluations_limit_;
+            }
             for (int idx = 0; (idx < old_pop.children.size() ) && Population.evals<evaluations_limit_; idx++) {
                 Child[] donor= old_pop.selectRandomParents(idx);
                 Child parent = old_pop.getChild(idx);

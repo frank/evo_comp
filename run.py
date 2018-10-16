@@ -45,12 +45,12 @@ def getTuningParams():
     parameters = []
     rowNum = 0
     fileName =None
-    for row in data:
+    for row in range(3):
         if rowNum == 0:
             rowNum += 1
-            fileName = row
+            fileName = data[row]
             continue
-        items = row.split(" ")
+        items = data[row].split(" ")
         print("Input: " + str(items))
         if len(items) != 4:
             print("parameterTuning.txt file is written very poorly, ma boi!")
