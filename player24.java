@@ -20,15 +20,6 @@ public class player24 implements ContestSubmission {
         rnd_.setSeed(seed);
     }
 
-    //    public static void main(String[] args) {
-    //        Population pop = new Population(new Random());
-    //        Child child = new Child(new Random());
-    //        System.out.println("SchaffersEvaluation");ConsertTestBox.main(new String[]{"-submission=player24", "-evaluation=SchaffersEvaluation", "-seed=1"});
-    //        //System.out.println("KatsuuraEvaluation");ConsertTestBox.main(new String[]{"-submission=player24", "-evaluation=KatsuuraEvaluation", "-seed=1"});
-    //        //System.out.println("BentCigarFunction");ConsertTestBox.main(new String[]{"-submission=player24", "-evaluation=BentCigarFunction", "-seed=1"});
-    //
-    //    }
-
     public void setEvaluation(ContestEvaluation evaluation) {
         // Set evaluation problem used in the run
         evaluation_ = evaluation;
@@ -52,31 +43,31 @@ public class player24 implements ContestSubmission {
         }
     }
 
+
     public Child selectCandidateForEval(ArrayList<Child> history, Population pop, double F, double CR, Child[] donor, Child parent){
         double radiusEnd = 1.0;
         double radiusStart = 5.0;
         double radiusGradient = radiusStart-radiusEnd;
         double historyRadius =radiusGradient*pop.getEvals()/pop.getMaxEvals() + radiusEnd;
+
         int rolloutNumber = 10;
-        Population rolloutPop = new Population(rnd_, 0, evaluations_limit_,
-                null, null, 0);
+        Population rolloutPop = new Population(rnd_);
         boolean noHistory = false;
         for (int i = 0; i < rolloutNumber; i++){
 
             Child candidate = pop.CreateDifferentialChild(donor,parent,F,CR);
             double averageRadiusFitness = 0.0;
             double foundNum = 0;
-            for (Child c : history){
-                if (candidate.getPythagoreanDistance(c.getValues()) < historyRadius){
+            for (Child c : history) {
+                if (candidate.getPythagoreanDistance(c.getValues()) < historyRadius) {
                     averageRadiusFitness += c.getFitness();
                     foundNum += 1.0;
                 }
-                if (foundNum == 0){
-                    noHistory = true;
-                    break;
-                }else{
-                    candidate.setFitness(averageRadiusFitness / foundNum);
-                }
+            }
+            if (foundNum == 0){
+                noHistory = true;
+            }else{
+                candidate.setFitness(averageRadiusFitness / foundNum);
             }
             rolloutPop.AddChild(candidate);
             if (noHistory){
@@ -94,8 +85,9 @@ public class player24 implements ContestSubmission {
         }else{
             highest = rolloutPop.getChild(0);
             for (int i = 1; i < rolloutNumber; i++){
-                if (highest.getFitness() <= rolloutPop.getChild(1).getFitness()){
-                    highest = rolloutPop.getChild(1);
+                System.out.println(rolloutPop.getChildren().size());
+                if (highest.getFitness() <= rolloutPop.getChild(i).getFitness()){
+                    highest = rolloutPop.getChild(i);
                 }
             }
         }
@@ -108,6 +100,7 @@ public class player24 implements ContestSubmission {
         // Run your algorithm here
         double Fstd = 0.8;
         double CRstd = 0.1;
+        ArrayList<Child> history = new ArrayList<Child>();
 
         // init population
         Population.populationSize = 90;
@@ -127,7 +120,7 @@ public class player24 implements ContestSubmission {
             while (F < 0.0 || F > 1.0){
                 F = rnd_.nextGaussian()*Fstd + (double)Population.evals/(double)evaluations_limit_;
             }
-            double CR = 0.72;
+            double CR = rnd_.nextGaussian()*CRstd + (double)Population.evals/(double)evaluations_limit_;
             while (CR < 0.0 || CR > 1.0){
                 CR = rnd_.nextGaussian()*CRstd + (double)Population.evals/(double)evaluations_limit_;
             }
@@ -141,28 +134,10 @@ public class player24 implements ContestSubmission {
                 child.setFitness(fitness);
                 history.add(child);
                 Population.evals++;
-
-//              System.out.println("papa:"+parent.getFitness());
-//              System.out.println("child:"+fitness);
-
                 if(fitness>parent.getFitness()){mutantpopulation.AddChild(child);}
-                else{mutantpopulation.AddChild(parent);papa++;}
+                else{mutantpopulation.AddChild(parent);}
             }
             generations.add(mutantpopulation);
-
-			//F = -F-((papa-populationSize/2)/(double) populationSize);
-            //System.out.println("papa added " + papa);
-            //System.out.println("F: "+F);
-//            if(papa==populationSize){
-//                System.out.println("evals"+Population.evals);
-//                System.out.println("quitting");
-//                return;
-//            }
-            papa=0;
         }
-        ArrayList<Integer> aa = new ArrayList<Integer>();
-        
-
-
     }
 }

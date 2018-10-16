@@ -128,7 +128,15 @@ public class Population {
         return children.get(idx);
     }
 
-    public void evalPopulation(ContestEvaluation evaluation_){   
+    public int getMaxEvals() {
+        return maxEvals;
+    }
+
+    public int getEvals() {
+        return evals;
+    }
+
+    public void evalPopulation(ContestEvaluation evaluation_){
         //reevaluate the complete population
         for(int i = 0; i < populationSize; i++){
             children.get(i).setFitness((double) evaluation_.evaluate(children.get(i).getValues()));

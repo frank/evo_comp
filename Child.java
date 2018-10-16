@@ -67,4 +67,12 @@ public class Child {
     public double getMax() {
         return MAX;
     }
+
+    public double getPythagoreanDistance(double[] individual){
+        double distance = 0;
+        for (int i=0; i<_values.length; i++){
+            distance += Math.pow(_values[i] - individual[i], 2);
+        }
+        return Math.sqrt(distance);
+    }
 }
