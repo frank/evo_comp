@@ -44,10 +44,8 @@ public class player24 implements ContestSubmission {
 
     public void run() {
         // Run your algorithm here
-        double Fstd = 1;
-        double CRstd = 0.0;
-        double F_lowerB = 0.0;
-        double F_upperB = 1.0;
+        double Fstd = 0.325;
+        double CRstd = 0.08;
 
         // init population
         Population.populationSize = 140;
@@ -64,13 +62,14 @@ public class player24 implements ContestSubmission {
             Population old_pop = generations.get(generations.size() - 1);
 
             double evalProgress = (double)Population.evals/(double)evaluations_limit_;
-            double F = rnd_.nextGaussian()*Fstd*evalProgress + evalProgress;
-            while (F < F_lowerB || F > F_upperB){
-                F = rnd_.nextGaussian()*Fstd*evalProgress + evalProgress;
+
+            double F = rnd_.nextGaussian()*Fstd*(Math.exp(evalProgress)-1.0) + evalProgress;
+            while (F < 0.0 || F > 1.0){
+                F = rnd_.nextGaussian()*Fstd*(Math.exp(evalProgress)-1.0) + evalProgress;
             }
-            double CR = rnd_.nextGaussian()*CRstd + evalProgress;
+            double CR = rnd_.nextGaussian()*CRstd*(Math.exp(1-evalProgress)-1) + evalProgress;
             while (CR < 0.0 || CR > 1.0){
-                CR = rnd_.nextGaussian()*CRstd + evalProgress;
+                CR = rnd_.nextGaussian()*CRstd*(Math.exp(1-evalProgress)-1) + evalProgress;
             }
             for (int idx = 0; (idx < old_pop.children.size() ) && Population.evals<evaluations_limit_; idx++) {
                 Child[] donor= old_pop.selectRandomParents(idx);
