@@ -21,17 +21,23 @@ public class Population {
         this.maxEvals = maxEvals;
     }
 
-    public void initPop(int samplesize){
-    		double increment=10/(double)(samplesize+1);
-        	double[] vals = new double[10];
-        	for(int idx=0;idx<10;idx++){
-        		vals[idx]=-5;            	
-        	}
-        	//uniform initialization
-        	if(samplesize>0)generate_kid(0,samplesize,increment,vals);
-        	//random initialization
-        	else{
-				for(int i = 0;i<populationSize;i++ )children.add(new Child(_rnd));        	
+    public void initPopRandom(){
+        for(int i = 0; i < populationSize; i++) {
+            children.add(new Child(_rnd));
+        }
+    }
+
+    public void initPopUniform(int samplesize){
+        double increment=10/(double)(samplesize+1);
+        double[] vals = new double[10];
+        for(int idx=0;idx<10;idx++){
+            vals[idx]=-5;
+        }
+        //uniform initialization
+        if(samplesize>0)generate_kid(0,samplesize,increment,vals);
+        //random initialization
+        else{
+            for(int i = 0;i<populationSize;i++ )children.add(new Child(_rnd));
    		}
    }
 

@@ -69,21 +69,21 @@ public class player24 implements ContestSubmission {
             CR_end = 1.0;
             Population.populationSize = 133;
         }else if(isSchaffer){
-            Fstd = 1.0;
-            F_end = 0.75;
-            F_start = 0.75;
+            Fstd = 0.5;
+            F_end = 0.7;
+            F_start = 0.7;
             CRstd = 0.05;
             CR_start = 0.8;
             CR_end = 0.8;
-            Population.populationSize = 55;
+            Population.populationSize = 47;
         }else{
-            Fstd = 1.0;
-            F_end = 0.0;
-            F_start = 1.0;
-            CRstd = 0.15;
-            CR_start = 0.8;
+            Fstd = 0.5;
+            F_end = 0.7;
+            F_start = 0.7;
+            CRstd = 0.05;
+            CR_start = 0.90;
             CR_end = 1.0;
-            Population.populationSize = 20;
+            Population.populationSize = 24;
         }
 
         // init population
@@ -92,7 +92,7 @@ public class player24 implements ContestSubmission {
 
         ArrayList<Population> generations = new ArrayList<Population>();
         Population pop = new Population(rnd_);
-        pop.initPop(sameplesize);
+        pop.initPopUniform(sameplesize);
         pop.evalPopulation(evaluation_);
         generations.add(pop);
         while (Population.evals < evaluations_limit_) {
@@ -102,11 +102,10 @@ public class player24 implements ContestSubmission {
             double evalProgress = (double)Population.evals/(double)evaluations_limit_;
 
             double F = rnd_.nextGaussian()*Fstd*evalProgress + (F_end-F_start)*evalProgress + F_start;
-
-            double CR = rnd_.nextGaussian()*CRstd*(1-evalProgress) + (CR_end-CR_start)*evalProgress + CR_start;
-            while (CR < 0.0 || CR > 1.0){
+            double CR;
+            do{
                 CR = rnd_.nextGaussian()*CRstd*(1-evalProgress) + (CR_end-CR_start)*evalProgress + CR_start;
-            }
+            }while (CR < 0.0 || CR > 1.0);
             for (int idx = 0; (idx < old_pop.children.size() ) && Population.evals<evaluations_limit_; idx++) {
                 Child[] donor= old_pop.selectRandomParents(idx);
                 Child parent = old_pop.getChild(idx);
