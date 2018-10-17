@@ -10,8 +10,15 @@ public class player24 implements ContestSubmission {
     ContestEvaluation evaluation_;
     private int evaluations_limit_;
 
+    private boolean isSchaffer;
+    private boolean isKatsuura;
+    private boolean isBC;
+
     public player24() {
         rnd_ = new Random();
+        isSchaffer = false;
+        isKatsuura = false;
+        isBC = false;
     }
 
     public void setSeed(long seed) {
@@ -35,21 +42,51 @@ public class player24 implements ContestSubmission {
         boolean isSeparable = Boolean.parseBoolean(props.getProperty("Separable"));
 
         // Do sth with property values, e.g. specify relevant settings of your algorithm
-        if (isMultimodal) {
-            // Do sth
-        } else {
-            // Do sth else
+
+        if(!isMultimodal && !hasStructure){
+            isBC = true;
+        }else if(isMultimodal && hasStructure){
+            isSchaffer = true;
+        }else if(isMultimodal){
+            isKatsuura = true;
         }
     }
 
     public void run() {
         // Run your algorithm here
-        double Fstd = 0.5;
-        double FmeanEnd = 0.80;
-        double CRstd = 0.15;
+        double Fstd;
+        double F_end;
+        double F_start;
+        double CRstd;
+        double CR_start;
+        double CR_end;
+        if (isKatsuura){
+            Fstd = 0.47;
+            F_end = 0.80;
+            F_start = 0.0;
+            CRstd = 0.15;
+            CR_start = 0.0;
+            CR_end = 1.0;
+            Population.populationSize = 133;
+        }else if(isSchaffer){
+            Fstd = 1.0;
+            F_end = 0.75;
+            F_start = 0.75;
+            CRstd = 0.05;
+            CR_start = 0.8;
+            CR_end = 0.8;
+            Population.populationSize = 55;
+        }else{
+            Fstd = 1.0;
+            F_end = 0.0;
+            F_start = 1.0;
+            CRstd = 0.15;
+            CR_start = 0.8;
+            CR_end = 1.0;
+            Population.populationSize = 20;
+        }
 
         // init population
-        Population.populationSize = 140;
         Population.maxEvals=evaluations_limit_;
         int sameplesize=2; // determines the amount of parents when useing uniform initialization
 
@@ -64,11 +101,11 @@ public class player24 implements ContestSubmission {
 
             double evalProgress = (double)Population.evals/(double)evaluations_limit_;
 
-            double F = rnd_.nextGaussian()*Fstd*evalProgress + FmeanEnd*evalProgress;
+            double F = rnd_.nextGaussian()*Fstd*evalProgress + (F_end-F_start)*evalProgress + F_start;
 
-            double CR = rnd_.nextGaussian()*CRstd*(1-evalProgress) + evalProgress;
+            double CR = rnd_.nextGaussian()*CRstd*(1-evalProgress) + (CR_end-CR_start)*evalProgress + CR_start;
             while (CR < 0.0 || CR > 1.0){
-                CR = rnd_.nextGaussian()*CRstd*(1-evalProgress) + evalProgress;
+                CR = rnd_.nextGaussian()*CRstd*(1-evalProgress) + (CR_end-CR_start)*evalProgress + CR_start;
             }
             for (int idx = 0; (idx < old_pop.children.size() ) && Population.evals<evaluations_limit_; idx++) {
                 Child[] donor= old_pop.selectRandomParents(idx);
