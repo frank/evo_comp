@@ -10,8 +10,15 @@ public class player24 implements ContestSubmission {
     ContestEvaluation evaluation_;
     private int evaluations_limit_;
 
+    private boolean isSchaffer;
+    private boolean isKatsuura;
+    private boolean isBC;
+
     public player24() {
         rnd_ = new Random();
+        isSchaffer = false;
+        isKatsuura = false;
+        isBC = false;
     }
 
     public void setSeed(long seed) {
@@ -35,14 +42,18 @@ public class player24 implements ContestSubmission {
         boolean isSeparable = Boolean.parseBoolean(props.getProperty("Separable"));
 
         // Do sth with property values, e.g. specify relevant settings of your algorithm
-        if (isMultimodal) {
-            // Do sth
-        } else {
-            // Do sth else
+
+        if(!isMultimodal && !hasStructure){
+        	isBC = true;
+        }else if(isMultimodal && hasStructure){
+        	isSchaffer = true;
+        }else if(isMultimodal){
+        	isKatsuura = true;
         }
     }
 
     public void run() {
+    	System.exit(0);
         // Run your algorithm here
         double Fstd = 0.5;
         double FmeanEnd = 0.80;
