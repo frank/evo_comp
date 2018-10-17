@@ -21,17 +21,35 @@ public class Population {
         this.maxEvals = maxEvals;
     }
 
-    public void initPop(int samplesize){
-    		double increment=10/(double)(samplesize+1);
-        	double[] vals = new double[10];
-        	for(int idx=0;idx<10;idx++){
-        		vals[idx]=-5;            	
-        	}
-        	//uniform initialization
-        	if(samplesize>0)generate_kid(0,samplesize,increment,vals);
-        	//random initialization
-        	else{
-				for(int i = 0;i<populationSize;i++ )children.add(new Child(_rnd));        	
+    public void initPopRandom():
+        for(int i = 0; i < population_size; i++) {
+            children.add(new Child(_rnd));
+        }
+    }
+
+    public void initPopGaussian(double stddev) {
+        double[] vals = new double[10];
+        for(int i = 0; i < population_size; i++) {
+            for(int j = 0; i < 10; i++) {
+                do {
+                    vals[j] = _rnd.nextGaussian()*stddev;
+                } while (vals[j] > -5 && vals[j] < 5);
+            }
+            children.add(new Child(vals, _rnd));
+        }
+    }
+
+    public void initPopUniform(int samplesize){
+        double increment=10/(double)(samplesize+1);
+        double[] vals = new double[10];
+        for(int idx=0;idx<10;idx++){
+            vals[idx]=-5;
+        }
+        //uniform initialization
+        if(samplesize>0)generate_kid(0,samplesize,increment,vals);
+        //random initialization
+        else{
+            for(int i = 0;i<populationSize;i++ )children.add(new Child(_rnd));
    		}
    }
 

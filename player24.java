@@ -44,8 +44,8 @@ public class player24 implements ContestSubmission {
 
     public void run() {
         // Run your algorithm here
-        double Fstd = 0.5;
-        double FmeanEnd = 0.80;
+        double Fstd = 0.4;
+        double FmeanEnd = 1.0;
         double CRstd = 0.15;
 
         // init population
@@ -55,7 +55,7 @@ public class player24 implements ContestSubmission {
 
         ArrayList<Population> generations = new ArrayList<Population>();
         Population pop = new Population(rnd_);
-        pop.initPop(sameplesize);
+        pop.initPopUniform(sameplesize);
         pop.evalPopulation(evaluation_);
         generations.add(pop);
         while (Population.evals < evaluations_limit_) {
