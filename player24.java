@@ -82,7 +82,7 @@ public class player24 implements ContestSubmission {
             F_start = 0.7;
             CRstd = 0.05;
             CR_start = 0.90;
-            CR_end = 1.0;
+            CR_end = 0.9;
             Population.populationSize = 24;
         }
 
