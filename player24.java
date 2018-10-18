@@ -62,27 +62,27 @@ public class player24 implements ContestSubmission {
         double CR_end;
         if (isKatsuura){
             Fstd = 0.47;
-            F_end = 0.80;
             F_start = 0.0;
+            F_end = 0.80;
             CRstd = 0.15;
             CR_start = 0.0;
             CR_end = 1.0;
-            Population.populationSize = 133;
+            Population.populationSize = 137;
         }else if(isSchaffer){
             Fstd = 0.5;
-            F_end = 0.68;
             F_start = 0.68;
+            F_end = F_start;
             CRstd = 0.0;
             CR_start = 0.8;
             CR_end = CR_start;
             Population.populationSize = 48;
         }else{
             Fstd = 0.5;
-            F_end = 0.7;
             F_start = 0.7;
-            CRstd = 0.0;
-            CR_start = 0.9;
-            CR_end = CR_start;
+            F_end = F_start;
+            CRstd = 0.1;
+            CR_start = 1.0;
+            CR_end = 0.9;
             Population.populationSize = 24;
         }
 
@@ -115,17 +115,12 @@ public class player24 implements ContestSubmission {
                 Double fitness = (double) evaluation_.evaluate(child.getValues());
                 child.setFitness(fitness);
                 Population.evals++;
-                if (fitness >= 10.000){
-                    foundMax = true;
-                    break;
-                }
+//                if (fitness >= 10.000){
+//                    return;
+//                }
                 if(fitness>parent.getFitness()){mutantpopulation.AddChild(child);}
                 else{mutantpopulation.AddChild(parent);}
 
-            }
-            if (foundMax){
-                System.out.println(Population.evals);
-                break;
             }
             generations.add(mutantpopulation);
         }
