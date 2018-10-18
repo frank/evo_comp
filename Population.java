@@ -91,7 +91,7 @@ public class Population {
 
     	//mutation
     	for(int idx=0;idx<10;idx++){
-    		peturbation_v = F*(y.getValues(idx)-z.getValues(idx));
+    		peturbation_v = F*(y.getValues(idx)-z.getValues(idx)) ;
     		mutant_v[idx] = Math.min(Child.MAX,Math.max(Child.MIN,   x.getValues(idx) - peturbation_v));
     	}
         //crossover

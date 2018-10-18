@@ -70,19 +70,19 @@ public class player24 implements ContestSubmission {
             Population.populationSize = 133;
         }else if(isSchaffer){
             Fstd = 0.5;
-            F_end = 0.7;
-            F_start = 0.7;
-            CRstd = 0.05;
+            F_end = 0.68;
+            F_start = 0.68;
+            CRstd = 0.0;
             CR_start = 0.8;
-            CR_end = 0.8;
-            Population.populationSize = 47;
+            CR_end = CR_start;
+            Population.populationSize = 48;
         }else{
             Fstd = 0.5;
             F_end = 0.7;
             F_start = 0.7;
-            CRstd = 0.05;
-            CR_start = 0.90;
-            CR_end = 0.9;
+            CRstd = 0.0;
+            CR_start = 0.9;
+            CR_end = CR_start;
             Population.populationSize = 24;
         }
 
@@ -95,6 +95,7 @@ public class player24 implements ContestSubmission {
         pop.initPopUniform(sameplesize);
         pop.evalPopulation(evaluation_);
         generations.add(pop);
+        boolean foundMax = false;
         while (Population.evals < evaluations_limit_) {
             Population mutantpopulation = new Population(rnd_);
             Population old_pop = generations.get(generations.size() - 1);
@@ -114,8 +115,17 @@ public class player24 implements ContestSubmission {
                 Double fitness = (double) evaluation_.evaluate(child.getValues());
                 child.setFitness(fitness);
                 Population.evals++;
+                if (fitness >= 10.000){
+                    foundMax = true;
+                    break;
+                }
                 if(fitness>parent.getFitness()){mutantpopulation.AddChild(child);}
                 else{mutantpopulation.AddChild(parent);}
+
+            }
+            if (foundMax){
+                System.out.println(Population.evals);
+                break;
             }
             generations.add(mutantpopulation);
         }
