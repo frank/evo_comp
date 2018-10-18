@@ -55,32 +55,59 @@ public class player24 implements ContestSubmission {
     public void run() {
     	System.exit(0);
         // Run your algorithm here
-        double Fstd = 0.5;
-        double FmeanEnd = 0.80;
-        double CRstd = 0.15;
+        double Fstd;
+        double F_end;
+        double F_start;
+        double CRstd;
+        double CR_start;
+        double CR_end;
+        if (isKatsuura){
+            Fstd = 0.47;
+            F_start = 0.0;
+            F_end = 0.80;
+            CRstd = 0.15;
+            CR_start = 0.0;
+            CR_end = 1.0;
+            Population.populationSize = 137;
+        }else if(isSchaffer){
+            Fstd = 0.5;
+            F_start = 0.68;
+            F_end = F_start;
+            CRstd = 0.0;
+            CR_start = 0.8;
+            CR_end = CR_start;
+            Population.populationSize = 48;
+        }else{
+            Fstd = 0.5;
+            F_start = 0.7;
+            F_end = F_start;
+            CRstd = 0.1;
+            CR_start = 1.0;
+            CR_end = 0.9;
+            Population.populationSize = 24;
+        }
 
         // init population
-        Population.populationSize = 140;
         Population.maxEvals=evaluations_limit_;
         int sameplesize=2; // determines the amount of parents when useing uniform initialization
 
         ArrayList<Population> generations = new ArrayList<Population>();
         Population pop = new Population(rnd_);
-        pop.initPop(sameplesize);
+        pop.initPopUniform(sameplesize);
         pop.evalPopulation(evaluation_);
         generations.add(pop);
+        boolean foundMax = false;
         while (Population.evals < evaluations_limit_) {
             Population mutantpopulation = new Population(rnd_);
             Population old_pop = generations.get(generations.size() - 1);
 
             double evalProgress = (double)Population.evals/(double)evaluations_limit_;
 
-            double F = rnd_.nextGaussian()*Fstd*evalProgress + FmeanEnd*evalProgress;
-
-            double CR = rnd_.nextGaussian()*CRstd*(1-evalProgress) + evalProgress;
-            while (CR < 0.0 || CR > 1.0){
-                CR = rnd_.nextGaussian()*CRstd*(1-evalProgress) + evalProgress;
-            }
+            double F = rnd_.nextGaussian()*Fstd*evalProgress + (F_end-F_start)*evalProgress + F_start;
+            double CR;
+            do{
+                CR = rnd_.nextGaussian()*CRstd*(1-evalProgress) + (CR_end-CR_start)*evalProgress + CR_start;
+            }while (CR < 0.0 || CR > 1.0);
             for (int idx = 0; (idx < old_pop.children.size() ) && Population.evals<evaluations_limit_; idx++) {
                 Child[] donor= old_pop.selectRandomParents(idx);
                 Child parent = old_pop.getChild(idx);
@@ -89,8 +116,12 @@ public class player24 implements ContestSubmission {
                 Double fitness = (double) evaluation_.evaluate(child.getValues());
                 child.setFitness(fitness);
                 Population.evals++;
+//                if (fitness >= 10.000){
+//                    return;
+//                }
                 if(fitness>parent.getFitness()){mutantpopulation.AddChild(child);}
                 else{mutantpopulation.AddChild(parent);}
+
             }
             generations.add(mutantpopulation);
         }
