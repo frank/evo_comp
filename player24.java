@@ -60,6 +60,7 @@ public class player24 implements ContestSubmission {
         double CRstd;
         double CR_start;
         double CR_end;
+        double CR;
 
         if (isKatsuura){
             Fstd = 0.0;
@@ -70,23 +71,23 @@ public class player24 implements ContestSubmission {
             CR_end = 0.9;
             Population.populationSize = 100;//137
         }else if(isSchaffer){
-            Fstd = 0.5;
-            F_start = 0.68;
+            Fstd = 0.0;
+            F_start = 0.3;
             F_end = F_start;
             CRstd = 0.0;
-            CR_start = 0.8;
-            CR_end = CR_start;
+            CR_start = 0.0;
+            CR_end = 1.0;
 
             Population.populationSize = 100;//48
-         }else{
-             Fstd = 0.5;
-             F_start = 0.7;
+        }else{
+             Fstd = 0.0;
+             F_start = 0.2;
              F_end = F_start;
-             CRstd = 0.1;
-             CR_start = 1.0;
-             CR_end = 0.9;
+             CRstd = 0.0;
+             CR_start = 0.0;
+             CR_end = 1.0;
              Population.populationSize = 100;//24
-         }
+        }
 
         // init population
         Population.maxEvals=evaluations_limit_;
@@ -96,8 +97,8 @@ public class player24 implements ContestSubmission {
         Population pop = new Population(rnd_);
         
 
-        // pop.initPopUniform(sameplesize);
-        pop.initPopRandom();
+        pop.initPopUniform(sameplesize);
+//        pop.initPopRandom();
 
 
         pop.evalPopulation(evaluation_);
@@ -109,15 +110,15 @@ public class player24 implements ContestSubmission {
 
             double evalProgress = (double)Population.evals/(double)evaluations_limit_;
 
-            double F = 0.5;
-            double CR = 0.0;
+            double F = 0.2;
+//            double CR = 0.8;
 
             //double F = rnd_.nextGaussian()*Fstd*evalProgress + (F_end-F_start)*evalProgress + F_start;
 
-            // do{
-            //     CR = rnd_.nextGaussian()*CRstd*(1-evalProgress) + (CR_end-CR_start)*evalProgress + CR_start;
-            // }while (CR < 0.0 || CR > 1.0);
-            for (int idx = 0; (idx < old_pop.children.size() ) && Population.evals<evaluations_limit_; idx++) {
+             do{
+                 CR = rnd_.nextGaussian()*CRstd*(1-evalProgress) + (CR_end-CR_start)*evalProgress + CR_start;
+             }while (CR < 0.0 || CR > 1.0);
+             for (int idx = 0; (idx < old_pop.children.size() ) && Population.evals<evaluations_limit_; idx++) {
                 Child[] donor= old_pop.selectRandomParents(idx);
                 Child parent = old_pop.getChild(idx);
 
