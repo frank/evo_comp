@@ -1,0 +1,742 @@
+Input: ['F_end', '0.5', '1', '0.1']
+Input: ['Fstd', '0', '1', '0.1']
+Values: ['F_end', [0.5, 0.6, 0.7, 0.7999999999999999, 0.8999999999999999, 0.9999999999999999]]
+Values: ['Fstd', [0.0, 0.1, 0.2, 0.30000000000000004, 0.4, 0.5, 0.6, 0.7, 0.7999999999999999, 0.8999999999999999, 0.9999999999999999]]
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+Changing Fstd...
+Changing F_end...
+
+F_end value: 0.5
+Fstd value: 0.0
+------------
+Average score: 0.3138582699987203
+St Dev score: 0.30839691323099866
+Average runtime: 19327.466666666667ms
+Predicted remaining time:  18959s (316.0min)  /  (320.8min)
+------------
+Changing F_end...
+
+F_end value: 0.6
+Fstd value: 0.0
+------------
+Average score: 0.4327862328875958
+St Dev score: 0.527227493970453
+Average runtime: 19244.6ms
+Predicted remaining time:  18627s (310.5min)  /  (320.2min)
+------------
+Changing F_end...
+
+F_end value: 0.7
+Fstd value: 0.0
+------------
+Average score: 0.5358612790108261
+St Dev score: 0.8617433443012978
+Average runtime: 19110.866666666665ms
+Predicted remaining time:  18279s (304.7min)  /  (319.2min)
+------------
+Changing F_end...
+
+F_end value: 0.7999999999999999
+Fstd value: 0.0
+------------
+Average score: 0.5026824709285669
+St Dev score: 0.6249993342024722
+Average runtime: 19123.8ms
+Predicted remaining time:  17963s (299.4min)  /  (318.7min)
+------------
+Changing F_end...
+
+F_end value: 0.8999999999999999
+Fstd value: 0.0
+------------
+Average score: 0.6587348987305489
+St Dev score: 0.408973024053927
+Average runtime: 19100.266666666666ms
+Predicted remaining time:  17654s (294.2min)  /  (318.4min)
+------------
+Changing F_end...
+
+F_end value: 0.9999999999999999
+Fstd value: 0.0
+------------
+Average score: 0.3839453761948065
+St Dev score: 0.5709351364987271
+Average runtime: 19181.466666666667ms
+Predicted remaining time:  17365s (289.4min)  /  (318.4min)
+------------
+Max score (0.6587348987305489) in paramerter F_end achieved by value: 0.8999999999999999
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+Changing Fstd...
+Changing F_end...
+
+F_end value: 0.5
+Fstd value: 0.1
+------------
+Average score: 0.47552338446134396
+St Dev score: 0.5093745275705684
+Average runtime: 19690.8ms
+Predicted remaining time:  17142s (285.7min)  /  (319.6min)
+------------
+Changing F_end...
+
+F_end value: 0.6
+Fstd value: 0.1
+------------
+Average score: 0.46465574781680297
+St Dev score: 0.5368937887558166
+Average runtime: 19634.066666666666ms
+Predicted remaining time:  16895s (281.6min)  /  (320.4min)
+------------
+Changing F_end...
+
+F_end value: 0.7
+Fstd value: 0.1
+------------
+Average score: 0.29877746016200246
+St Dev score: 0.30313474029300835
+Average runtime: 19118.666666666668ms
+Predicted remaining time:  16586s (276.4min)  /  (320.1min)
+------------
+Changing F_end...
+
+F_end value: 0.7999999999999999
+Fstd value: 0.1
+------------
+Average score: 0.5764681463699115
+St Dev score: 0.566432801124475
+Average runtime: 19375.533333333333ms
+Predicted remaining time:  16303s (271.7min)  /  (320.2min)
+------------
+Changing F_end...
+
+F_end value: 0.8999999999999999
+Fstd value: 0.1
+------------
+Average score: 0.5660992846979699
+St Dev score: 0.49353910178136606
+Average runtime: 19645.0ms
+Predicted remaining time:  16039s (267.3min)  /  (320.8min)
+------------
+Changing F_end...
+
+F_end value: 0.9999999999999999
+Fstd value: 0.1
+------------
+Average score: 0.5934453376619598
+St Dev score: 0.6838412944534952
+Average runtime: 19578.733333333334ms
+Predicted remaining time:  15765s (262.8min)  /  (321.2min)
+------------
+Max score (0.5934453376619598) in paramerter F_end achieved by value: 0.9999999999999999
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+Changing Fstd...
+Changing F_end...
+
+F_end value: 0.5
+Fstd value: 0.2
+------------
+Average score: 0.6666854086116721
+St Dev score: 1.0948081025142393
+Average runtime: 19115.6ms
+Predicted remaining time:  15459s (257.7min)  /  (320.9min)
+------------
+Changing F_end...
+
+F_end value: 0.6
+Fstd value: 0.2
+------------
+Average score: 0.29090980366963376
+St Dev score: 0.4170839661396128
+Average runtime: 19515.866666666665ms
+Predicted remaining time:  15178s (253.0min)  /  (321.1min)
+------------
+Changing F_end...
+
+F_end value: 0.7
+Fstd value: 0.2
+------------
+Average score: 0.5954657743106686
+St Dev score: 0.6913931318227968
+Average runtime: 19639.266666666666ms
+Predicted remaining time:  14902s (248.4min)  /  (321.4min)
+------------
+Changing F_end...
+
+F_end value: 0.7999999999999999
+Fstd value: 0.2
+------------
+Average score: 0.7016253956678298
+St Dev score: 0.6312376710423561
+Average runtime: 19645.533333333333ms
+Predicted remaining time:  14624s (243.7min)  /  (321.7min)
+------------
+Changing F_end...
+
+F_end value: 0.8999999999999999
+Fstd value: 0.2
+------------
+Average score: 0.40698310081578853
+St Dev score: 0.474510373902335
+Average runtime: 19391.933333333334ms
+Predicted remaining time:  14332s (238.9min)  /  (321.7min)
+------------
+Changing F_end...
+
+F_end value: 0.9999999999999999
+Fstd value: 0.2
+------------
+Average score: 0.6138898412179087
+St Dev score: 0.6962104078152541
+Average runtime: 19249.733333333334ms
+Predicted remaining time:  14034s (233.9min)  /  (321.6min)
+------------
+Max score (0.7016253956678298) in paramerter F_end achieved by value: 0.7999999999999999
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+Changing Fstd...
+Changing F_end...
+
+F_end value: 0.5
+Fstd value: 0.30000000000000004
+------------
+Average score: 0.5334233380334318
+St Dev score: 0.6287109460093188
+Average runtime: 19178.666666666668ms
+Predicted remaining time:  13734s (228.9min)  /  (321.4min)
+------------
+Changing F_end...
+
+F_end value: 0.6
+Fstd value: 0.30000000000000004
+------------
+Average score: 0.5893545810242924
+St Dev score: 0.5013294788701895
+Average runtime: 19212.866666666665ms
+Predicted remaining time:  13436s (223.9min)  /  (321.3min)
+------------
+Changing F_end...
+
+F_end value: 0.7
+Fstd value: 0.30000000000000004
+------------
+Average score: 1.1945495125339571
+St Dev score: 2.022819141889465
+Average runtime: 20285.933333333334ms
+Predicted remaining time:  13175s (219.6min)  /  (322.1min)
+------------
+Changing F_end...
+
+F_end value: 0.7999999999999999
+Fstd value: 0.30000000000000004
+------------
+Average score: 0.5553213896792412
+St Dev score: 0.4867620970251453
+Average runtime: 19349.4ms
+Predicted remaining time:  12881s (214.7min)  /  (322.0min)
+------------
+Changing F_end...
+
+F_end value: 0.8999999999999999
+Fstd value: 0.30000000000000004
+------------
+Average score: 0.8294276694298849
+St Dev score: 0.8738832008922286
+Average runtime: 19087.466666666667ms
+Predicted remaining time:  12579s (209.7min)  /  (321.8min)
+------------
+Changing F_end...
+
+F_end value: 0.9999999999999999
+Fstd value: 0.30000000000000004
+------------
+Average score: 0.4578120151703398
+St Dev score: 0.6569015284505338
+Average runtime: 19073.933333333334ms
+Predicted remaining time:  12278s (204.6min)  /  (321.6min)
+------------
+Max score (1.1945495125339571) in paramerter F_end achieved by value: 0.7
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+Changing Fstd...
+Changing F_end...
+
+F_end value: 0.5
+Fstd value: 0.4
+------------
+Average score: 0.42736412918540273
+St Dev score: 0.49012218837248245
+Average runtime: 19105.533333333333ms
+Predicted remaining time:  11979s (199.7min)  /  (321.4min)
+------------
+Changing F_end...
+
+F_end value: 0.6
+Fstd value: 0.4
+------------
+Average score: 0.4453532749748094
+St Dev score: 0.3891359875615413
+Average runtime: 19111.066666666666ms
+Predicted remaining time:  11681s (194.7min)  /  (321.2min)
+------------
+Changing F_end...
+
+F_end value: 0.7
+Fstd value: 0.4
+------------
+Average score: 0.8384185297632132
+St Dev score: 0.7327754770913394
+Average runtime: 19110.666666666668ms
+Predicted remaining time:  11384s (189.7min)  /  (321.1min)
+------------
+Changing F_end...
+
+F_end value: 0.7999999999999999
+Fstd value: 0.4
+------------
+Average score: 1.216946108296305
+St Dev score: 1.498342823580352
+Average runtime: 19095.533333333333ms
+Predicted remaining time:  11087s (184.8min)  /  (320.9min)
+------------
+Changing F_end...
+
+F_end value: 0.8999999999999999
+Fstd value: 0.4
+------------
+Average score: 0.511548863771142
+St Dev score: 0.46662484712791197
+Average runtime: 19110.533333333333ms
+Predicted remaining time:  10790s (179.8min)  /  (320.8min)
+------------
+Changing F_end...
+
+F_end value: 0.9999999999999999
+Fstd value: 0.4
+------------
+Average score: 0.5962834833459418
+St Dev score: 0.4494420300697777
+Average runtime: 19091.533333333333ms
+Predicted remaining time:  10494s (174.9min)  /  (320.7min)
+------------
+Max score (1.216946108296305) in paramerter F_end achieved by value: 0.7999999999999999
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+Changing Fstd...
+Changing F_end...
+
+F_end value: 0.5
+Fstd value: 0.5
+------------
+Average score: 0.7726644713612001
+St Dev score: 0.6657209409244356
+Average runtime: 19107.733333333334ms
+Predicted remaining time:  10199s (170.0min)  /  (320.6min)
+------------
+Changing F_end...
+
+F_end value: 0.6
+Fstd value: 0.5
+------------
+Average score: 0.742801828255935
+St Dev score: 0.6950604147925888
+Average runtime: 19110.333333333332ms
+Predicted remaining time:  9905s (165.1min)  /  (320.5min)
+------------
+Changing F_end...
+
+F_end value: 0.7
+Fstd value: 0.5
+------------
+Average score: 0.43125492999836906
+St Dev score: 0.444157052638078
+Average runtime: 19089.266666666666ms
+Predicted remaining time:  9610s (160.2min)  /  (320.3min)
+------------
+Changing F_end...
+
+F_end value: 0.7999999999999999
+Fstd value: 0.5
+------------
+Average score: 0.8176302887249289
+St Dev score: 0.7880606351693434
+Average runtime: 19091.533333333333ms
+Predicted remaining time:  9316s (155.3min)  /  (320.2min)
+------------
+Changing F_end...
+
+F_end value: 0.8999999999999999
+Fstd value: 0.5
+------------
+Average score: 1.0686154499832163
+St Dev score: 1.1546813090955519
+Average runtime: 19087.266666666666ms
+Predicted remaining time:  9022s (150.4min)  /  (320.1min)
+------------
+Changing F_end...
+
+F_end value: 0.9999999999999999
+Fstd value: 0.5
+------------
+Average score: 0.9280031794391425
+St Dev score: 0.7703715422438517
+Average runtime: 19103.133333333335ms
+Predicted remaining time:  8728s (145.5min)  /  (320.1min)
+------------
+Max score (1.0686154499832163) in paramerter F_end achieved by value: 0.8999999999999999
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+Changing Fstd...
+Changing F_end...
+
+F_end value: 0.5
+Fstd value: 0.6
+------------
+Average score: 0.5451153242485857
+St Dev score: 0.592959554209333
+Average runtime: 19098.533333333333ms
+Predicted remaining time:  8435s (140.6min)  /  (320.0min)
+------------
+Changing F_end...
+
+F_end value: 0.6
+Fstd value: 0.6
+------------
+Average score: 0.5016996309562289
+St Dev score: 0.41284731790769014
+Average runtime: 19107.8ms
+Predicted remaining time:  8142s (135.7min)  /  (319.9min)
+------------
+Changing F_end...
+
+F_end value: 0.7
+Fstd value: 0.6
+------------
+Average score: 0.6950317071417432
+St Dev score: 0.9270158184982236
+Average runtime: 19094.066666666666ms
+Predicted remaining time:  7850s (130.8min)  /  (319.8min)
+------------
+Changing F_end...
+
+F_end value: 0.7999999999999999
+Fstd value: 0.6
+------------
+Average score: 0.8506785968744082
+St Dev score: 1.236632902986839
+Average runtime: 19085.2ms
+Predicted remaining time:  7557s (126.0min)  /  (319.7min)
+------------
+Changing F_end...
+
+F_end value: 0.8999999999999999
+Fstd value: 0.6
+------------
+Average score: 0.9258311778168485
+St Dev score: 0.9609240209668674
+Average runtime: 19094.466666666667ms
+Predicted remaining time:  7265s (121.1min)  /  (319.7min)
+------------
+Changing F_end...
+
+F_end value: 0.9999999999999999
+Fstd value: 0.6
+------------
+Average score: 1.3198490876967395
+St Dev score: 1.3169490123346093
+Average runtime: 19098.466666666667ms
+Predicted remaining time:  6973s (116.2min)  /  (319.6min)
+------------
+Max score (1.3198490876967395) in paramerter F_end achieved by value: 0.9999999999999999
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+Changing Fstd...
+Changing F_end...
+
+F_end value: 0.5
+Fstd value: 0.7
+------------
+Average score: 1.0078905957438518
+St Dev score: 1.864269952072916
+Average runtime: 19114.866666666665ms
+Predicted remaining time:  6681s (111.4min)  /  (319.5min)
+------------
+Changing F_end...
+
+F_end value: 0.6
+Fstd value: 0.7
+------------
+Average score: 0.2980515313646758
+St Dev score: 0.1912301535018967
+Average runtime: 19099.733333333334ms
+Predicted remaining time:  6389s (106.5min)  /  (319.5min)
+------------
+Changing F_end...
+
+F_end value: 0.7
+Fstd value: 0.7
+------------
+Average score: 0.5869749942959356
+St Dev score: 0.6306728117070661
+Average runtime: 19112.933333333334ms
+Predicted remaining time:  6098s (101.6min)  /  (319.4min)
+------------
+Changing F_end...
+
+F_end value: 0.7999999999999999
+Fstd value: 0.7
+------------
+Average score: 0.6191377276926825
+St Dev score: 0.5301739613175835
+Average runtime: 19097.533333333333ms
+Predicted remaining time:  5806s (96.8min)  /  (319.4min)
+------------
+Changing F_end...
+
+F_end value: 0.8999999999999999
+Fstd value: 0.7
+------------
+Average score: 1.2895151641634377
+St Dev score: 2.3331471615039803
+Average runtime: 19081.4ms
+Predicted remaining time:  5515s (91.9min)  /  (319.3min)
+------------
+Changing F_end...
+
+F_end value: 0.9999999999999999
+Fstd value: 0.7
+------------
+Average score: 0.6064740113946265
+St Dev score: 0.4284546105714674
+Average runtime: 19095.6ms
+Predicted remaining time:  5224s (87.1min)  /  (319.3min)
+------------
+Max score (1.2895151641634377) in paramerter F_end achieved by value: 0.8999999999999999
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+Changing Fstd...
+Changing F_end...
+
+F_end value: 0.5
+Fstd value: 0.7999999999999999
+------------
+Average score: 0.4785441758130753
+St Dev score: 0.4747899172306989
+Average runtime: 19098.533333333333ms
+Predicted remaining time:  4933s (82.2min)  /  (319.2min)
+------------
+Changing F_end...
+
+F_end value: 0.6
+Fstd value: 0.7999999999999999
+------------
+Average score: 0.6810579744576643
+St Dev score: 0.4235079322604829
+Average runtime: 19090.333333333332ms
+Predicted remaining time:  4642s (77.4min)  /  (319.2min)
+------------
+Changing F_end...
+
+F_end value: 0.7
+Fstd value: 0.7999999999999999
+------------
+Average score: 1.1019812569326342
+St Dev score: 1.2439654618464415
+Average runtime: 19086.733333333334ms
+Predicted remaining time:  4351s (72.5min)  /  (319.1min)
+------------
+Changing F_end...
+
+F_end value: 0.7999999999999999
+Fstd value: 0.7999999999999999
+------------
+Average score: 0.738431595151209
+St Dev score: 0.7234031252761144
+Average runtime: 19132.333333333332ms
+Predicted remaining time:  4061s (67.7min)  /  (319.1min)
+------------
+Changing F_end...
+
+F_end value: 0.8999999999999999
+Fstd value: 0.7999999999999999
+------------
+Average score: 1.0662978465927304
+St Dev score: 2.217055289927058
+Average runtime: 19095.733333333334ms
+Predicted remaining time:  3770s (62.8min)  /  (319.1min)
+------------
+Changing F_end...
+
+F_end value: 0.9999999999999999
+Fstd value: 0.7999999999999999
+------------
+Average score: 1.0493354745359065
+St Dev score: 0.8392278937263031
+Average runtime: 19089.0ms
+Predicted remaining time:  3480s (58.0min)  /  (319.0min)
+------------
+Max score (1.1019812569326342) in paramerter F_end achieved by value: 0.7
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+Changing Fstd...
+Changing F_end...
+
+F_end value: 0.5
+Fstd value: 0.8999999999999999
+------------
+Average score: 0.7684696819930626
+St Dev score: 0.6226787121354675
+Average runtime: 19092.066666666666ms
+Predicted remaining time:  3189s (53.2min)  /  (319.0min)
+------------
+Changing F_end...
+
+F_end value: 0.6
+Fstd value: 0.8999999999999999
+------------
+Average score: 0.7760525946610659
+St Dev score: 0.7507476824891806
+Average runtime: 19169.6ms
+Predicted remaining time:  2899s (48.3min)  /  (319.0min)
+------------
+Changing F_end...
+
+F_end value: 0.7
+Fstd value: 0.8999999999999999
+------------
+Average score: 0.761010986714889
+St Dev score: 0.8152244892267543
+Average runtime: 19111.133333333335ms
+Predicted remaining time:  2609s (43.5min)  /  (318.9min)
+------------
+Changing F_end...
+
+F_end value: 0.7999999999999999
+Fstd value: 0.8999999999999999
+------------
+Average score: 0.8578642034327054
+St Dev score: 0.6495764286888621
+Average runtime: 19074.666666666668ms
+Predicted remaining time:  2319s (38.7min)  /  (318.9min)
+------------
+Changing F_end...
+
+F_end value: 0.8999999999999999
+Fstd value: 0.8999999999999999
+------------
+Average score: 0.8058836564916537
+St Dev score: 0.9336789746701449
+Average runtime: 19101.466666666667ms
+Predicted remaining time:  2029s (33.8min)  /  (318.9min)
+------------
+Changing F_end...
+
+F_end value: 0.9999999999999999
+Fstd value: 0.8999999999999999
+------------
+Average score: 0.7051840537500912
+St Dev score: 0.7205631460091273
+Average runtime: 19088.533333333333ms
+Predicted remaining time:  1739s (29.0min)  /  (318.8min)
+------------
+Max score (0.8578642034327054) in paramerter F_end achieved by value: 0.7999999999999999
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+Changing Fstd...
+Changing F_end...
+
+F_end value: 0.5
+Fstd value: 0.9999999999999999
+------------
+Average score: 0.7770361539337075
+St Dev score: 0.6482152286024644
+Average runtime: 19330.533333333333ms
+Predicted remaining time:  1449s (24.2min)  /  (318.9min)
+------------
+Changing F_end...
+
+F_end value: 0.6
+Fstd value: 0.9999999999999999
+------------
+Average score: 1.0768267816939785
+St Dev score: 1.0416607789212893
+Average runtime: 19092.066666666666ms
+Predicted remaining time:  1159s (19.3min)  /  (318.8min)
+------------
+Changing F_end...
+
+F_end value: 0.7
+Fstd value: 0.9999999999999999
+------------
+Average score: 0.4341135795473866
+St Dev score: 0.43547659724478904
+Average runtime: 19091.666666666668ms
+Predicted remaining time:  869s (14.5min)  /  (318.8min)
+------------
+Changing F_end...
+
+F_end value: 0.7999999999999999
+Fstd value: 0.9999999999999999
+------------
+Average score: 0.866682092034906
+St Dev score: 0.9014380543471517
+Average runtime: 19092.133333333335ms
+Predicted remaining time:  579s (9.7min)  /  (318.8min)
+------------
+Changing F_end...
+
+F_end value: 0.8999999999999999
+Fstd value: 0.9999999999999999
+------------
+Average score: 1.2546752452969683
+St Dev score: 2.245932810822667
+Average runtime: 19088.266666666666ms
+Predicted remaining time:  289s (4.8min)  /  (318.7min)
+------------
+Changing F_end...
+
+F_end value: 0.9999999999999999
+Fstd value: 0.9999999999999999
+------------
+Average score: 1.3040374712741007
+St Dev score: 0.7188564293361419
+Average runtime: 19141.533333333333ms
+Predicted remaining time:  0s (-0.0min)  /  (318.7min)
+------------
+Max score (1.3040374712741007) in paramerter F_end achieved by value: 0.9999999999999999
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+[[0.5 0.6 0.7 0.8 0.9 1. ]
+ [0.5 0.6 0.7 0.8 0.9 1. ]
+ [0.5 0.6 0.7 0.8 0.9 1. ]
+ [0.5 0.6 0.7 0.8 0.9 1. ]
+ [0.5 0.6 0.7 0.8 0.9 1. ]
+ [0.5 0.6 0.7 0.8 0.9 1. ]
+ [0.5 0.6 0.7 0.8 0.9 1. ]
+ [0.5 0.6 0.7 0.8 0.9 1. ]
+ [0.5 0.6 0.7 0.8 0.9 1. ]
+ [0.5 0.6 0.7 0.8 0.9 1. ]
+ [0.5 0.6 0.7 0.8 0.9 1. ]]
+[[0.  0.  0.  0.  0.  0. ]
+ [0.1 0.1 0.1 0.1 0.1 0.1]
+ [0.2 0.2 0.2 0.2 0.2 0.2]
+ [0.3 0.3 0.3 0.3 0.3 0.3]
+ [0.4 0.4 0.4 0.4 0.4 0.4]
+ [0.5 0.5 0.5 0.5 0.5 0.5]
+ [0.6 0.6 0.6 0.6 0.6 0.6]
+ [0.7 0.7 0.7 0.7 0.7 0.7]
+ [0.8 0.8 0.8 0.8 0.8 0.8]
+ [0.9 0.9 0.9 0.9 0.9 0.9]
+ [1.  1.  1.  1.  1.  1. ]]
+[[0.31385827 0.43278623 0.53586128 0.50268247 0.6587349  0.38394538]
+ [0.47552338 0.46465575 0.29877746 0.57646815 0.56609928 0.59344534]
+ [0.66668541 0.2909098  0.59546577 0.7016254  0.4069831  0.61388984]
+ [0.53342334 0.58935458 1.19454951 0.55532139 0.82942767 0.45781202]
+ [0.42736413 0.44535327 0.83841853 1.21694611 0.51154886 0.59628348]
+ [0.77266447 0.74280183 0.43125493 0.81763029 1.06861545 0.92800318]
+ [0.54511532 0.50169963 0.69503171 0.8506786  0.92583118 1.31984909]
+ [1.0078906  0.29805153 0.58697499 0.61913773 1.28951516 0.60647401]
+ [0.47854418 0.68105797 1.10198126 0.7384316  1.06629785 1.04933547]
+ [0.76846968 0.77605259 0.76101099 0.8578642  0.80588366 0.70518405]
+ [0.77703615 1.07682678 0.43411358 0.86668209 1.25467525 1.30403747]]
+[[0.30839691 0.52722749 0.86174334 0.62499933 0.40897302 0.57093514]
+ [0.50937453 0.53689379 0.30313474 0.5664328  0.4935391  0.68384129]
+ [1.0948081  0.41708397 0.69139313 0.63123767 0.47451037 0.69621041]
+ [0.62871095 0.50132948 2.02281914 0.4867621  0.8738832  0.65690153]
+ [0.49012219 0.38913599 0.73277548 1.49834282 0.46662485 0.44944203]
+ [0.66572094 0.69506041 0.44415705 0.78806064 1.15468131 0.77037154]
+ [0.59295955 0.41284732 0.92701582 1.2366329  0.96092402 1.31694901]
+ [1.86426995 0.19123015 0.63067281 0.53017396 2.33314716 0.42845461]
+ [0.47478992 0.42350793 1.24396546 0.72340313 2.21705529 0.83922789]
+ [0.62267871 0.75074768 0.81522449 0.64957643 0.93367897 0.72056315]
+ [0.64821523 1.04166078 0.4354766  0.90143805 2.24593281 0.71885643]]
