@@ -60,6 +60,7 @@ public class player24 implements ContestSubmission {
         double CRstd;
         double CR_start;
         double CR_end;
+
         if (isKatsuura){
             Fstd = 0.0;
             F_start = 1.0;
@@ -75,16 +76,17 @@ public class player24 implements ContestSubmission {
             CRstd = 0.0;
             CR_start = 0.8;
             CR_end = CR_start;
+
             Population.populationSize = 100;//48
-        }else{
-            Fstd = 0.5;
-            F_start = 0.7;
-            F_end = F_start;
-            CRstd = 0.1;
-            CR_start = 1.0;
-            CR_end = 0.9;
-            Population.populationSize = 100;//24
-        }
+         }else{
+             Fstd = 0.5;
+             F_start = 0.7;
+             F_end = F_start;
+             CRstd = 0.1;
+             CR_start = 1.0;
+             CR_end = 0.9;
+             Population.populationSize = 100;//24
+         }
 
         // init population
         Population.maxEvals=evaluations_limit_;
