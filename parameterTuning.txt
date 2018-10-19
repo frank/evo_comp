@@ -1,3 +1,7 @@
 player24.java
+<<<<<<< HEAD
+F_end 0 0.4 0.1
+=======
 F_end 0.5 1 0.1
+>>>>>>> 1295aa54e2daa298c0b8f33d756780654ef85c7a
 Fstd 0 1 0.1
