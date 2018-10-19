@@ -1,0 +1,154 @@
+arvid@arvid-ThinkPad-E580:~/Desktop/UvA/Block_1/EvoComp/evo_comp$ python run.py s 50 -verbose
+Score: 10.0
+Runtime: 392ms
+
+Score: 10.0
+Runtime: 393ms
+
+Score: 10.0
+Runtime: 403ms
+
+Score: 10.0
+Runtime: 390ms
+
+Score: 10.0
+Runtime: 399ms
+
+Score: 10.0
+Runtime: 404ms
+
+Score: 10.0
+Runtime: 385ms
+
+Score: 10.0
+Runtime: 399ms
+
+Score: 10.0
+Runtime: 398ms
+
+Score: 10.0
+Runtime: 401ms
+
+Score: 10.0
+Runtime: 386ms
+
+Score: 10.0
+Runtime: 391ms
+
+Score: 10.0
+Runtime: 385ms
+
+Score: 10.0
+Runtime: 387ms
+
+Score: 10.0
+Runtime: 410ms
+
+Score: 9.999995277583146
+Runtime: 397ms
+
+Score: 10.0
+Runtime: 398ms
+
+Score: 9.999997877346797
+Runtime: 403ms
+
+Score: 10.0
+Runtime: 388ms
+
+Score: 10.0
+Runtime: 389ms
+
+Score: 10.0
+Runtime: 391ms
+
+Score: 9.999999886845893
+Runtime: 395ms
+
+Score: 10.0
+Runtime: 387ms
+
+Score: 10.0
+Runtime: 394ms
+
+Score: 10.0
+Runtime: 387ms
+
+Score: 10.0
+Runtime: 411ms
+
+Score: 10.0
+Runtime: 393ms
+
+Score: 10.0
+Runtime: 406ms
+
+Score: 10.0
+Runtime: 402ms
+
+Score: 10.0
+Runtime: 392ms
+
+Score: 10.0
+Runtime: 403ms
+
+Score: 10.0
+Runtime: 397ms
+
+Score: 10.0
+Runtime: 386ms
+
+Score: 10.0
+Runtime: 393ms
+
+Score: 10.0
+Runtime: 391ms
+
+Score: 10.0
+Runtime: 397ms
+
+Score: 10.0
+Runtime: 405ms
+
+Score: 10.0
+Runtime: 389ms
+
+Score: 10.0
+Runtime: 399ms
+
+Score: 10.0
+Runtime: 398ms
+
+Score: 10.0
+Runtime: 401ms
+
+Score: 10.0
+Runtime: 408ms
+
+Score: 10.0
+Runtime: 389ms
+
+Score: 10.0
+Runtime: 396ms
+
+Score: 10.0
+Runtime: 407ms
+
+Score: 10.0
+Runtime: 390ms
+
+Score: 9.999999524529958
+Runtime: 391ms
+
+Score: 10.0
+Runtime: 388ms
+
+Score: 10.0
+Runtime: 390ms
+
+Score: 10.0
+Runtime: 391ms
+
+Average score: 9.999999851326116
+St Dev score: 7.202854571176675e-07
+Average runtime: 395.3ms
