@@ -1,0 +1,154 @@
+arvid@arvid-ThinkPad-E580:~/Desktop/UvA/Block_1/EvoComp/evo_comp$ python run.py s 50 -verbose
+Score: 9.54203169706463
+Runtime: 384ms
+
+Score: 9.321522075845369
+Runtime: 369ms
+
+Score: 9.999912758405628
+Runtime: 391ms
+
+Score: 9.999922778630358
+Runtime: 398ms
+
+Score: 9.64117045246491
+Runtime: 373ms
+
+Score: 9.967547851365229
+Runtime: 384ms
+
+Score: 8.413814289996425
+Runtime: 394ms
+
+Score: 9.035682053944592
+Runtime: 374ms
+
+Score: 9.999960886659542
+Runtime: 402ms
+
+Score: 9.999876794889353
+Runtime: 395ms
+
+Score: 8.180499975636623
+Runtime: 369ms
+
+Score: 9.004429439033284
+Runtime: 383ms
+
+Score: 9.625026450431438
+Runtime: 397ms
+
+Score: 9.729179702627249
+Runtime: 400ms
+
+Score: 9.741008605568226
+Runtime: 389ms
+
+Score: 9.618611731750244
+Runtime: 403ms
+
+Score: 9.579564847872884
+Runtime: 416ms
+
+Score: 9.4314587852498
+Runtime: 386ms
+
+Score: 9.785687739621366
+Runtime: 386ms
+
+Score: 8.668241557505798
+Runtime: 376ms
+
+Score: 9.999972275701904
+Runtime: 388ms
+
+Score: 9.333062626786798
+Runtime: 395ms
+
+Score: 8.921552103783231
+Runtime: 385ms
+
+Score: 8.778740030836598
+Runtime: 399ms
+
+Score: 8.465704410947927
+Runtime: 396ms
+
+Score: 9.8635273506438
+Runtime: 396ms
+
+Score: 9.751137665987628
+Runtime: 373ms
+
+Score: 9.99999823637724
+Runtime: 396ms
+
+Score: 9.999982286360757
+Runtime: 396ms
+
+Score: 9.983684392861514
+Runtime: 400ms
+
+Score: 7.611797363586591
+Runtime: 399ms
+
+Score: 9.999812263834514
+Runtime: 409ms
+
+Score: 9.999880916639384
+Runtime: 397ms
+
+Score: 9.350798785386845
+Runtime: 408ms
+
+Score: 6.2869849634381705
+Runtime: 392ms
+
+Score: 9.242854679217956
+Runtime: 366ms
+
+Score: 9.658384294416017
+Runtime: 414ms
+
+Score: 9.887637073370279
+Runtime: 403ms
+
+Score: 9.202911254007036
+Runtime: 377ms
+
+Score: 9.950147600233363
+Runtime: 390ms
+
+Score: 8.643027076510238
+Runtime: 394ms
+
+Score: 9.999594320411088
+Runtime: 387ms
+
+Score: 9.484016665137252
+Runtime: 399ms
+
+Score: 9.436384649211773
+Runtime: 389ms
+
+Score: 9.962450823620474
+Runtime: 405ms
+
+Score: 9.242224622746368
+Runtime: 397ms
+
+Score: 9.930554623037002
+Runtime: 394ms
+
+Score: 9.817382710652678
+Runtime: 388ms
+
+Score: 9.999319392430257
+Runtime: 387ms
+
+Score: 8.05244081053205
+Runtime: 392ms
+
+Average score: 9.402822334865393
+St Dev score: 0.7359432958783629
+Average runtime: 391.6ms

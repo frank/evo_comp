@@ -60,31 +60,40 @@ public class player24 implements ContestSubmission {
         double CRstd;
         double CR_start;
         double CR_end;
-        if (isKatsuura){
-            Fstd = 0.8;
+
+        //This is for parameter seach:--------
+        F_end = 0.2;
+        Fstd = 0.4;
+        //so that it does not just change the katsuura values due 
+        //to the order of the if statements below
+        //------------------------------------
+
+
+        // if (isKatsuura){
+        //     Fstd = 0.8;
             F_start = 0.0;
-            F_end = 0.3;
-            CRstd = 0.0;
-            CR_start = 0.9;
-            CR_end = 0.9;
-            Population.populationSize = 100;//137
-        }else if(isSchaffer){
-            Fstd = 0.5;
-            F_start = 0.68;
-            F_end = F_start;
-            CRstd = 0.0;
-            CR_start = 0.8;
-            CR_end = CR_start;
+        //     F_end = 0.3;
+        //     CRstd = 0.0;
+        //     CR_start = 0.9;
+        //     CR_end = 0.9;
+        //     Population.populationSize = 100;//137
+        // }else if(isSchaffer){
+        //     Fstd = 0.5;
+        //     F_start = 0.68;
+        //     F_end = F_start;
+        //     CRstd = 0.0;
+        //     CR_start = 0.8;
+        //     CR_end = CR_start;
             Population.populationSize = 100;//48
-        }else{
-            Fstd = 0.5;
-            F_start = 0.7;
-            F_end = F_start;
-            CRstd = 0.1;
-            CR_start = 1.0;
-            CR_end = 0.9;
-            Population.populationSize = 100;//24
-        }
+        // }else{
+        //     Fstd = 0.5;
+        //     F_start = 0.7;
+        //     F_end = F_start;
+        //     CRstd = 0.1;
+        //     CR_start = 1.0;
+        //     CR_end = 0.9;
+        //     Population.populationSize = 100;//24
+        // }
 
         // init population
         Population.maxEvals=evaluations_limit_;
@@ -107,10 +116,11 @@ public class player24 implements ContestSubmission {
 
             double evalProgress = (double)Population.evals/(double)evaluations_limit_;
 
-            double F = 0.3;
-            double CR = 0.5;
+            
+            double CR = 0.8;
 
-            // double F = rnd_.nextGaussian()*Fstd*evalProgress + (F_end-F_start)*evalProgress + F_start;
+            double F = rnd_.nextGaussian()*Fstd*evalProgress + (F_end-F_start)*evalProgress + F_start;
+            // double F = 0.3;
 
             // do{
             //     CR = rnd_.nextGaussian()*CRstd*(1-evalProgress) + (CR_end-CR_start)*evalProgress + CR_start;
