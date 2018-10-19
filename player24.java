@@ -61,12 +61,12 @@ public class player24 implements ContestSubmission {
         double CR_start;
         double CR_end;
         if (isKatsuura){
-            Fstd = 0.47;
+            Fstd = 0.8;
             F_start = 0.0;
-            F_end = 0.80;
-            CRstd = 0.15;
-            CR_start = 0.0;
-            CR_end = 1.0;
+            F_end = 0.3;
+            CRstd = 0.0;
+            CR_start = 0.9;
+            CR_end = 0.9;
             Population.populationSize = 100;//137
         }else if(isSchaffer){
             Fstd = 0.5;
