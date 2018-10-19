@@ -107,10 +107,10 @@ public class player24 implements ContestSubmission {
 
             double evalProgress = (double)Population.evals/(double)evaluations_limit_;
 
-            double F = 0.0;
+            //double F = 0.0;
             double CR = 0.9;
 
-            // double F = rnd_.nextGaussian()*Fstd*evalProgress + (F_end-F_start)*evalProgress + F_start;
+            double F = rnd_.nextGaussian()*Fstd*evalProgress + (F_end-F_start)*evalProgress + F_start;
 
             // do{
             //     CR = rnd_.nextGaussian()*CRstd*(1-evalProgress) + (CR_end-CR_start)*evalProgress + CR_start;
