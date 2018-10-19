@@ -148,7 +148,7 @@ if __name__ == '__main__':
         argument_error()
 
     if len(sys.argv) == 5:
-        # To activate parameter tunning, add 1 more variable to run.py call (can be anything) eg. "python3 run.py k 5 0 a"
+        # To activate parameter tunning, add 1 more variable to run.py call (can be anything) eg. "python3 run.py k 5 -verbose a"
         # parameterTuning.txt file structure -> line1: Name of file (including .java)
         #                                       line2: Name of Parameter as written in the .java file (case sensitive),
         #                                              lower bound, upper bound, interval (value type is determined by value type in .java file)

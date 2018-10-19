@@ -1,0 +1,1114 @@
+Input: ['F', '0', '1', '0.1']
+Input: ['CR', '0.9', '0.9', '1']
+Values: ['F', [0.0, 0.1, 0.2, 0.30000000000000004, 0.4, 0.5, 0.6, 0.7, 0.7999999999999999, 0.8999999999999999, 0.9999999999999999]]
+Values: ['CR', [0.9]]
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+Changing CR...
+Changing F...
+
+F value: 0.0
+CR value: 0.9
+------------
+Score: 2.6800256928536824E-6
+Runtime: 19147ms
+
+Score: 2.0302815176796608E-7
+Runtime: 19125ms
+
+Score: 1.3681826188158204E-5
+Runtime: 19133ms
+
+Score: 4.41337539978734E-6
+Runtime: 19150ms
+
+Score: 3.820445965498603E-6
+Runtime: 19124ms
+
+Score: 2.6003193279672776E-6
+Runtime: 19131ms
+
+Score: 1.75915317266683E-5
+Runtime: 19418ms
+
+Score: 8.491074438326899E-5
+Runtime: 21099ms
+
+Score: 1.7030322677849544E-6
+Runtime: 20302ms
+
+Score: 1.2274832002455078E-6
+Runtime: 19939ms
+
+Score: 2.358570913423654E-6
+Runtime: 19938ms
+
+Score: 0.002232179096412632
+Runtime: 19865ms
+
+Score: 2.6007759254445243E-7
+Runtime: 19834ms
+
+Score: 1.4035929257251938E-5
+Runtime: 19949ms
+
+Score: 1.7034939761106054E-4
+Runtime: 19838ms
+
+Score: 7.302860453196346E-7
+Runtime: 19827ms
+
+Score: 2.9219797801027233E-4
+Runtime: 19977ms
+
+Score: 9.373440109953498E-4
+Runtime: 19843ms
+
+Score: 2.5343614891364813E-5
+Runtime: 19959ms
+
+Score: 2.6983006728466475E-6
+Runtime: 19929ms
+
+Score: 4.918245218065593E-9
+Runtime: 19862ms
+
+Score: 0.0010103030730399427
+Runtime: 19822ms
+
+Score: 8.953002234730884E-5
+Runtime: 20069ms
+
+Score: 1.5678722386608056E-5
+Runtime: 19871ms
+
+Score: 9.046606586800517E-7
+Runtime: 20129ms
+
+Score: 8.292302825756607E-7
+Runtime: 19861ms
+
+Score: 6.275541015331457E-5
+Runtime: 19936ms
+
+Score: 5.809921365324831E-7
+Runtime: 19777ms
+
+Score: 1.8167658376904862E-6
+Runtime: 20122ms
+
+Score: 0.002278420980780212
+Runtime: 19981ms
+
+Average score: 3.6558842691025886
+St Dev score: 2.870111401895336
+Average runtime: 19798.566666666666ms
+Predicted remaining time:  5971s (99.5min)  /  (109.5min)
+------------
+Changing F...
+
+F value: 0.1
+CR value: 0.9
+------------
+Score: 0.034448382192486054
+Runtime: 19702ms
+
+Score: 0.027567008618727337
+Runtime: 20027ms
+
+Score: 0.008935495955209271
+Runtime: 20095ms
+
+Score: 0.014458903008734349
+Runtime: 19983ms
+
+Score: 0.441046120718204
+Runtime: 19898ms
+
+Score: 0.7351536926279414
+Runtime: 19980ms
+
+Score: 0.02489993799718599
+Runtime: 19879ms
+
+Score: 0.06791829736661882
+Runtime: 20004ms
+
+Score: 0.40914829437304795
+Runtime: 19935ms
+
+Score: 0.03976303058115774
+Runtime: 20021ms
+
+Score: 0.10816403489568673
+Runtime: 19692ms
+
+Score: 0.05170118664716959
+Runtime: 19970ms
+
+Score: 0.04712678168926872
+Runtime: 19918ms
+
+Score: 0.18077650059087694
+Runtime: 19954ms
+
+Score: 0.1300115765007368
+Runtime: 19790ms
+
+Score: 0.021724771669679833
+Runtime: 20032ms
+
+Score: 0.0749055305154029
+Runtime: 19829ms
+
+Score: 0.05681254842593922
+Runtime: 19939ms
+
+Score: 0.05967491574058168
+Runtime: 19857ms
+
+Score: 0.019331429419061092
+Runtime: 19148ms
+
+Score: 0.05351054952264508
+Runtime: 19108ms
+
+Score: 0.021526900565143343
+Runtime: 19140ms
+
+Score: 0.10221015131003439
+Runtime: 19100ms
+
+Score: 0.07275766119367928
+Runtime: 19066ms
+
+Score: 0.027808885123485717
+Runtime: 19118ms
+
+Score: 0.032804120726010966
+Runtime: 19161ms
+
+Score: 0.08306649003316438
+Runtime: 19163ms
+
+Score: 0.09954082154992022
+Runtime: 19045ms
+
+Score: 0.3479604928212533
+Runtime: 19054ms
+
+Score: 0.036307779146266955
+Runtime: 19188ms
+
+Average score: 0.114368743050844
+St Dev score: 0.15901363034173155
+Average runtime: 19626.533333333333ms
+Predicted remaining time:  5352s (89.2min)  /  (109.0min)
+------------
+Changing F...
+
+F value: 0.2
+CR value: 0.9
+------------
+Score: 0.4909339855791266
+Runtime: 19162ms
+
+Score: 0.17381367108199822
+Runtime: 19213ms
+
+Score: 0.09789002564686161
+Runtime: 19156ms
+
+Score: 0.003135016999993347
+Runtime: 19131ms
+
+Score: 0.4725240003107106
+Runtime: 19313ms
+
+Score: 0.02289752997224071
+Runtime: 19202ms
+
+Score: 0.025942012677060765
+Runtime: 19154ms
+
+Score: 0.03587305262073688
+Runtime: 19217ms
+
+Score: 0.07565831586727478
+Runtime: 19219ms
+
+Score: 0.1752449494412742
+Runtime: 19172ms
+
+Score: 0.46702625627172356
+Runtime: 19164ms
+
+Score: 0.06629118740668459
+Runtime: 19135ms
+
+Score: 0.08526561054510155
+Runtime: 19133ms
+
+Score: 0.03161943647305796
+Runtime: 19160ms
+
+Score: 0.78104986940125
+Runtime: 19149ms
+
+Score: 0.07696449962211598
+Runtime: 19182ms
+
+Score: 1.60483798687012
+Runtime: 19121ms
+
+Score: 0.016361398166797936
+Runtime: 19151ms
+
+Score: 0.06124470284624126
+Runtime: 19542ms
+
+Score: 0.12585376829854153
+Runtime: 19868ms
+
+Score: 0.0453777692890479
+Runtime: 19947ms
+
+Score: 0.08276032761839253
+Runtime: 20213ms
+
+Score: 0.1352354144464727
+Runtime: 21674ms
+
+Score: 0.2294521674229632
+Runtime: 19472ms
+
+Score: 0.04050647620420012
+Runtime: 19522ms
+
+Score: 0.22808476633872288
+Runtime: 19208ms
+
+Score: 0.10847657192662077
+Runtime: 19236ms
+
+Score: 0.053850372824402595
+Runtime: 20080ms
+
+Score: 0.1035438805648236
+Runtime: 19457ms
+
+Score: 0.018707440389477976
+Runtime: 20887ms
+
+Average score: 0.19788074877080122
+St Dev score: 0.3146248734808133
+Average runtime: 19474.666666666668ms
+Predicted remaining time:  4737s (79.0min)  /  (108.6min)
+------------
+Changing F...
+
+F value: 0.30000000000000004
+CR value: 0.9
+------------
+Score: 1.3860127210732343
+Runtime: 20259ms
+
+Score: 0.08081654641562809
+Runtime: 20176ms
+
+Score: 0.007765864829769851
+Runtime: 19799ms
+
+Score: 0.046822447115240196
+Runtime: 19804ms
+
+Score: 0.022043859420369565
+Runtime: 19804ms
+
+Score: 0.01264787457534493
+Runtime: 19841ms
+
+Score: 0.17753130312567028
+Runtime: 19730ms
+
+Score: 0.017921346901500042
+Runtime: 19860ms
+
+Score: 0.11278797623281986
+Runtime: 19756ms
+
+Score: 0.18699655913481325
+Runtime: 19759ms
+
+Score: 0.09262347053368056
+Runtime: 19542ms
+
+Score: 0.021385974691413255
+Runtime: 19786ms
+
+Score: 0.10792988090193201
+Runtime: 19576ms
+
+Score: 0.38448912466507446
+Runtime: 19762ms
+
+Score: 0.005262383606697585
+Runtime: 19588ms
+
+Score: 0.20028453153283055
+Runtime: 19795ms
+
+Score: 0.14344332096676707
+Runtime: 19691ms
+
+Score: 0.13883301923812036
+Runtime: 19694ms
+
+Score: 0.056954715968467386
+Runtime: 19660ms
+
+Score: 0.15171229954969595
+Runtime: 19883ms
+
+Score: 0.038719036871440515
+Runtime: 19656ms
+
+Score: 0.05287726919495074
+Runtime: 19605ms
+
+Score: 0.0862379295690176
+Runtime: 19586ms
+
+Score: 0.18187206180504822
+Runtime: 19731ms
+
+Score: 0.863547985234105
+Runtime: 19683ms
+
+Score: 0.020765533096659784
+Runtime: 19525ms
+
+Score: 0.022800620317541716
+Runtime: 19574ms
+
+Score: 0.010616235013540897
+Runtime: 19657ms
+
+Score: 0.7286238326597518
+Runtime: 19491ms
+
+Score: 0.04159166321632446
+Runtime: 19934ms
+
+Average score: 0.18006391291524834
+St Dev score: 0.2964388096006198
+Average runtime: 19740.233333333334ms
+Predicted remaining time:  4151s (69.2min)  /  (108.7min)
+------------
+Changing F...
+
+F value: 0.4
+CR value: 0.9
+------------
+Score: 0.15408101462450027
+Runtime: 19476ms
+
+Score: 0.22159779134234805
+Runtime: 19553ms
+
+Score: 0.015911646126759077
+Runtime: 20200ms
+
+Score: 0.007044544334964112
+Runtime: 19248ms
+
+Score: 0.04934575377796113
+Runtime: 19301ms
+
+Score: 0.02741301086051676
+Runtime: 19261ms
+
+Score: 0.030722181192218152
+Runtime: 19363ms
+
+Score: 0.09602160220993443
+Runtime: 19638ms
+
+Score: 0.08284363513271084
+Runtime: 19308ms
+
+Score: 0.06004810338186743
+Runtime: 19403ms
+
+Score: 0.01500543609938848
+Runtime: 19874ms
+
+Score: 0.023961636492092743
+Runtime: 19470ms
+
+Score: 0.02168561454515836
+Runtime: 19282ms
+
+Score: 0.0046102024531875655
+Runtime: 20989ms
+
+Score: 0.06381085517364442
+Runtime: 20040ms
+
+Score: 0.03869215841821307
+Runtime: 19687ms
+
+Score: 0.014175933235902924
+Runtime: 19477ms
+
+Score: 0.2356801029839457
+Runtime: 20157ms
+
+Score: 0.025058318932265584
+Runtime: 20384ms
+
+Score: 0.09418660042277854
+Runtime: 19743ms
+
+Score: 0.034145074542305406
+Runtime: 19416ms
+
+Score: 0.07014527298075623
+Runtime: 20033ms
+
+Score: 0.10305496996366453
+Runtime: 19714ms
+
+Score: 0.02496576565178998
+Runtime: 19735ms
+
+Score: 0.010486122035177164
+Runtime: 19713ms
+
+Score: 0.03814376398469845
+Runtime: 19799ms
+
+Score: 0.013751283377185498
+Runtime: 19650ms
+
+Score: 0.04168547141189398
+Runtime: 19814ms
+
+Score: 0.026051722477284642
+Runtime: 19740ms
+
+Score: 0.019953060674349717
+Runtime: 19707ms
+
+Average score: 0.05547595496131544
+St Dev score: 0.05734237334618023
+Average runtime: 19705.833333333332ms
+Predicted remaining time:  3560s (59.3min)  /  (108.8min)
+------------
+Changing F...
+
+F value: 0.5
+CR value: 0.9
+------------
+Score: 0.17379022528855123
+Runtime: 19705ms
+
+Score: 0.198225233716319
+Runtime: 19735ms
+
+Score: 0.056094631184318705
+Runtime: 19687ms
+
+Score: 0.029236029628726304
+Runtime: 19742ms
+
+Score: 0.14357380487826507
+Runtime: 19669ms
+
+Score: 0.07704404908833912
+Runtime: 19765ms
+
+Score: 0.18359841713162894
+Runtime: 19777ms
+
+Score: 0.262472844664284
+Runtime: 19710ms
+
+Score: 0.045469908663584066
+Runtime: 19646ms
+
+Score: 0.12199385064298691
+Runtime: 19796ms
+
+Score: 0.02892503912819068
+Runtime: 19679ms
+
+Score: 0.0602982897848911
+Runtime: 19742ms
+
+Score: 0.023961092302062115
+Runtime: 19769ms
+
+Score: 0.14579480782373933
+Runtime: 20265ms
+
+Score: 0.303838632814532
+Runtime: 19446ms
+
+Score: 0.18072899314395297
+Runtime: 19501ms
+
+Score: 0.13611216472801477
+Runtime: 19359ms
+
+Score: 0.0031964734301090153
+Runtime: 19245ms
+
+Score: 0.22691079083872195
+Runtime: 19148ms
+
+Score: 0.4196843421396915
+Runtime: 19048ms
+
+Score: 0.06695064742789784
+Runtime: 19147ms
+
+Score: 1.3471372956989691
+Runtime: 19117ms
+
+Score: 0.16048055430209332
+Runtime: 19170ms
+
+Score: 0.038528051013929074
+Runtime: 19144ms
+
+Score: 0.14160603782799427
+Runtime: 19139ms
+
+Score: 0.05159729893274032
+Runtime: 19153ms
+
+Score: 0.15328736527613135
+Runtime: 19254ms
+
+Score: 0.19625920856143672
+Runtime: 19138ms
+
+Score: 0.027410897601168896
+Runtime: 19154ms
+
+Score: 0.2893057793963595
+Runtime: 19175ms
+
+Average score: 0.176450425235321
+St Dev score: 0.2379549457047907
+Average runtime: 19467.5ms
+Predicted remaining time:  2961s (49.4min)  /  (108.6min)
+------------
+Changing F...
+
+F value: 0.6
+CR value: 0.9
+------------
+Score: 0.12885460738353932
+Runtime: 19148ms
+
+Score: 0.14600586807970192
+Runtime: 19202ms
+
+Score: 0.07477041445393857
+Runtime: 19160ms
+
+Score: 0.03957432083857458
+Runtime: 19171ms
+
+Score: 0.03585452553542852
+Runtime: 19297ms
+
+Score: 0.004396544373805638
+Runtime: 19299ms
+
+Score: 0.18112410182274527
+Runtime: 19378ms
+
+Score: 0.2766365889555639
+Runtime: 19371ms
+
+Score: 0.05924036782111965
+Runtime: 20310ms
+
+Score: 0.08318149524862417
+Runtime: 19251ms
+
+Score: 0.1169961261680616
+Runtime: 19147ms
+
+Score: 0.12480193899956278
+Runtime: 19222ms
+
+Score: 0.14553736407715978
+Runtime: 19137ms
+
+Score: 0.05277867027398664
+Runtime: 19157ms
+
+Score: 0.0259900407617142
+Runtime: 19190ms
+
+Score: 0.061046889599456554
+Runtime: 19162ms
+
+Score: 0.06368942967630578
+Runtime: 19181ms
+
+Score: 0.07935152393879699
+Runtime: 19146ms
+
+Score: 0.32124578558897177
+Runtime: 19143ms
+
+Score: 0.1439085543315654
+Runtime: 19157ms
+
+Score: 0.07373453444861325
+Runtime: 19187ms
+
+Score: 0.0446006204497361
+Runtime: 19144ms
+
+Score: 0.10710548797755304
+Runtime: 19159ms
+
+Score: 0.025563196983023083
+Runtime: 19177ms
+
+Score: 0.6101044969816861
+Runtime: 19173ms
+
+Score: 0.10063204875816732
+Runtime: 19148ms
+
+Score: 0.28974300357716315
+Runtime: 19155ms
+
+Score: 0.39381746965734593
+Runtime: 19205ms
+
+Score: 0.022972502049296836
+Runtime: 19147ms
+
+Score: 0.09462058959394676
+Runtime: 19146ms
+
+Average score: 0.13092930361350516
+St Dev score: 0.1283477210632158
+Average runtime: 19229.0ms
+Predicted remaining time:  2362s (39.4min)  /  (108.3min)
+------------
+Changing F...
+
+F value: 0.7
+CR value: 0.9
+------------
+Score: 0.15327470234134133
+Runtime: 19168ms
+
+Score: 0.07023832353367483
+Runtime: 19201ms
+
+Score: 0.06971802722207655
+Runtime: 19162ms
+
+Score: 0.021711312537327956
+Runtime: 19151ms
+
+Score: 0.11537083099036796
+Runtime: 19171ms
+
+Score: 0.015169987230658839
+Runtime: 19139ms
+
+Score: 0.05858563417278881
+Runtime: 19157ms
+
+Score: 0.04001777484829317
+Runtime: 19170ms
+
+Score: 0.006233979607789089
+Runtime: 19125ms
+
+Score: 0.23614133632668133
+Runtime: 19157ms
+
+Score: 0.009217280458458545
+Runtime: 19140ms
+
+Score: 0.2531365443564646
+Runtime: 19155ms
+
+Score: 0.08472084487526371
+Runtime: 19133ms
+
+Score: 0.024015946175976136
+Runtime: 19104ms
+
+Score: 0.006167296269296315
+Runtime: 19152ms
+
+Score: 0.010702600005349438
+Runtime: 19147ms
+
+Score: 0.06846544638714089
+Runtime: 19157ms
+
+Score: 0.051129434255945155
+Runtime: 19132ms
+
+Score: 0.056246011799444356
+Runtime: 19189ms
+
+Score: 0.03504074466747104
+Runtime: 19740ms
+
+Score: 0.03012001285862714
+Runtime: 19195ms
+
+Score: 0.03481382850471515
+Runtime: 19158ms
+
+Score: 0.056563279764939495
+Runtime: 19198ms
+
+Score: 0.0442621578972252
+Runtime: 19139ms
+
+Score: 0.06854046460923774
+Runtime: 19130ms
+
+Score: 0.1734112299074836
+Runtime: 19115ms
+
+Score: 0.030420325076993066
+Runtime: 19184ms
+
+Score: 0.2153645280125914
+Runtime: 19168ms
+
+Score: 0.03432178033536217
+Runtime: 19198ms
+
+Score: 0.042480153057672346
+Runtime: 19201ms
+
+Average score: 0.07052006060288857
+St Dev score: 0.06709249774137564
+Average runtime: 19177.866666666665ms
+Predicted remaining time:  1766s (29.4min)  /  (108.0min)
+------------
+Changing F...
+
+F value: 0.7999999999999999
+CR value: 0.9
+------------
+Score: 0.02574603656038482
+Runtime: 19148ms
+
+Score: 0.026811990721767313
+Runtime: 19153ms
+
+Score: 0.09429447974175667
+Runtime: 19192ms
+
+Score: 0.01839179351274398
+Runtime: 19149ms
+
+Score: 0.10369847501468216
+Runtime: 19130ms
+
+Score: 0.1036580533742499
+Runtime: 19169ms
+
+Score: 0.02126462390304817
+Runtime: 19186ms
+
+Score: 0.015891973282281535
+Runtime: 19142ms
+
+Score: 0.2875019462375464
+Runtime: 19202ms
+
+Score: 0.10086099659488397
+Runtime: 19136ms
+
+Score: 0.1723298509472401
+Runtime: 19150ms
+
+Score: 0.0908887589124905
+Runtime: 19063ms
+
+Score: 0.09374477576108277
+Runtime: 19163ms
+
+Score: 0.019206989811764448
+Runtime: 19152ms
+
+Score: 0.035472679774692775
+Runtime: 19153ms
+
+Score: 0.013969674114845695
+Runtime: 19151ms
+
+Score: 0.00881569719573728
+Runtime: 19179ms
+
+Score: 0.014010057709999052
+Runtime: 19136ms
+
+Score: 0.039391560042360496
+Runtime: 19152ms
+
+Score: 0.015707118668193767
+Runtime: 19163ms
+
+Score: 0.03758785811531573
+Runtime: 19158ms
+
+Score: 0.07800674753434367
+Runtime: 19143ms
+
+Score: 0.0047318583663562876
+Runtime: 19134ms
+
+Score: 0.028587686053398682
+Runtime: 19149ms
+
+Score: 0.013150699050613794
+Runtime: 19147ms
+
+Score: 0.032962286910703735
+Runtime: 19139ms
+
+Score: 0.05966105942004986
+Runtime: 19154ms
+
+Score: 0.023202323890580828
+Runtime: 19153ms
+
+Score: 0.05703271763123228
+Runtime: 19142ms
+
+Score: 0.023062268096108875
+Runtime: 19142ms
+
+Average score: 0.05532143456501518
+St Dev score: 0.05829568947770877
+Average runtime: 19151.0ms
+Predicted remaining time:  1175s (19.6min)  /  (107.7min)
+------------
+Changing F...
+
+F value: 0.8999999999999999
+CR value: 0.9
+------------
+Score: 0.006331038387890894
+Runtime: 19151ms
+
+Score: 0.03569646070539032
+Runtime: 19156ms
+
+Score: 0.018169724063513568
+Runtime: 19148ms
+
+Score: 0.05327286553503236
+Runtime: 19110ms
+
+Score: 0.038624033985958685
+Runtime: 19154ms
+
+Score: 0.05433573754475189
+Runtime: 19155ms
+
+Score: 0.010234508498442667
+Runtime: 19139ms
+
+Score: 0.10306580905835015
+Runtime: 19151ms
+
+Score: 0.004750324044488387
+Runtime: 19120ms
+
+Score: 0.055522815694605626
+Runtime: 19128ms
+
+Score: 0.08217954122217658
+Runtime: 19154ms
+
+Score: 0.014735922960178838
+Runtime: 19141ms
+
+Score: 0.008155175013982588
+Runtime: 19163ms
+
+Score: 0.042907361626566096
+Runtime: 19115ms
+
+Score: 0.1517497447354107
+Runtime: 19123ms
+
+Score: 0.013274932032977999
+Runtime: 19132ms
+
+Score: 0.015899723799937714
+Runtime: 19167ms
+
+Score: 0.02420358597810524
+Runtime: 19140ms
+
+Score: 0.025041462932832978
+Runtime: 19129ms
+
+Score: 0.016576237136105083
+Runtime: 19151ms
+
+Score: 0.06835585600429508
+Runtime: 19155ms
+
+Score: 0.006290255333841777
+Runtime: 19140ms
+
+Score: 0.011421436387208583
+Runtime: 19153ms
+
+Score: 0.01529496782735161
+Runtime: 19165ms
+
+Score: 0.041363396116486574
+Runtime: 19153ms
+
+Score: 0.2943655109832132
+Runtime: 19111ms
+
+Score: 0.06538618021000131
+Runtime: 19144ms
+
+Score: 0.009666944303684595
+Runtime: 19153ms
+
+Score: 0.07360535171161652
+Runtime: 19129ms
+
+Score: 0.05054057549063669
+Runtime: 19180ms
+
+Average score: 0.047033915977501145
+St Dev score: 0.05656731250441198
+Average runtime: 19143.666666666668ms
+Predicted remaining time:  586s (9.8min)  /  (107.5min)
+------------
+Changing F...
+
+F value: 0.9999999999999999
+CR value: 0.9
+------------
+Score: 0.5394956123443537
+Runtime: 19183ms
+
+Score: 9.349612160550294
+Runtime: 19192ms
+
+Score: 2.3776194484348823
+Runtime: 19183ms
+
+Score: 0.1339270927550553
+Runtime: 19178ms
+
+Score: 7.773752386154211
+Runtime: 19190ms
+
+Score: 9.808837780805392
+Runtime: 19152ms
+
+Score: 3.744644943505187
+Runtime: 19175ms
+
+Score: 4.891566045600867
+Runtime: 19178ms
+
+Score: 6.703145870039063
+Runtime: 19174ms
+
+Score: 2.7921302037858164
+Runtime: 19181ms
+
+Score: 3.9551201055785477
+Runtime: 19178ms
+
+Score: 4.125703885256399
+Runtime: 19166ms
+
+Score: 6.371912182926726
+Runtime: 19169ms
+
+Score: 5.499428956784715
+Runtime: 19172ms
+
+Score: 2.437423848053323
+Runtime: 19189ms
+
+Score: 7.85890449215899
+Runtime: 19178ms
+
+Score: 4.76147774208105
+Runtime: 19176ms
+
+Score: 0.9633397507870307
+Runtime: 19192ms
+
+Score: 9.98801722772311
+Runtime: 19154ms
+
+Score: 1.7319076316473945
+Runtime: 19172ms
+
+Score: 0.5514982701373838
+Runtime: 19181ms
+
+Score: 1.7088772784983317
+Runtime: 19178ms
+
+Score: 1.2563060699074156
+Runtime: 19190ms
+
+Score: 9.542106420101753
+Runtime: 19201ms
+
+Score: 0.8597099319160317
+Runtime: 19136ms
+
+Score: 6.929329464554673
+Runtime: 19178ms
+
+Score: 9.895146716772436
+Runtime: 19172ms
+
+Score: 1.3929231177845058
+Runtime: 19185ms
+
+Score: 7.18838609149241
+Runtime: 19193ms
+
+Score: 4.222768578400633
+Runtime: 19175ms
+
+Average score: 4.645167310217932
+St Dev score: 3.188065988436247
+Average runtime: 19177.366666666665ms
+Predicted remaining time:  0s (-0.0min)  /  (107.4min)
+------------
+Max score (4.645167310217932) in paramerter F achieved by value: 0.9999999999999999
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+[[0.  0.1 0.2 0.3 0.4 0.5 0.6 0.7 0.8 0.9 1. ]]
+[[0.9 0.9 0.9 0.9 0.9 0.9 0.9 0.9 0.9 0.9 0.9]]
+[[3.65588427 0.11436874 0.19788075 0.18006391 0.05547595 0.17645043
+  0.1309293  0.07052006 0.05532143 0.04703392 4.64516731]]
+[[2.8701114  0.15901363 0.31462487 0.29643881 0.05734237 0.23795495
+  0.12834772 0.0670925  0.05829569 0.05656731 3.18806599]]
