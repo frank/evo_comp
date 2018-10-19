@@ -97,8 +97,8 @@ public class player24 implements ContestSubmission {
         Population pop = new Population(rnd_);
         
 
-        pop.initPopUniform(sameplesize);
-//        pop.initPopRandom();
+//        pop.initPopUniform(sameplesize);
+        pop.initPopRandom();
 
 
         pop.evalPopulation(evaluation_);
@@ -110,7 +110,7 @@ public class player24 implements ContestSubmission {
 
             double evalProgress = (double)Population.evals/(double)evaluations_limit_;
 
-            double F = 0.2;
+            double F = 0.3;
 //            double CR = 0.8;
 
             //double F = rnd_.nextGaussian()*Fstd*evalProgress + (F_end-F_start)*evalProgress + F_start;
