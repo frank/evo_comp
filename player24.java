@@ -63,26 +63,26 @@ public class player24 implements ContestSubmission {
         double CR;
 
         if (isKatsuura){
-            Fstd = 0.0;
-            F_start = 1.0;
-            F_end = 1.0;
-            CRstd = 0.0;
-            CR_start = 0.9;
-            CR_end = 0.9;
+            Fstd = 0.5;
+            F_start = 0.0;
+            F_end = 0.8;
+            CRstd = 0.15;
+            CR_start = 0.0;
+            CR_end = 1.0;
             Population.populationSize = 100;//137
         }else if(isSchaffer){
-            Fstd = 0.0;
-            F_start = 0.3;
-            F_end = F_start;
+            Fstd = 5.0;
+            F_start = 0.0;
+            F_end = 1.0;
             CRstd = 0.0;
             CR_start = 0.0;
             CR_end = 1.0;
 
             Population.populationSize = 100;//48
         }else{
-             Fstd = 0.0;
-             F_start = 0.2;
-             F_end = F_start;
+             Fstd = 5.0;
+             F_start = 0.0;
+             F_end = 1.0;
              CRstd = 0.0;
              CR_start = 0.0;
              CR_end = 1.0;
@@ -110,10 +110,7 @@ public class player24 implements ContestSubmission {
 
             double evalProgress = (double)Population.evals/(double)evaluations_limit_;
 
-            double F = 0.2;
-//            double CR = 0.8;
-
-            //double F = rnd_.nextGaussian()*Fstd*evalProgress + (F_end-F_start)*evalProgress + F_start;
+            double F = rnd_.nextGaussian()*Fstd*evalProgress + (F_end-F_start)*evalProgress + F_start;
 
              do{
                  CR = rnd_.nextGaussian()*CRstd*(1-evalProgress) + (CR_end-CR_start)*evalProgress + CR_start;

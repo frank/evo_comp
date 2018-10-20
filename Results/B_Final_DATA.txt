@@ -1,0 +1,154 @@
+Score: 7.129548618169801
+Runtime: 113ms
+
+Score: 6.538874439409551
+Runtime: 113ms
+
+Score: 5.684135709716388
+Runtime: 112ms
+
+Score: 5.654743582334514
+Runtime: 117ms
+
+Score: 6.256758435484629
+Runtime: 114ms
+
+Score: 4.738452678709153
+Runtime: 116ms
+
+Score: 5.323812500589119
+Runtime: 123ms
+
+Score: 5.827681838409411
+Runtime: 109ms
+
+Score: 6.6289605319995175
+Runtime: 119ms
+
+Score: 6.72395716320965
+Runtime: 111ms
+
+Score: 7.236684403260635
+Runtime: 113ms
+
+Score: 8.013726680044822
+Runtime: 109ms
+
+Score: 6.750176215311248
+Runtime: 110ms
+
+Score: 6.445435788547189
+Runtime: 111ms
+
+Score: 8.47260667129181
+Runtime: 116ms
+
+Score: 4.592609224309497
+Runtime: 124ms
+
+Score: 5.416631240338297
+Runtime: 117ms
+
+Score: 7.716211600712091
+Runtime: 113ms
+
+Score: 6.530033235661598
+Runtime: 115ms
+
+Score: 7.811262546166018
+Runtime: 113ms
+
+Score: 5.693857002902488
+Runtime: 112ms
+
+Score: 5.313457415661996
+Runtime: 113ms
+
+Score: 6.219138629892534
+Runtime: 113ms
+
+Score: 8.287339439757703
+Runtime: 113ms
+
+Score: 4.458969485232147
+Runtime: 114ms
+
+Score: 3.901233689520301
+Runtime: 114ms
+
+Score: 3.794063231608351
+Runtime: 118ms
+
+Score: 7.687919160721602
+Runtime: 115ms
+
+Score: 4.500505599019896
+Runtime: 113ms
+
+Score: 7.920097086809907
+Runtime: 114ms
+
+Score: 6.969786830118005
+Runtime: 112ms
+
+Score: 6.580944550205111
+Runtime: 114ms
+
+Score: 5.252456337133248
+Runtime: 114ms
+
+Score: 8.014235501154875
+Runtime: 109ms
+
+Score: 4.739456636384828
+Runtime: 114ms
+
+Score: 5.60707865719002
+Runtime: 112ms
+
+Score: 5.908409509244255
+Runtime: 115ms
+
+Score: 8.51531371227282
+Runtime: 115ms
+
+Score: 5.946427723417339
+Runtime: 117ms
+
+Score: 7.113036785577471
+Runtime: 115ms
+
+Score: 8.631468573775496
+Runtime: 114ms
+
+Score: 5.362232426233997
+Runtime: 114ms
+
+Score: 7.038574996164532
+Runtime: 113ms
+
+Score: 3.3643507147676925
+Runtime: 114ms
+
+Score: 7.0443242358629385
+Runtime: 116ms
+
+Score: 5.153737913540999
+Runtime: 114ms
+
+Score: 6.8682720422095835
+Runtime: 113ms
+
+Score: 6.577483189331057
+Runtime: 116ms
+
+Score: 4.806484389864132
+Runtime: 113ms
+
+Score: 5.746958572010965
+Runtime: 113ms
+
+Average score: 6.250198342825224
+St Dev score: 1.2979635213394922
+Average runtime: 114.08ms
+
