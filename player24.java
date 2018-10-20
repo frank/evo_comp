@@ -97,8 +97,8 @@ public class player24 implements ContestSubmission {
         Population pop = new Population(rnd_);
         
 
-        pop.initPopUniform(sameplesize);
-//        pop.initPopRandom();
+//        pop.initPopUniform(sameplesize);
+        pop.initPopRandom();
 
 
         pop.evalPopulation(evaluation_);
