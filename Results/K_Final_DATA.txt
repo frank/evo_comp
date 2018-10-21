@@ -1,154 +1,154 @@
-Score: 10.0
-Runtime: 22995ms
-
-Score: 8.454719189189614
-Runtime: 23663ms
-
-Score: 7.836262291244356
-Runtime: 23117ms
+Score: 7.307572496817877
+Runtime: 22997ms
 
 Score: 10.0
-Runtime: 23000ms
+Runtime: 23012ms
 
-Score: 9.166303542415037
-Runtime: 23052ms
-
-Score: 5.29686379973159
-Runtime: 23026ms
-
-Score: 9.166303542414756
-Runtime: 23038ms
-
-Score: 4.658821396032838
-Runtime: 23030ms
+Score: 9.524021496192626
+Runtime: 23009ms
 
 Score: 10.0
-Runtime: 22996ms
+Runtime: 23014ms
 
-Score: 9.166303542415646
-Runtime: 23079ms
-
-Score: 10.0
-Runtime: 22984ms
-
-Score: 10.0
-Runtime: 22984ms
-
-Score: 10.0
-Runtime: 22995ms
-
-Score: 7.291546586410135
-Runtime: 23048ms
-
-Score: 7.291546586410135
-Runtime: 23035ms
-
-Score: 9.166303542415552
-Runtime: 23047ms
-
-Score: 10.0
-Runtime: 22999ms
-
-Score: 9.166303542414848
-Runtime: 23063ms
-
-Score: 10.0
-Runtime: 22979ms
-
-Score: 9.166303542414802
-Runtime: 23057ms
-
-Score: 8.978311064272859
-Runtime: 22994ms
-
-Score: 9.166303542415271
-Runtime: 23032ms
-
-Score: 9.071397291418023
-Runtime: 23017ms
-
-Score: 9.166303542415552
-Runtime: 23049ms
-
-Score: 5.296863799731212
-Runtime: 23047ms
-
-Score: 10.0
-Runtime: 23008ms
-
-Score: 10.0
-Runtime: 23060ms
-
-Score: 9.166303542415317
-Runtime: 23032ms
-
-Score: 7.291546586409837
-Runtime: 23052ms
-
-Score: 9.16630354241499
+Score: 8.454719183016122
 Runtime: 23039ms
 
-Score: 8.454719189190868
-Runtime: 23033ms
+Score: 10.0
+Runtime: 23021ms
 
 Score: 10.0
-Runtime: 23022ms
+Runtime: 23043ms
 
-Score: 8.978311064272445
-Runtime: 23046ms
+Score: 10.0
+Runtime: 23004ms
 
-Score: 8.978311064272399
-Runtime: 23033ms
+Score: 0.18539292138269794
+Runtime: 22918ms
 
-Score: 6.371972612824935
-Runtime: 23017ms
+Score: 9.999920704329925
+Runtime: 23004ms
 
-Score: 7.291546586409763
+Score: 7.836116145346777
+Runtime: 22989ms
+
+Score: 10.0
 Runtime: 23023ms
 
 Score: 10.0
-Runtime: 23000ms
+Runtime: 22997ms
 
-Score: 9.166303542415317
-Runtime: 23035ms
-
-Score: 10.0
-Runtime: 23025ms
+Score: 4.605983079197577
+Runtime: 23062ms
 
 Score: 10.0
-Runtime: 23026ms
+Runtime: 23027ms
 
-Score: 9.166303542415129
-Runtime: 23039ms
+Score: 10.0
+Runtime: 23030ms
 
 Score: 10.0
 Runtime: 23006ms
 
-Score: 10.0
-Runtime: 22978ms
+Score: 9.166303498289762
+Runtime: 23022ms
 
 Score: 10.0
-Runtime: 23001ms
+Runtime: 22996ms
 
-Score: 6.371972612826532
-Runtime: 23039ms
+Score: 7.291546396904338
+Runtime: 23011ms
+
+Score: 9.999974538882219
+Runtime: 23031ms
+
+Score: 9.999997121416905
+Runtime: 23002ms
 
 Score: 10.0
-Runtime: 23020ms
+Runtime: 23014ms
 
-Score: 9.166303542415129
-Runtime: 23036ms
+Score: 7.836262287330889
+Runtime: 23032ms
 
-Score: 9.166303542415786
+Score: 9.999999487443196
 Runtime: 23023ms
 
-Score: 10.0
-Runtime: 22965ms
-
-Score: 10.0
+Score: 2.4776464938657563
 Runtime: 23018ms
 
-Average score: 8.924859226289213
-St Dev score: 1.3698242311522162
-Average runtime: 23038.04ms
+Score: 10.0
+Runtime: 23011ms
+
+Score: 10.0
+Runtime: 23010ms
+
+Score: 9.16618901834982
+Runtime: 22982ms
+
+Score: 9.99986635112458
+Runtime: 22988ms
+
+Score: 9.999999817457347
+Runtime: 23028ms
+
+Score: 6.371916993303146
+Runtime: 22995ms
+
+Score: 9.166302581105006
+Runtime: 22973ms
+
+Score: 9.166303523373688
+Runtime: 22994ms
+
+Score: 10.0
+Runtime: 23017ms
+
+Score: 10.0
+Runtime: 23000ms
+
+Score: 10.0
+Runtime: 22985ms
+
+Score: 10.0
+Runtime: 22980ms
+
+Score: 9.999413788840059
+Runtime: 22978ms
+
+Score: 7.291546582861551
+Runtime: 23003ms
+
+Score: 5.456018693352302
+Runtime: 22994ms
+
+Score: 8.978305668646069
+Runtime: 23080ms
+
+Score: 10.0
+Runtime: 23251ms
+
+Score: 10.0
+Runtime: 24689ms
+
+Score: 10.0
+Runtime: 23449ms
+
+Score: 10.0
+Runtime: 23453ms
+
+Score: 6.483312836257996
+Runtime: 23192ms
+
+Score: 9.526206370852885
+Runtime: 22929ms
+
+Score: 9.999996080910114
+Runtime: 23003ms
+
+Score: 10.0
+Runtime: 23016ms
+
+Average score: 8.925816683137025
+St Dev score: 2.0417640666019166
+Average runtime: 23066.88ms
 
