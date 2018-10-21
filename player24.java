@@ -56,7 +56,6 @@ public class player24 implements ContestSubmission {
 
     public void run() {
         // Run your algorithm here
-<<<<<<< HEAD
         double Fstd;
         double F_end;
         double F_start;
