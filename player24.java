@@ -2,36 +2,30 @@ import org.vu.contest.ContestSubmission;
 import org.vu.contest.ContestEvaluation;
 
 import java.util.ArrayList;
-import java.util.List;
 import java.util.Random;
 import java.util.Properties;
-import java.io.*;
+
 
 public class player24 implements ContestSubmission {
     Random rnd_;
-    boolean _isMultimodal;
-    boolean _isRegular;
-    boolean _isSeparable;
     ContestEvaluation evaluation_;
     private int evaluations_limit_;
 
+    private boolean isSchaffer;
+    private boolean isKatsuura;
+    private boolean isBC;
+
     public player24() {
         rnd_ = new Random();
+        isSchaffer = false;
+        isKatsuura = false;
+        isBC = false;
     }
 
     public void setSeed(long seed) {
         // Set seed of algortihms random process
         rnd_.setSeed(seed);
     }
-
-//    public static void main(String[] args) {
-//        Population pop = new Population(new Random());
-//        Child child = new Child(new Random());
-//        System.out.println("SchaffersEvaluation");ConsertTestBox.main(new String[]{"-submission=player24", "-evaluation=SchaffersEvaluation", "-seed=1"});
-//        //System.out.println("KatsuuraEvaluation");ConsertTestBox.main(new String[]{"-submission=player24", "-evaluation=KatsuuraEvaluation", "-seed=1"});
-//        //System.out.println("BentCigarFunction");ConsertTestBox.main(new String[]{"-submission=player24", "-evaluation=BentCigarFunction", "-seed=1"});
-//
-//    }
 
     public void setEvaluation(ContestEvaluation evaluation) {
         // Set evaluation problem used in the run
@@ -49,56 +43,96 @@ public class player24 implements ContestSubmission {
         boolean isSeparable = Boolean.parseBoolean(props.getProperty("Separable"));
 
         // Do sth with property values, e.g. specify relevant settings of your algorithm
-        if (isMultimodal) {
-            // do smth
+
+        if(!isMultimodal && !hasStructure){
+            isBC = true;
+        }else if(isMultimodal && hasStructure){
+            isSchaffer = true;
+        }else if(isMultimodal){
+            isKatsuura = true;
         }
     }
 
 
     public void run() {
         // Run your algorithm here
-        int evals = 0;
-        int populationSize = 10;
-        double time = 100;
-        double stDevMultiplier = 5.0;
-        int numberOfParents = 2;
-        String mutationType = Population.GAUSSIAN; // Set to 'UNIFORM', 'GAUSSIAN', or 'GENE_GAUSSIAN'
-        String parentSelectionType = Population.BOLTZMANN; // Boltzmann, Max
-        
+<<<<<<< HEAD
+        double Fstd;
+        double F_end;
+        double F_start;
+        double CRstd;
+        double CR_start;
+        double CR_end;
+        double CR;
+
+        if (isKatsuura){
+            Fstd = 0.0;
+            F_start = 1.0;
+            F_end = 1.0;
+            CRstd = 0.0;
+            CR_start = 0.9;
+            CR_end = 0.9;
+            Population.populationSize = 100;//137
+        }else if(isSchaffer){
+            Fstd = 0.0;
+            F_start = 0.5;
+            F_end = 0.5;
+            CRstd = 0.0;
+            CR_start = 0.5;
+            CR_end = 0.5;
+            Population.populationSize = 100;//48
+        }else{
+             Fstd = 0.0;
+             F_start = 0.2;
+             F_end = 0.2;
+             CRstd = 0.0;
+             CR_start = 0.8;
+             CR_end = 0.8;
+             Population.populationSize = 100;//24
+        }
+
         // init population
-        Population pop = new Population(rnd_, populationSize, time, stDevMultiplier, evaluations_limit_,
-                                        mutationType, parentSelectionType, numberOfParents);
-        //Create new random children
-        pop.initPop();
-        //Evaluate and set fitness for all children 
+        Population.maxEvals=evaluations_limit_;
+        int sameplesize=2; // determines the amount of parents when useing uniform initialization
+
+        ArrayList<Population> generations = new ArrayList<Population>();
+        Population pop = new Population(rnd_);
+        
+
+//        pop.initPopUniform(sameplesize);
+        pop.initPopRandom();
+
+
         pop.evalPopulation(evaluation_);
-        //This function sorts all children based on fitness
-        pop.sortOnFitness();
-
+        generations.add(pop);
+        boolean foundMax = false;
         while (Population.evals < evaluations_limit_) {
-            Child[] parents = pop.SelectParents();
-//            pop.printChildren(parents);
+            Population mutantpopulation = new Population(rnd_);
+            Population old_pop = generations.get(generations.size() - 1);
 
-            //creating the child
-            Child child = pop.CreateChild(parents);
-            //calculating fitness
-            Double fitness = (double) evaluation_.evaluate(child.getValues());
-            child.setFitness(fitness);
-//            Child[] c = new Child[1];
-//            c[0] = child;
-//            pop.printChildren(c);
+            double evalProgress = (double)Population.evals/(double)evaluations_limit_;
 
-            //System.out.println(child.getFitness());
-            //System.out.println(Arrays.toString(child.getValues()));
+            double F = rnd_.nextGaussian()*Fstd + (F_end-F_start)*evalProgress + F_start;
 
-            pop.AddChild(child);
-//            pop.printPopulation();
-//            if (Population.evals == populationSize+ 200){
-//                System.exit(0);
-//            }
+             do{
+                 CR = (CR_end-CR_start)*evalProgress + CR_start;
+             }while (CR < 0.0 || CR > 1.0);
+             for (int idx = 0; (idx < old_pop.children.size() ) && Population.evals<evaluations_limit_; idx++) {
+                Child[] donor= old_pop.selectRandomParents(idx);
+                Child parent = old_pop.getChild(idx);
 
-            Population.evals++;
-            // Select survivors
+                Child child = pop.CreateDifferentialChild(donor,parent,F,CR);
+                Double fitness = (double) evaluation_.evaluate(child.getValues());
+                child.setFitness(fitness);
+                Population.evals++;
+//                if (fitness >= 10.000){
+//                    return;
+//                }
+                if(fitness>parent.getFitness()){mutantpopulation.AddChild(child);}
+                else{mutantpopulation.AddChild(parent);}
+
+            }
+            generations.add(mutantpopulation);
         }
     }
 }

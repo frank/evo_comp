@@ -1,1 +1,3 @@
-populationSize 10 100 10
+player24.java
+F_end 0.0 1.0 0.1
+Fstd 0.0 1.0 0.1
