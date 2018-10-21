@@ -1,9 +1,10 @@
 import org.vu.contest.ContestSubmission;
 import org.vu.contest.ContestEvaluation;
 
+import java.util.ArrayList;
 import java.util.Random;
 import java.util.Properties;
-import java.util.ArrayList;
+
 
 public class player24 implements ContestSubmission {
     Random rnd_;
@@ -52,8 +53,10 @@ public class player24 implements ContestSubmission {
         }
     }
 
+
     public void run() {
         // Run your algorithm here
+<<<<<<< HEAD
         double Fstd;
         double F_end;
         double F_start;

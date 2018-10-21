@@ -32,6 +32,7 @@ public class Population {
         double[] vals = new double[10];
         for(int idx=0;idx<10;idx++){
             vals[idx]=-5;
+
         }
         //uniform initialization
         if(samplesize>0)generate_kid(0,samplesize,increment,vals);
@@ -121,6 +122,7 @@ public class Population {
                 left = mid + 1;
             }
         }
+
         if (children.size() < populationSize) children.add(left, child);
         else if (left < populationSize) children.set(left, child);//Drop everything after 1k
     }
@@ -134,12 +136,11 @@ public class Population {
         return children.get(idx);
     }
 
-    public void evalPopulation(ContestEvaluation evaluation_){   
+    public void evalPopulation(ContestEvaluation evaluation_){
         //reevaluate the complete population
         for(int i = 0; i < populationSize; i++){
             children.get(i).setFitness((double) evaluation_.evaluate(children.get(i).getValues()));
             evals++;
         }
     }
-
 }
